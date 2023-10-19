@@ -227,7 +227,7 @@ export class AppDashboardComponent {
       series: [
         {
           name: 'Eanings this month',
-          data: [355, 390, 300, 350, 390, 180, 355, 390],
+          data: [355, 1500, 300, 350, 390, 180, 355, 390],
           color: '#5D87FF',
         },
         {
