@@ -13,7 +13,7 @@
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nombre del usuario</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
               <input #userNameInput="ngModel"  matInput name="userName" id="userName" [(ngModel)]="credentials.userName" />
-              <mat-hint class="mat-error" *ngIf="!credentials.password && userNameInput.touched">Ingresa tu usuario</mat-hint>
+              <mat-hint class="mat-error" *ngIf="!credentials.userName && userNameInput.touched">Ingresa tu usuario</mat-hint>
            
             </mat-form-field>
             <!-- password -->
