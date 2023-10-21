@@ -1,0 +1,23 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">Vehiculps</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+
+        <div class="navBarP">
+            <ul>
+                <li (click)="tabs(0);" class="user-post active" #li0>Ingresar nuevo Vehiculo</li>
+                <li (click)="tabs(1);" class="user-review"  #li1>Ver estado de vehiculo</li>
+                <li (click)="tabs(2);" class="user-setting"  #li2>Ver Vehiculos</li>
+            </ul>
+        </div>
+        <div class="profile-body">
+            <div class="profile-posts tab" #astxt1>
+            </div>
+            <div class="profile-reviews tab" #astxt2>
+            </div>
+            <div class="profile-settings tab" #astxt3>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

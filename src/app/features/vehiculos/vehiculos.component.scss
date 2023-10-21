@@ -1,0 +1,27 @@
+
+.navBarP {
+    width: 100%;
+    z-index: -1;
+}
+
+.navBarP ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    height: 40px;
+    background: #fff;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.navBarP ul li {
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.navBarP ul li:hover,
+.navBarP ul li.active {
+    box-shadow: 0px -3px 0px rgba(59, 183, 255, 0.9) inset;
+}

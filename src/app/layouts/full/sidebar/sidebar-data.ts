@@ -2,43 +2,48 @@ import { NavItem } from './nav-item/nav-item';
 
 export const navItems: NavItem[] = [
   {
-    navCap: 'Home',
+    navCap: 'INICIO',
   },
   {
-    displayName: 'Dashboard',
+    displayName: 'inicio',
     iconName: 'layout-dashboard',
     route: '/dashboard',
   },
   {
-    navCap: 'Ui Components',
+    navCap: 'Menu Principal',
   },
   {
-    displayName: 'Badge',
-    iconName: 'rosette',
+    displayName: 'Agencias',
+    iconName: 'home-search',
     route: '/ui-components/badge',
   },
   {
-    displayName: 'Chips',
-    iconName: 'poker-chip',
+    displayName: 'Quienes Somos?',
+    iconName: 'help-octagon',
     route: '/ui-components/chips',
   },
   {
-    displayName: 'Lists',
-    iconName: 'list',
+    displayName: 'Rastreo',
+    iconName: 'map-search',
     route: '/ui-components/lists',
   },
   {
-    displayName: 'Menu',
-    iconName: 'layout-navbar-expand',
-    route: '/ui-components/menu',
+    displayName: 'Manejo de Paquetes',
+    iconName: 'box-seam',
+    route: '/features/paqueteria',
   },
   {
-    displayName: 'Tooltips',
-    iconName: 'tooltip',
+    displayName: 'Manejo de Usuarios',
+    iconName: 'user-cog',
     route: '/ui-components/tooltips',
   },
   {
-    navCap: 'Auth',
+    displayName: 'Manejo de Vehiculos',
+    iconName: 'truck',
+    route: '/features/vehiculos',
+  },
+  {
+    navCap: 'AUTENTIFICACION',
   },
   {
     displayName: 'Login',
@@ -51,16 +56,21 @@ export const navItems: NavItem[] = [
     route: '/authentication/register',
   },
   {
-    navCap: 'Extra',
+    navCap: 'Menu de Administracion',
   },
   {
-    displayName: 'Icons',
-    iconName: 'mood-smile',
-    route: '/extra/icons',
+    displayName: 'Proyecciones Mensuales',
+    iconName: 'chart-arrows-vertical',
+    route: '',
   },
   {
-    displayName: 'Sample Page',
+    displayName: 'Reportes',
     iconName: 'aperture',
     route: '/extra/sample-page',
+  },
+  {
+    displayName: 'iconos',
+    iconName: 'aperture',
+    route: '/extra/icons',
   },
 ];

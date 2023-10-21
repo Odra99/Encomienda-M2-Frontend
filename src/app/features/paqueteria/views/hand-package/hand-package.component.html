@@ -1,0 +1,97 @@
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <img
+            src="https://www.kroger.com/content/v2/binary/image/pr/daytona-500-grocery-delivery/imageset/2511103_22_p1w1_ocado_daytona_le_fl--2511103_22_p1w1_ocado_daytona_le_dsk_fl_1280x304.png">
+
+        <div>
+            <h3>Datos del Receptor</h3>
+            <div class="formbold-input-flex">
+
+                <div>
+                    <label for="firstname" class="formbold-form-label">
+                        Nombre Completo
+                    </label>
+                    <input type="text" name="firstname" id="firstname" class="formbold-form-input" />
+                </div>
+                <div>
+                    <label for="lastname" class="formbold-form-label"> CUI </label>
+                    <input type="text" name="lastname" id="lastname" class="formbold-form-input" />
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="email" class="formbold-form-label"> Correo </label>
+                    <input type="email" name="email" id="email" class="formbold-form-input" />
+                </div>
+                <div>
+                    <label for="phone" class="formbold-form-label"> Telefono</label>
+                    <input type="text" name="phone" id="phone" class="formbold-form-input" />
+                </div>
+            </div>
+
+            <hr />
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="guia" class="formbold-form-label"> Numero De guia </label>
+                    <input type="email" name="email" id="email" class="formbold-form-input" />
+                </div>
+                <button mat-flat-button color="primary" >Buscar Paquete </button>
+                <!-- <div>
+                    <label for="phone" class="formbold-form-label"> Telefono</label>
+                    <input type="text" name="phone" id="phone" class="formbold-form-input" />
+                </div>-->
+            </div>
+        </div>
+        <div>
+            <div class="formbold-main-wrapper">
+                <mat-card class="cardWithShadow theme-card">
+                    <mat-card-header>
+                        <mat-card-title class="m-b-0">Datos del Paquete</mat-card-title>
+                    </mat-card-header>
+                   <div class="datosPaquete">
+                    <div class="formbold-input-flex">
+                        <div>
+                            <label for="firstname" class="formbold-form-label">
+                                Nombre Receptor
+                            </label>
+                            <input type="text" name="firstname" id="firstname" class="formbold-form-input" disabled />
+                        </div>
+                        <div>
+                            <label for="lastname" class="formbold-form-label"> CUI </label>
+                            <input type="text" name="lastname" id="lastname" class="formbold-form-input" disabled #receptor/>
+                        </div>
+                    </div>
+                    <div class="formbold-input-flex">
+                        <div>
+                            <label for="firstname" class="formbold-form-label">
+                                Emisor
+                            </label>
+                            <input type="text" name="emisor" id="emisor" class="formbold-form-input" disabled #emisor />
+                        </div>
+                        <div>
+                            <label for="lastname" class="formbold-form-label"> Lugar de envio </label>
+                            <input type="text" name="lugarEnvio" id="lugarEnvio" class="formbold-form-input" disabled #lugarEnvio/>
+                        </div>
+                    </div>
+                    <div class="formbold-input-flex">
+                        <div>
+                            <label for="firstname" class="formbold-form-label">
+                                Fecha de Envio
+                            </label>
+                            <input type="date" name="fechaEnvio" id="fechaEnvio" class="formbold-form-input" disabled #fechaEnvio />
+                        </div>
+                        <div>
+                            <label for="lastname" class="formbold-form-label">Costo </label>
+                            <input type="text" name="costo" id="costo" class="formbold-form-input" disabled #costo/>
+                        </div>
+                    </div>
+                   </div>
+                </mat-card>
+            </div>
+        </div>
+
+        <button class="formbold-btn">Buscar Paquete </button>
+
+    </div>
+</div>
