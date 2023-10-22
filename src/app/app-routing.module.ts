@@ -30,6 +30,11 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/extra/extra.module').then((m) => m.ExtraModule),
       },
+      {
+        path: 'features',
+        loadChildren: () =>
+          import('./features/features.module').then((m) => m.FeaturesModule),
+      },
     ],
   },
   {
