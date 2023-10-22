@@ -6,6 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { CurrentUserService } from 'src/app/services/current-user.service';
 
 
 @Component({
@@ -22,5 +23,9 @@ export class HeaderComponent {
 
   showFiller = false;
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private currentUserService:CurrentUserService) {}
+
+  logout(){
+    this.currentUserService.logout();
+  }
 }

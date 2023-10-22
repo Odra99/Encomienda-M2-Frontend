@@ -11,7 +11,7 @@ import { ToasterEnum } from 'src/global/toaster-enum';
 export class AppSideLoginComponent {
   credentials = {
     password: null,
-    userName: null,
+    email: null,
   };
 
   showPass = false;
@@ -24,31 +24,13 @@ export class AppSideLoginComponent {
 
   signIn() {
     this.form.form.markAllAsTouched();
-    if(!this.credentials.password || !this.credentials.userName ){
-      return
+    if (this.form.form.invalid) {
+      return;
     }
-    if (
-      this.credentials.userName == 'user' &&
-      this.credentials.password == 'password'
-    ) {
-      this.toasterService.show({
-        message: 'Inicio de sesion exitoso',
-        type: ToasterEnum.SUCCESS,
-      });
-    } else {
-      this.toasterService.show({
-        message: 'Credenciales incorrectas',
-        type: ToasterEnum.ERROR,
-      });
+    if (!this.credentials.password || !this.credentials.email) {
+      return;
     }
 
-    // this.authService.login(this.credentials).subscribe({
-    //   next:()=> {
-    //     console.log("Success")
-    //   },
-    //   error:()=> {
-    //     console.log("error")
-    //   },
-    // })
+    this.authService.login(this.credentials);
   }
 }

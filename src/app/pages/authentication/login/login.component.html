@@ -10,17 +10,17 @@
           </div>
 
           <form #loginForm class="m-t-30">
-            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nombre del usuario</mat-label>
+            <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Correo electronico</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary">
-              <input #userNameInput="ngModel"  matInput name="userName" id="userName" [(ngModel)]="credentials.userName" />
-              <mat-hint class="mat-error" *ngIf="!credentials.userName && userNameInput.touched">Ingresa tu usuario</mat-hint>
+              <input #emailInput="ngModel" type="email" matInput name="email" id="email" [(ngModel)]="credentials.email" required />
+              <mat-hint class="mat-error" *ngIf="!credentials.email && emailInput.touched">Ingresa tu correo electronico</mat-hint>
            
             </mat-form-field>
             <!-- password -->
             <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Contraseña</mat-label>
             <mat-form-field appearance="outline" class="w-100" color="primary" >
               <input #passwordInput="ngModel"  matInput name="password" id="password" [type]="showPass?'text':'password'"
-                [(ngModel)]="credentials.password" />
+                [(ngModel)]="credentials.password" required />
               <mat-icon matSuffix (click)="showPass=!showPass">{{showPass?'visibility':'visibility_off'}}</mat-icon>
               <mat-hint class="mat-error" *ngIf="!credentials.password && passwordInput.touched">Ingresa tu contraseña</mat-hint>
             </mat-form-field>
