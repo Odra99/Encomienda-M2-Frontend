@@ -36,7 +36,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HeaderComponent,
     BrandingComponent,
     AppNavItemComponent,
-    ToasterComponent,
+    ToasterComponent
   ],
   imports: [
     BrowserModule,
@@ -48,7 +48,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MaterialModule,
     TablerIconsModule.pick(TablerIcons),
     MatSidenavModule,
-    NgbModule,
+    NgbModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

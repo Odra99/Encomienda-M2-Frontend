@@ -35,4 +35,8 @@ export class ToasterService {
 
     return { borderClass: '', textClass: '', header: '' };
   }
+
+  showGenericErrorToast(){
+    this.show({message:'Ha ocurrido un error, intente mas tarde',type:ToasterEnum.ERROR})
+  }
 }

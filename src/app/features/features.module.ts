@@ -11,9 +11,9 @@ import { EnterPackageComponent } from './paqueteria/views/enter-package/enter-pa
 import { RastreoComponent } from './paqueteria/views/tarificador/tarificador.component';
 import { HandPackageComponent } from './paqueteria/views/hand-package/hand-package.component';
 import { CiudadComponent } from './ciudad/ciudad.component';
-import { CreateCityComponent } from './ciudad/views/create-city/create-city.component';
+import { CityFormComponent } from './ciudad/views/city-form/city-form.component';
 import { MaterialModule } from '../material.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 
@@ -26,13 +26,14 @@ import * as TablerIcons from 'angular-tabler-icons/icons';
     RastreoComponent,
     HandPackageComponent,
     CiudadComponent,
-    CreateCityComponent,
+    CityFormComponent,
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),
     CommonModule,
     MatCardModule,
     MaterialModule,
+    ReactiveFormsModule,
     FormsModule,
     TablerIconsModule.pick(TablerIcons),
   ],

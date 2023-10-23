@@ -9,23 +9,23 @@ const baseUrl = environment.encomiendaBackendUrl + 'ciudad';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class CiudadService {
   constructor(private http: HttpClient) {}
 
 
   save(entity: Ciudad): Observable<any> {
     if (entity.id) {
-      return this.http.put<any>(`${baseUrl}/${entity.id}`, entity);
+      return this.http.patch<any>(`${baseUrl}/{id}?ciudad_id=${entity.id}`, entity);
     }
     return this.http.post<any>(`${baseUrl}`, entity);
   }
 
-  get(id: number): Observable<Ciudad> {
-    return this.http.get<Ciudad>(`${baseUrl}/${id}`);
+  get(id: number): Observable<any> {
+    return this.http.get<any>(`${baseUrl}/{id}?ciudad_id=${id}`);
   }
 
   delete(id: number): Observable<HttpResponse<any>> {
-    return this.http.delete<HttpResponse<any>>(baseUrl + '/' + id);
+    return this.http.delete<HttpResponse<any>>(`${baseUrl}/{id}?ciudad_id=${id}`);
   }
 
   listAllHttp(queryParams: any): Observable<HttpResponse<any>> {
