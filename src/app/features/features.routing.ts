@@ -1,6 +1,7 @@
 import {RouterModule, Routes} from "@angular/router";
 import { PaqueteriaComponent } from "./paqueteria/paqueteria.component";
 import { VehiculosComponent } from "./vehiculos/vehiculos.component";
+import { CiudadComponent } from "./ciudad/ciudad.component";
 
 export const FeaturesRouter: Routes = [
   {
@@ -12,6 +13,9 @@ export const FeaturesRouter: Routes = [
       {
         path: 'vehiculos', component: VehiculosComponent
       },
+      {
+        path: 'ciudades', component: CiudadComponent
+      }
     ],
   },
 ];

@@ -43,6 +43,11 @@ export const navItems: NavItem[] = [
     route: '/features/vehiculos',
   },
   {
+    displayName: 'Manejo de Ciudades',
+    iconName: 'building',
+    route: '/features/ciudades',
+  },
+  {
     navCap: 'AUTENTIFICACION',
   },
   {
