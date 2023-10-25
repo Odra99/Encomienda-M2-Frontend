@@ -1,0 +1,22 @@
+<div class="position-relative row w-100 h-100 bg-gredient justify-content-center">
+    <div class="col-lg-4 d-flex align-items-center"><mat-card class="cardWithShadow boxed-auth">
+            <mat-card-content class="p-32">
+                <form #conceptoForm class="m-t-30">
+                    <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nombre</mat-label>
+                    <mat-form-field appearance="outline" class="w-100" color="primary">
+                        <input #nombreInput="ngModel" type="text" matInput name="name" id="name"
+                            [(ngModel)]="conceptoGasto.nombre" required maxlength="100" />
+                        <mat-hint class="mat-error" *ngIf="!conceptoGasto.nombre && nombreInput.touched">Ingresa el nombre
+                            del concepto</mat-hint>
+                    </mat-form-field>                    
+                    <button type="submit" (click)="save()" mat-flat-button color="primary" class="w-100 mb-3">
+                        Guardar
+                    </button>
+                    <button type="button" (click)="finish()" mat-flat-button color="primary" class="w-100">
+                        Regresar
+                    </button>
+                </form>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

@@ -48,3 +48,8 @@ export class Vehiculo{
   volumen!: number;
   peso!: number;
 }
+
+export class ConceptoGasto{
+  id!:number;
+  nombre!:string;
+}

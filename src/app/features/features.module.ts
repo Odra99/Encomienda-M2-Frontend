@@ -40,6 +40,8 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 import {CrearUsuarioComponent} from './usuarios/views/crear/crear.component';
 import {ListarUsuariosComponent} from './usuarios/views/listar/listar.component';
 import {EditarUsuarioComponent} from './usuarios/views/editar/editar.component';
+import { ConceptoGastoComponent } from './gasto/concepto-gasto/concepto-gasto.component';
+import { ConceptoGastoFormComponent } from './gasto/concepto-gasto/views/concepto-gasto-form/concepto-gasto-form.component';
 
 
 @NgModule({
@@ -72,6 +74,8 @@ import {EditarUsuarioComponent} from './usuarios/views/editar/editar.component';
     PuestosComponent,
     CrearPuestoComponent,
     EditarPuestoComponent,
+    ConceptoGastoComponent,
+    ConceptoGastoFormComponent,
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),
