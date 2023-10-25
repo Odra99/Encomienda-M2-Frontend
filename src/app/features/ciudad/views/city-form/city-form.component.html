@@ -5,7 +5,7 @@
                     <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Nombre</mat-label>
                     <mat-form-field appearance="outline" class="w-100" color="primary">
                         <input #nombreInput="ngModel" type="text" matInput name="name" id="name"
-                            [(ngModel)]="ciudad.nombre" required />
+                            [(ngModel)]="ciudad.nombre" required maxlength="100" />
                         <mat-hint class="mat-error" *ngIf="!ciudad.nombre && nombreInput.touched">Ingresa el nombre
                             de la ciudad</mat-hint>
                     </mat-form-field>
@@ -18,17 +18,17 @@
                             <mat-option value="Guatemala">Guatemala</mat-option>
                             <mat-option value="Totonicapan">Totonicapan</mat-option>
                         </mat-select>
-                        <mat-error class="mat-error"
-                            *ngIf="!ciudad.departamento && departamento.hasError('required')">Selecciona el
+                        <mat-error *ngIf="!ciudad.departamento && departamento.hasError('required')">Selecciona el
                             departamento</mat-error>
                     </mat-form-field>
 
                     <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Descripcion</mat-label>
                     <mat-form-field appearance="outline" class="w-100" color="primary">
-                        <input #descripcionInput="ngModel" matInput name="descripcion" id="descripcion"
-                            [(ngModel)]="ciudad.descripcion" required />
-                        <mat-hint class="mat-error" *ngIf="!ciudad.descripcion && descripcionInput.touched">Ingresa tu
-                            contraseña</mat-hint>
+
+                        <textarea #descripcionInput="ngModel" matInput name="descripcion" id="descripcion"
+                            [(ngModel)]="ciudad.descripcion" required maxlength="250"></textarea>
+                        <mat-hint class="mat-error" *ngIf="!ciudad.descripcion && descripcionInput.touched">Ingresa la
+                            descripcion de la ciudad</mat-hint>
                     </mat-form-field>
                     <button type="submit" (click)="save()" mat-flat-button color="primary" class="w-100 mb-3">
                         Guardar

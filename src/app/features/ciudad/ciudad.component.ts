@@ -2,8 +2,10 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Ciudad } from 'src/app/data/model/general';
+import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
 import { CiudadService } from 'src/app/services/backend/ciudad.service';
-import { ToasterService } from 'src/app/services/toaster.service';
+import { DialogService } from 'src/app/services/others/dialog.service';
+import { ToasterService } from 'src/app/services/others/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 
 @Component({
@@ -31,7 +33,8 @@ export class CiudadComponent implements OnInit, AfterViewInit {
 
   constructor(
     private ciudadService: CiudadService,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private confirmationDialogService: DialogService
   ) {}
 
   changeTab(num: number) {
@@ -51,6 +54,7 @@ export class CiudadComponent implements OnInit, AfterViewInit {
       next: (value) => {
         this.datos = value.body.result;
         this.dataSource = new MatTableDataSource<Ciudad>(this.datos);
+        this.dataSource.paginator = this.paginator;
       },
       error: () => {
         this.toasterService.showGenericErrorToast();
@@ -69,8 +73,8 @@ export class CiudadComponent implements OnInit, AfterViewInit {
     this.list = true;
   }
 
+  @needConfirmation()
   deleteCiudad(id:any){
-    console.log("hello");
     if(id){
       this.ciudadService.delete(id).subscribe({
         next: () => {

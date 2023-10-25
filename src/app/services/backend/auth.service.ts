@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, mergeMap, of } from 'rxjs';
 import { environment } from 'src/environment/environment';
-import { ToasterService } from './toaster.service';
+import { ToasterService } from '../others/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { Router } from '@angular/router';
 

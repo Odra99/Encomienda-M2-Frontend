@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AuthService } from 'src/app/services/auth.service';
-import { ToasterService } from 'src/app/services/toaster.service';
+import { AuthService } from 'src/app/services/backend/auth.service';
+import { ToasterService } from 'src/app/services/others/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 
 @Component({

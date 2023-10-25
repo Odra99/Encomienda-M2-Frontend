@@ -6,11 +6,17 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ConfirmDialogService {
+export class DialogService {
 
   matDialog = inject(MatDialog);
 
-  constructor() {}
+  private static instance : DialogService | null= null;
+  constructor(private dialog: MatDialog) { 
+    DialogService.instance = this;
+  }
+  public static getInstance(){
+    return DialogService.instance;
+  }
 
 
   openDialog<T>(data : any,component: ComponentType<T>) : Observable<boolean>{

@@ -6,7 +6,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CurrentUserService } from 'src/app/services/current-user.service';
+import { CurrentUserService } from 'src/app/services/others/current-user.service';
 
 
 @Component({

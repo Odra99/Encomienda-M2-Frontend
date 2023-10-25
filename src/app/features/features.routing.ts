@@ -2,6 +2,7 @@ import {RouterModule, Routes} from "@angular/router";
 import { PaqueteriaComponent } from "./paqueteria/paqueteria.component";
 import { VehiculosComponent } from "./vehiculos/vehiculos.component";
 import { CiudadComponent } from "./ciudad/ciudad.component";
+import { AllowNavigationGuard } from "../security/guards/allow-navigation-admin.guard";
 
 import { PuestosComponent } from "./puestos/puestos.component";
 import { SucursalesComponent } from "./sucursal/sucursal.component";
@@ -11,23 +12,34 @@ export const FeaturesRouter: Routes = [
     path: '',
     children: [
       {
-        path: 'paqueteria', component: PaqueteriaComponent
+        path: 'paqueteria', component: PaqueteriaComponent,
+        
+        canActivate: [AllowNavigationGuard],
       },
       {
-        path: 'vehiculos', component: VehiculosComponent
+        path: 'vehiculos', component: VehiculosComponent,
+        
+        canActivate: [AllowNavigationGuard],
+      },    
+      {
+        path: 'puestos', component: PuestosComponent,
+        
+        canActivate: [AllowNavigationGuard],
       },
       {
-        path: 'ciudades', component: CiudadComponent
-      },      
-      {
-        path: 'puestos', component: PuestosComponent
+        path: 'sucursales', component: SucursalesComponent,
+        
+        canActivate: [AllowNavigationGuard],
       },
       {
-        path: 'sucursales', component: SucursalesComponent
-      },
-      {
-        path: 'usuarios', component: UsuariosComponent
-      },
+        path: 'usuarios', component: UsuariosComponent,
+        
+        canActivate: [AllowNavigationGuard],
+      },{
+        path: 'ciudades', component: CiudadComponent,
+        
+        canActivate: [AllowNavigationGuard],
+      }
     ],
   },
 ];
