@@ -23,11 +23,11 @@ import { SidebarComponent } from './layouts/full/sidebar/sidebar.component';
 import { HeaderComponent } from './layouts/full/header/header.component';
 import { BrandingComponent } from './layouts/full/sidebar/branding.component';
 import { AppNavItemComponent } from './layouts/full/sidebar/nav-item/nav-item.component';
-import { ToasterComponent } from './commos/toaster/toaster.component';
 import { AuthInterceptor } from './security/interceptors/auth-interceptor';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UnauthInterceptor } from './security/interceptors/unauth-interceptor';
+import { ToasterComponent } from './commos/toaster/toaster.component';
 @NgModule({
   declarations: [
     AppComponent,

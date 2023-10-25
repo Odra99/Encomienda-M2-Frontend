@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChange
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { Ciudad } from 'src/app/data/model/general';
 import { CiudadService } from 'src/app/services/backend/ciudad.service';
-import { ToasterService } from 'src/app/services/toaster.service';
+import { ToasterService } from 'src/app/services/others/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 
 @Component({

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { CurrentUserService } from 'src/app/services/current-user.service';
+import { CurrentUserService } from 'src/app/services/others/current-user.service';
 
 @Injectable()
 export class UnauthInterceptor implements HttpInterceptor {
