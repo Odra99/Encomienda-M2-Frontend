@@ -1,17 +1,32 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Usuario } from 'src/app/data/model/general';
+import { Vehiculo } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment.encomiendaBackendUrl + 'usuario';
+const baseUrl = environment.encomiendaBackendUrl + 'vehiculo';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class VehiculoService {
   constructor(private http: HttpClient) {}
 
+
+  save(entity: Vehiculo): Observable<any> {
+    if (entity.id) {
+      return this.http.patch<any>(`${baseUrl}/{id}?vehiculo_id=${entity.id}`, entity);
+    }
+    return this.http.post<any>(`${baseUrl}`, entity);
+  }
+
+  get(id: number): Observable<any> {
+    return this.http.get<any>(`${baseUrl}/{id}?vehiculo_id=${id}`);
+  }
+
+  delete(id: number): Observable<HttpResponse<any>> {
+    return this.http.delete<HttpResponse<any>>(`${baseUrl}/{id}?vehiculo_id=${id}`);
+  }
 
   listAllHttp(queryParams: any): Observable<HttpResponse<any>> {
     const params = this.getQueryParams(queryParams);
@@ -19,14 +34,6 @@ export class UserService {
       params: params,
       observe: 'response',
     });
-  }
-
-  
-  save(entity: Usuario): Observable<any> {
-    if (entity.id) {
-      return this.http.patch<any>(`${baseUrl}/{id}?usuario_id=${entity.id}`, entity);
-    }
-    return this.http.post<any>(`${baseUrl}`, entity);
   }
 
   private getQueryParams(queryParams: any): HttpParams {

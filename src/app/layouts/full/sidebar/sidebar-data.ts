@@ -31,12 +31,12 @@ export const navItems: NavItem[] = [
     displayName: 'Manejo de Paquetes',
     iconName: 'box-seam',
     route: '/features/paqueteria',
-  },
+  },/*
   {
     displayName: 'Manejo de Usuarios',
     iconName: 'user-cog',
     route: '/ui-components/tooltips',
-  },
+  },*/
   {
     displayName: 'Manejo de Vehiculos',
     iconName: 'truck',
@@ -46,6 +46,20 @@ export const navItems: NavItem[] = [
     displayName: 'Manejo de Ciudades',
     iconName: 'building',
     route: '/features/ciudades',
+  },{
+    displayName: 'Manejo de Puestos',
+    iconName: 'users-group',
+    route: '/features/puestos',
+  },
+  {
+    displayName: 'Manejo de Sucursales',
+    iconName: 'home-cog',
+    route: '/features/sucursales',
+  },
+  {
+    displayName: 'Manejo de Usuarios',
+    iconName: 'user-cog',
+    route: '/features/usuarios',
   },
   {
     navCap: 'AUTENTIFICACION',

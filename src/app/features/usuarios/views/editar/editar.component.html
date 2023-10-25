@@ -1,0 +1,95 @@
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+
+
+        <div class="formbold-form-title">
+            <h2 class="">Editar Usuario</h2>
+        </div>
+        <div class="formbold-input-flex">
+            <div style="width: 100%;">
+                <label for="email" class="formbold-form-label"> Buscar Puesto</label>
+                <input type="text" name="nombreBuscar" id="nombreBuscar" class="formbold-form-input" #nombreBuscar />
+            </div>
+            <div >
+                <button class="formbold-btn">Buscar </button>
+            </div>
+        </div>
+        <hr/>
+        <form #usuarioForm>
+            <div>
+                <h4>Datos del usuario</h4>
+                <div class="formbold-input-flex">
+                    <div>
+                        <label for="firstname" class="formbold-form-label">
+                            Usuario:
+                        </label>
+                        <input type="text" name="usuario" id="usuario" class="formbold-form-input" #usuarioInput="ngModel" 
+                        [(ngModel)]="usuario.nombreUsuario" required/>
+                    </div>
+                    <div>
+                        <label for="firstname" class="formbold-form-label">
+                            Nombre:
+                        </label>
+                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel" 
+                        [(ngModel)]="usuario.nombre" required/> />
+                    </div>
+                </div>
+                <div class="formbold-input-flex">
+                    <div>
+                        <label for="email" class="formbold-form-label"> Correo </label>
+                        <input type="emNombreail" name="email" id="email" class="formbold-form-input" #emailInput="ngModel" 
+                        [(ngModel)]="usuario.correo" required/> />
+                    </div>
+                    <div>
+                        <label for="email" class="formbold-form-label"> Contraseña</label>
+                        <input type="text" name="password" id="password" class="formbold-form-input" #passwordInput="ngModel" 
+                        [(ngModel)]="usuario.password" required/> />
+                    </div>
+                </div>
+
+                <div class="formbold-input-flex">
+                    <div>
+                        <label for="email" class="formbold-form-label"> Rol:</label>
+                        <select class="formbold-form-input" #idRolInput="ngModel" 
+                        [(ngModel)]="usuario.idRol" required >
+                            <option value="1">admin</option>
+                            <option value="2">usuario</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="idEmpleado" class="formbold-form-label">Puesto:</label>
+                        <select class="formbold-form-input" #idPuestoInput="ngModel" 
+                        [(ngModel)]="usuario.idPuesto" required >
+                            <option>admin</option>
+                            <option>usuario</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="formbold-input-flex">
+
+                    <div>
+                        <label for="horaslbl" class="formbold-form-label"> Horas de trabajo diarias:</label>
+                        <input type="text" name="horas" id="horas" class="formbold-form-input" #horasInput="ngModel" 
+                        [(ngModel)]="usuario.horasTrabajo" required >
+                    </div>
+                    <div>
+                        <label for="phone" class="formbold-form-label">Sucursal</label>
+                        <select class="formbold-form-input" #SucursalInput="ngModel" 
+                        [(ngModel)]="usuario.idSucursal" required >
+                            <option>sucursal 1</option>
+                            <option>sucursal 2</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- <div class="formbold-mb-3">
+                <label for="address" class="formbold-form-label">
+                    Descripcion
+                </label>
+                <input type="text" name="address" id="address" class="formbold-form-input" />
+            </div>-->
+            </div>
+            <hr />
+            <button class="formbold-btn">Guardar Edicion</button>
+        </form>
+    </div>
+</div>

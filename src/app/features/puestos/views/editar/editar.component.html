@@ -1,0 +1,53 @@
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+
+
+        <div class="formbold-form-title">
+            <h2 class="">Editar Puesto</h2>
+        </div>
+        <div class="formbold-input-flex">
+            <div style="width: 100%;">
+                <label for="email" class="formbold-form-label"> Buscar Puesto</label>
+                <input type="text" name="nombreBuscar" id="nombreBuscar" class="formbold-form-input" #nombreBuscar />
+            </div>
+            <div >
+                <button class="formbold-btn">Buscar </button>
+            </div>
+        </div>
+        <hr/>
+        <form #puestoForm>
+            <div>
+                <h4>Datos del Puesto</h4>
+                <div class="formbold-input-flex">
+
+                    <div>
+                        <label for="firstname" class="formbold-form-label">
+                            Nombre:
+                        </label>
+                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel"
+                            [(ngModel)]="puesto.nombre" required />
+                    </div>
+                    <!-- <div>
+                        <label for="lastname" class="formbold-form-label"> Rango </label>
+                        <input type="text" name="nit" id="nit" class="formbold-form-input" #rango/>
+                    </div>-->
+                </div>
+
+                <div class="formbold-input-flex">
+                    <div>
+                        <label for="salario" class="formbold-form-label"> Salario por hora en quetzales</label>
+                        <input type="number" name="salario" id="salario" class="formbold-form-input"
+                            #salarioInput="ngModel" [(ngModel)]="puesto.salarioHora" required />
+                    </div>
+                    <div>
+                        <label for="descripcionlbl" class="formbold-form-label"> Descripcion</label>
+                        <input type="text" name="descripcion" id="descripcion" class="formbold-form-input"
+                            #descripcionInput="ngModel" [(ngModel)]="puesto.descripcion" required />
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <button class="formbold-btn" >Guardar Edicion</button>
+        </form>
+    </div>
+</div>

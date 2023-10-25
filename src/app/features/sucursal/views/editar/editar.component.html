@@ -1,0 +1,76 @@
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+
+
+        <div class="formbold-form-title">
+            <h2 class="">Editar Sucursal</h2>
+        </div>
+        <div class="formbold-input-flex">
+            <div style="width: 100%;">
+                <label for="email" class="formbold-form-label"> Buscar Sucursal</label>
+                <input type="text" name="nombreBuscar" id="nombreBuscar" class="formbold-form-input" #nombreBuscar />
+            </div>
+            <div >
+                <button class="formbold-btn">Buscar </button>
+            </div>
+        </div>
+        <hr/>
+        <form>
+            <div>
+                <h4>Datos de la sucursal</h4>
+                <div class="formbold-input-flex">
+
+                    <div>
+                        <label for="firstname" class="formbold-form-label">
+                            Nombre:
+                        </label>
+                        <input type="text" name="nombre" id="nombre" class="formbold-form-input"
+                            [formControl]="nombre" />
+                    </div>
+                    <div>
+                        <label for="lastname" class="formbold-form-label"> Direccion </label>
+                        <input type="text" name="direccion" id="direccion" class="formbold-form-input"
+                            [formControl]="direccion" />
+                    </div>
+                </div>
+
+                <div class="formbold-input-flex">
+                    <div>
+                        <label for="email" class="formbold-form-label"> Ciudad</label>
+                        <select class="formbold-form-input" [formControl]="ciudad">
+
+                        </select>
+                    </div>
+                    <div>
+                        <label for="phone" class="formbold-form-label"> Departamento</label>
+                        <select class="formbold-form-input" [formControl]="departamento">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="formbold-input-flex">
+                    <div>
+                        <label for="email" class="formbold-form-label"> Latitud</label>
+                        <select class="formbold-form-input" [formControl]="latitud">
+
+                        </select>
+                    </div>
+                    <div>
+                        <label for="phone" class="formbold-form-label"> Longitud</label>
+                        <input type="number" name="longitud" id="longitud" class="formbold-form-input"
+                            [formControl]="longitud" />
+                    </div>
+                </div>
+                <div class="formbold-mb-3">
+                    <label for="address" class="formbold-form-label">
+                        Tipo Sucursal
+                    </label>
+                    <input type="text" name="tipoSucursal" id="tipoSucursal" class="formbold-form-input"
+                        [formControl]="tipoSucursal" />
+                </div>
+            </div>
+            <hr />
+            <button class="formbold-btn"  type="submit" (click)="save()">Guardar Edicion</button>
+        </form>
+    </div>
+</div>

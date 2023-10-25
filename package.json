@@ -23,6 +23,7 @@
     "@auth0/angular-jwt": "^5.1.2",
     "@ng-bootstrap/ng-bootstrap": "^14.2.0",
     "@popperjs/core": "^2.11.6",
+    "@types/jwt-decode": "^3.1.0",
     "angular-tabler-icons": "^2.7.0",
     "apexcharts": "^3.35.3",
     "bootstrap": "^5.2.3",
@@ -36,7 +37,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.5",
-    "@angular/cli": "~15.0.5",
+    "@angular/cli": "^15.2.10",
     "@angular/compiler-cli": "^15.0.0",
     "@angular/localize": "^15.0.0",
     "@types/date-fns": "^2.6.0",

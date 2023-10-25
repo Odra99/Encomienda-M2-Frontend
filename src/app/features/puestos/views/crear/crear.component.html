@@ -1,0 +1,44 @@
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <form #puestoForm>
+            <div class="formbold-form-title">
+                <h2 class="">Crear Puesto</h2>
+                <p>
+                    Los puestos creados estaran disponibles en todas las sucursales
+                </p>
+            </div>
+            <div>
+                <h4>Datos del Puesto</h4>
+                <div class="formbold-input-flex">
+
+                    <div>
+                        <label for="firstname" class="formbold-form-label">
+                            Nombre:
+                        </label>
+                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel"
+                            [(ngModel)]="puesto.nombre" required />
+                    </div>
+                    <!-- <div>
+                        <label for="lastname" class="formbold-form-label"> Rango </label>
+                        <input type="text" name="nit" id="nit" class="formbold-form-input" #rango/>
+                    </div>-->
+                </div>
+
+                <div class="formbold-input-flex">
+                    <div>
+                        <label for="salario" class="formbold-form-label"> Salario por hora en quetzales</label>
+                        <input type="number" name="salario" id="salario" class="formbold-form-input"
+                            #salarioInput="ngModel" [(ngModel)]="puesto.salarioHora" required />
+                    </div>
+                    <div>
+                        <label for="descripcionlbl" class="formbold-form-label"> Descripcion</label>
+                        <input type="text" name="descripcion" id="descripcion" class="formbold-form-input"
+                            #descripcionInput="ngModel" [(ngModel)]="puesto.descripcion" required />
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <button class="formbold-btn" type="submit" (click)="save()">Crear Nuevo Puesto</button>
+        </form>
+    </div>
+</div>

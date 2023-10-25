@@ -1,11 +1,15 @@
-import { Component, Renderer2,  ViewChild, ElementRef} from '@angular/core';
+import { Component, ViewChild, ElementRef,Renderer2 } from '@angular/core';
+
+//import {SearchComponent} from './views/search/search.component';
 
 @Component({
-  selector: 'app-vehiculos',
-  templateUrl: './vehiculos.component.html',
-  styleUrls: ['./vehiculos.component.scss']
+  selector: 'app-puestos',
+  templateUrl: './usuarios.component.html',
+  styleUrls: ['./usuarios.component.scss']
 })
-export class VehiculosComponent {
+
+export class UsuariosComponent {
+
   constructor(private renderer2: Renderer2) {}
 
 
@@ -26,7 +30,7 @@ export class VehiculosComponent {
     const asli0=this.li0.nativeElement;
     const asli1=this.li1.nativeElement;
     const asli2=this.li2.nativeElement;
-    
+
     this.renderer2.removeClass(asli0,'active');
     this.renderer2.removeClass(asli1,'active');
     this.renderer2.removeClass(asli2,'active');
@@ -51,6 +55,4 @@ export class VehiculosComponent {
       this.renderer2.setStyle(astxt3,'display', 'block');
     }
   }
-
-  
 }

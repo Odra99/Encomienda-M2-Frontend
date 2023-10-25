@@ -1,11 +1,17 @@
-import { Component, Renderer2,  ViewChild, ElementRef} from '@angular/core';
+import { Component, ViewChild, ElementRef,Renderer2 } from '@angular/core';
+
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+//import {CrearPuestComponent} from './views/crear/crear.component';
 
 @Component({
-  selector: 'app-vehiculos',
-  templateUrl: './vehiculos.component.html',
-  styleUrls: ['./vehiculos.component.scss']
+  selector: 'app-puestos',
+  templateUrl: './puestos.component.html',
+  styleUrls: ['./puestos.component.scss']
 })
-export class VehiculosComponent {
+
+export class PuestosComponent {
+
   constructor(private renderer2: Renderer2) {}
 
 
@@ -26,7 +32,7 @@ export class VehiculosComponent {
     const asli0=this.li0.nativeElement;
     const asli1=this.li1.nativeElement;
     const asli2=this.li2.nativeElement;
-    
+
     this.renderer2.removeClass(asli0,'active');
     this.renderer2.removeClass(asli1,'active');
     this.renderer2.removeClass(asli2,'active');
@@ -51,6 +57,4 @@ export class VehiculosComponent {
       this.renderer2.setStyle(astxt3,'display', 'block');
     }
   }
-
-  
 }

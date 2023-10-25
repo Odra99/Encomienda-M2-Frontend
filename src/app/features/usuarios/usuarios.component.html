@@ -1,0 +1,26 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header>
+        <mat-card-title class="m-b-0">Usuarios</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+
+        <div class="navBarP">
+            <ul>
+                <li (click)="tabs(0);" class="user-post active" #li0>Ver Usuarios</li>
+                <li (click)="tabs(1);" class="user-review"  #li1>Crear Usario</li>
+                <li (click)="tabs(2);" class="user-setting"  #li2>Editar Usuario</li>
+            </ul>
+        </div>
+        <div class="profile-body">
+            <div class="profile-posts tab" #astxt1 >
+                <app-listar-usuarios></app-listar-usuarios>
+            </div>
+            <div class="profile-reviews tab" #astxt2 style="display: none;">
+                <app-crear-usuario></app-crear-usuario>
+            </div>
+            <div class="profile-settings tab" #astxt3 style="display: none;">
+                <app-editar-usuario></app-editar-usuario>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
