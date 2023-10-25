@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { PuestoService } from 'src/app/services/backend/puesto.service';
 
 import { ToasterEnum } from 'src/global/toaster-enum';
-import { ToasterService } from 'src/app/services/toaster.service';
+import { ToasterService } from 'src/app/services/others/toaster.service';
 @Component({
   selector: 'app-listar-puestos',
   templateUrl: './listar.component.html',

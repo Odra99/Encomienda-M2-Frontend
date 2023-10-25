@@ -5,7 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { VehiculoService } from 'src/app/services/backend/vehiculo.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
-import { ToasterService } from 'src/app/services/toaster.service';
+import { ToasterService } from 'src/app/services/others/toaster.service';
 @Component({
   selector: 'app-listar-vehiculos',
   templateUrl: './listar.component.html',

@@ -2,8 +2,8 @@ import { Component, EventEmitter, Output,ViewChild } from '@angular/core';
 import { Vehiculo } from 'src/app/data/model/general';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { VehiculoService } from 'src/app/services/backend/vehiculo.service';
-import { ToasterService } from 'src/app/services/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
+import { ToasterService } from 'src/app/services/others/toaster.service';
 
 @Component({
   selector: 'app-crear-vehiculo',

@@ -2,7 +2,7 @@ import { Component, ViewChild, EventEmitter,Output } from '@angular/core';
 import { Sucursal } from 'src/app/data/model/general';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { SucursalService } from 'src/app/services/backend/sucursal.service';
-import { ToasterService } from 'src/app/services/toaster.service';
+import { ToasterService } from 'src/app/services/others/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 
 @Component({
