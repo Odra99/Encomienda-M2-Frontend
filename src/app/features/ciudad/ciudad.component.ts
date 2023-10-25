@@ -54,6 +54,7 @@ export class CiudadComponent implements OnInit, AfterViewInit {
       next: (value) => {
         this.datos = value.body.result;
         this.dataSource = new MatTableDataSource<Ciudad>(this.datos);
+        this.dataSource.paginator = this.paginator;
       },
       error: () => {
         this.toasterService.showGenericErrorToast();
