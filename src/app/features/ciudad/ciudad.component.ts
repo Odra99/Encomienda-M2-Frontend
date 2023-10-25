@@ -70,7 +70,6 @@ export class CiudadComponent implements OnInit, AfterViewInit {
   }
 
   deleteCiudad(id:any){
-    console.log("hello");
     if(id){
       this.ciudadService.delete(id).subscribe({
         next: () => {

@@ -27,8 +27,8 @@
                     <mat-form-field appearance="outline" class="w-100" color="primary">
                         <input #descripcionInput="ngModel" matInput name="descripcion" id="descripcion"
                             [(ngModel)]="ciudad.descripcion" required />
-                        <mat-hint class="mat-error" *ngIf="!ciudad.descripcion && descripcionInput.touched">Ingresa tu
-                            contraseña</mat-hint>
+                        <mat-hint class="mat-error" *ngIf="!ciudad.descripcion && descripcionInput.touched">Ingresala
+                            descripcion de la ciudad</mat-hint>
                     </mat-form-field>
                     <button type="submit" (click)="save()" mat-flat-button color="primary" class="w-100 mb-3">
                         Guardar
