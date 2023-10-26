@@ -1,4 +1,4 @@
-<div class="formbold-main-wrapper">
+<div class="formbold-main-wrapper"  *ngIf="list">
     <div class="formbold-form-wrapper">
 
 
@@ -37,7 +37,7 @@
                     <div>
                         <label for="salario" class="formbold-form-label"> Salario por hora en quetzales</label>
                         <input type="number" name="salario" id="salario" class="formbold-form-input"
-                            #salarioInput="ngModel" [(ngModel)]="puesto.salarioHora" required />
+                            #salarioInput="ngModel" [(ngModel)]="puesto.salario_horario" required />
                     </div>
                     <div>
                         <label for="descripcionlbl" class="formbold-form-label"> Descripcion</label>

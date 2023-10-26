@@ -1,8 +1,11 @@
-import { Component, ViewChild, ElementRef,Renderer2 } from '@angular/core';
-
+import { Component, ViewChild, ElementRef,Renderer2,OnInit, AfterViewInit  } from '@angular/core';
+import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
+import { Puesto } from 'src/app/data/model/general';
+import { PuestoService } from 'src/app/services/backend/puesto.service';
+import { ToasterEnum } from 'src/global/toaster-enum';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-//import {CrearPuestComponent} from './views/crear/crear.component';
+import { ToasterService } from 'src/app/services/others/toaster.service';
 
 @Component({
   selector: 'app-puestos',
@@ -11,50 +14,79 @@ import { MatTableDataSource } from '@angular/material/table';
 })
 
 export class PuestosComponent {
+  tabs = 0;
 
-  constructor(private renderer2: Renderer2) {}
+  displayedColumns: string[] = [
+    'index',
+    'name',
+    'pay',
+    'description',
+    'actions',
+  ];
 
 
-  @ViewChild("astxt1") txt1!: ElementRef;
-  @ViewChild("astxt2") txt2!: ElementRef;
-  @ViewChild("astxt3") txt3!: ElementRef;
+  datos: Puesto[] = [];
+  @ViewChild('paginator') paginator: MatPaginator;
 
-  @ViewChild("li0") li0!: ElementRef;
-  @ViewChild("li1") li1!: ElementRef;
-  @ViewChild("li2") li2!: ElementRef;
- 
-  
-  tabs( panelIndex:number): void{
-    const astxt0=this.txt1.nativeElement;
-    const astxt2=this.txt2.nativeElement;
-    const astxt3=this.txt3.nativeElement;
+  dataSource = new MatTableDataSource<Puesto>(this.datos);
 
-    const asli0=this.li0.nativeElement;
-    const asli1=this.li1.nativeElement;
-    const asli2=this.li2.nativeElement;
+  list = true;
+  selectedId:number
 
-    this.renderer2.removeClass(asli0,'active');
-    this.renderer2.removeClass(asli1,'active');
-    this.renderer2.removeClass(asli2,'active');
+  constructor(private renderer2: Renderer2,
+    private puestoService: PuestoService,
+    private toasterService: ToasterService
+    ) {}
 
-    
-    if(panelIndex==0){
-      this.renderer2.addClass(asli0,'active');
-      this.renderer2.setStyle(astxt0,'display', 'block');
-      this.renderer2.setStyle(astxt2,'display', 'none');
-      this.renderer2.setStyle(astxt3,'display', 'none');
-    }else if(panelIndex==1){
+  changeTab(num: number) {
+    this.tabs = num;
+  }
 
-      this.renderer2.addClass(asli1,'active');
-      this.renderer2.setStyle(astxt0,'display', 'none');
-      this.renderer2.setStyle(astxt2,'display', 'block');
-      this.renderer2.setStyle(astxt3,'display', 'none');
-    }else{
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
 
-      this.renderer2.addClass(asli2,'active');
-      this.renderer2.setStyle(astxt0,'display', 'none');
-      this.renderer2.setStyle(astxt2,'display', 'none');
-      this.renderer2.setStyle(astxt3,'display', 'block');
+  ngOnInit(): void {
+    this.getAll();
+  }
+
+  getAll() {
+    this.puestoService.listAllHttp({}).subscribe({
+      next: (value) => {
+        this.datos = value.body.result;
+        this.dataSource = new MatTableDataSource<Puesto>(this.datos);
+      },
+      error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+
+  edit(id:number){
+    this.selectedId = id;
+    this.list = false;
+  }
+
+  setListView(){
+    this.getAll();
+    this.tabs = 0;
+    this.list = true;
+  }
+
+  @needConfirmation()
+  deletePuesto(id:any){
+    console.log("hello");
+    if(id){
+      this.puestoService.delete(id).subscribe({
+        next: () => {
+          this.toasterService.show({message:'Puesto eliminado',type:ToasterEnum.SUCCESS})
+          this.getAll();
+        },
+      
+        error: () => {
+          this.toasterService.showGenericErrorToast();
+        },
+      })
     }
   }
 }

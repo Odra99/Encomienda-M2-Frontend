@@ -7,9 +7,10 @@ export class Ciudad {
 
 export class Puesto {
   id!:number;
-  nombre!: string;
-  salarioHora!: number;
   descripcion!: string;
+  nombre!: string;
+  salario_horario!: number;
+  
 }
 
 
@@ -19,34 +20,36 @@ export class Sucursal {
   direccion!: string;
   latitud!: number;
   longitud!: number;
-  ciudadId!: number;
+  ciudad_id!: number;
   ciudad!: string;
-  tipoSucursalId:number;
+  tiposucursal_id:number;
   tipoSucursal!: string;
 }
 
 export class Usuario {
   id!:number;
-  nombreUsuario!: string;
   nombre!: string;
-  correo!: string;
-  idPuesto!: number;
-  idRol!: number;
-  idTrabajador!: number;
-  idSucursal!: number;
-  password!:string;
-  horasTrabajo!:number;
+  username!: string;
+  email!: string;
+  password!: string;
+  horas!: number;
+  rol_id!: number;
+  sucursal_id!: number;
+  puesto_id!:string;
+  rol:string;
+  sucursal:string;
+  puesto:string
 }
 
 export class Vehiculo{
   id!:number;
   placa!: string;
-  modelo!:string;
-  idSucursal!: number;
-  sucursalNombre!: string;
-  idTipo!: string;
-  volumen!: number;
-  peso!: number;
+  capacidad_lb!:number;
+  costokm!: number;
+  tipovehiculo_id!: number;
+  sucursal_id!: number;
+  sucursal!: string;
+  tipovehiculo!: string;
 }
 
 export class ConceptoGasto{

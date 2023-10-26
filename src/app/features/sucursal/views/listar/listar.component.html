@@ -1,4 +1,4 @@
-<div class="col-lg-12" *ngIf="list">
+<div class="col-lg-12"  *ngIf="list">
     <mat-card class="cardWithShadow">
         <mat-card-content class="p-24">
             <mat-card-title>Sucursales</mat-card-title>
@@ -85,7 +85,7 @@
                                 <i-tabler name="edit-circle" class="icon-16"></i-tabler>
                             </button>
                             <button mat-mini-fab class="bg-light-error text-error m-1" matTooltip="Eliminar"
-                                (click)="deleteCiudad(element.id)">
+                                (click)="deleteSucursal(element.id)">
                                 <i-tabler name="trash-filled" class="icon-16"></i-tabler>
                             </button>
                         </td>

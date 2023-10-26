@@ -16,32 +16,19 @@ export class CrearSucursalComponent {
     private toasterService: ToasterService,
     private sucursalService: SucursalService
   ) {}
-  
-  @ViewChild('sucursalForm', { read: NgForm }) form!: NgForm;
+
   
   @Output() finishEvent = new EventEmitter<any>();
+  @ViewChild('sucursalForm', { read: NgForm }) form!: NgForm;
   sucursal: Sucursal = new Sucursal();
-  //sucursal2=new FormControl<Sucursal | null>(null, Validators.required);
-  nombre = new FormControl<string | null>(null, Validators.required);
-  direccion = new FormControl('', Validators.required);
-  ciudad = new FormControl(null, Validators.required);
-  departamento = new FormControl('', Validators.required);
-  latitud = new FormControl(null, Validators.required);
-  longitud = new FormControl(null, Validators.required);
-  tipoSucursal = new FormControl(null, Validators.required);
-
+  list = true;
+  
   save() {
-    this.sucursal.nombre =this.nombre.value!;
-    this.sucursal.direccion =this.direccion.value!;
-    this.sucursal.ciudadId =this.ciudad.value!;
-    this.sucursal.latitud =this.latitud.value!;
-    this.sucursal.longitud =this.longitud.value!;
-    this.sucursal.tipoSucursalId =this.tipoSucursal.value!;
-
     this.form.form.markAllAsTouched();
+    /*
     if (!this.form.form.valid) {
       return;
-    }
+    }*/
     this.sucursalService.save(this.sucursal).subscribe({
       next: () => {
         if(!this.sucursal){

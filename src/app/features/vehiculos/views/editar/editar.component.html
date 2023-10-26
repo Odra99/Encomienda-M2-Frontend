@@ -3,11 +3,11 @@
 
 
         <div class="formbold-form-title">
-            <h2 class="">Editar Usuario</h2>
+            <h2 class="">Editar Vehiculo</h2>
         </div>
         <div class="formbold-input-flex">
             <div style="width: 100%;">
-                <label for="email" class="formbold-form-label"> Buscar Puesto</label>
+                <label for="email" class="formbold-form-label"> Buscar Vehiculo</label>
                 <input type="text" name="nombreBuscar" id="nombreBuscar" class="formbold-form-input" #nombreBuscar />
             </div>
             <div >
@@ -23,54 +23,43 @@
                         <label for="firstname" class="formbold-form-label">
                             Placa:
                         </label>
-                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel" 
-                        [(ngModel)]="vehiculo.placa" required/>
+                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel"
+                            [(ngModel)]="vehiculo.placa" required />
                     </div>
-                    <div>
-                        <label for="email" class="formbold-form-label"> Modelo </label>
-                        <input type="text" name="modelo" id="modelo" class="formbold-form-input" #modeloInput="ngModel" 
-                        [(ngModel)]="vehiculo.modelo" required/> />
-                    </div>
-                </div>
-                <div class="formbold-input-flex">
                     <div>
                         <label for="firstname" class="formbold-form-label">
-                            Peso  maximo en libras:
+                            Capacidad en libras:
                         </label>
-                        <input type="number" name="peso" id="peso" class="formbold-form-input" #pesoInput="ngModel" 
-                        [(ngModel)]="vehiculo.peso" required/> />
-                    </div>
-                    <div>
-                        <label for="email" class="formbold-form-label"> Volumen metros cuadrados </label>
-                        <input type="numer" name="mts2" id="mts2" class="formbold-form-input" #volumenInput="ngModel" 
-                        [(ngModel)]="vehiculo.volumen" required/> />
+                        <input type="number" name="peso" id="peso" class="formbold-form-input" #pesoInput="ngModel"
+                            [(ngModel)]="vehiculo.capacidad_lb" required /> 
                     </div>
                 </div>
+                
                 <div class="formbold-input-flex">
                     <div>
-                        <label for="email" class="formbold-form-label"> Tipo</label>
-                        <select class="formbold-form-input" #tipoInput="ngModel" 
-                        [(ngModel)]="vehiculo.idTipo" required >
+                        <label for="email" class="formbold-form-label"> Tipo de vehiculo</label>
+                        <select class="formbold-form-input"name="tipo" #tipoInput="ngModel" [(ngModel)]="vehiculo.tipovehiculo_id" required>
                             <option>camion</option>
                             <option>vehiculo liviano</option>
                         </select>
                     </div>
                     <div>
                         <label for="phone" class="formbold-form-label">Sucursal</label>
-                        <select class="formbold-form-input" #SucursalInput="ngModel" 
-                        [(ngModel)]="vehiculo.idSucursal" required >
+                        <select class="formbold-form-input" name="sucursal"  #SucursalInput="ngModel" [(ngModel)]="vehiculo.sucursal_id"
+                            required>
                             <option>sucursal 1</option>
                             <option>sucursal 2</option>
                         </select>
                     </div>
                 </div>
-                
-                <!-- <div class="formbold-mb-3">
-                <label for="address" class="formbold-form-label">
-                    Descripcion
-                </label>
-                <input type="text" name="address" id="address" class="formbold-form-input" />
-            </div>-->
+                <div class="formbold-input-flex">
+                    
+                    <div>
+                        <label for="email" class="formbold-form-label">Costo/km</label>
+                        <input type="numer" name="costokm" id="mts2"  class="formbold-form-input" #volumenInput="ngModel"
+                            [(ngModel)]="vehiculo.costokm" required /> 
+                    </div>
+                </div>
             </div>
             <hr />
             <button class="formbold-btn">Guardar Edicion</button>

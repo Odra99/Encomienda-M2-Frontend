@@ -9,7 +9,7 @@ const defaultConfirmData = {
 
 
 export function needConfirmation ( confirmData : ConfirmDialogData = defaultConfirmData) {
-
+    console.log('needconfirmation')
     return function (target: Object, propertyKey: string, descriptor: PropertyDescriptor) {
         const originalMethod = descriptor.value;
 

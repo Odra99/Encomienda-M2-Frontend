@@ -15,7 +15,7 @@ export class EditarSucursalComponent {
     private toasterService: ToasterService,
     private sucursalService: SucursalService
   ) {}
-  
+  list = true;
   @ViewChild('sucursalForm', { read: NgForm }) form!: NgForm;
   @Input() sucursalId : number;
   @Output() finishEvent = new EventEmitter<any>();
@@ -45,10 +45,10 @@ export class EditarSucursalComponent {
     this.sucursal.id=this.sucursalId;
     this.sucursal.nombre =this.nombre.value!;
     this.sucursal.direccion =this.direccion.value!;
-    this.sucursal.ciudadId =this.ciudad.value!;
+    this.sucursal.ciudad_id =this.ciudad.value!;
     this.sucursal.latitud =this.latitud.value!;
     this.sucursal.longitud =this.longitud.value!;
-    this.sucursal.tipoSucursalId =this.tipoSucursal.value!;
+    this.sucursal.tiposucursal_id =this.tipoSucursal.value!;
 
     this.form.form.markAllAsTouched();
     if (!this.form.form.valid) {

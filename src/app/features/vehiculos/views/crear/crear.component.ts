@@ -2,6 +2,7 @@ import { Component, EventEmitter, Output,ViewChild } from '@angular/core';
 import { Vehiculo } from 'src/app/data/model/general';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { VehiculoService } from 'src/app/services/backend/vehiculo.service';
+
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { ToasterService } from 'src/app/services/others/toaster.service';
 
@@ -16,14 +17,20 @@ export class CrearVehiculoComponent {
     private toasterService: ToasterService,
     private vehiculoService: VehiculoService
   ) {}
+
   @Output() finishEvent = new EventEmitter<any>();
   @ViewChild('vehiculoForm', { read: NgForm }) form!: NgForm;
   vehiculo: Vehiculo = new Vehiculo();
 
 
-  nombre = new FormControl<string | null>(null, Validators.required);
-  save() {
+  placa = new FormControl<string | null>('', Validators.required);
+  capacidad = new FormControl<string | null>(null, Validators.required);
+  tipo = new FormControl<string | null>(null, Validators.required);
+  peso = new FormControl<string | null>(null, Validators.required);
+  sucursal = new FormControl<string | null>(null, Validators.required);
+  costokm = new FormControl<string | null>(null, Validators.required);
 
+  save() {
     this.form.form.markAllAsTouched();
     if (!this.form.form.valid) {
       return;

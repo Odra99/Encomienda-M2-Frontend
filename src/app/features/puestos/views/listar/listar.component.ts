@@ -22,6 +22,8 @@ export class ListarPuestoComponent implements OnInit, AfterViewInit  {
     'description',
     'actions',
   ];
+  
+  tabs = 0;
   datos: Puesto[] = [];
   @ViewChild('paginator') paginator: MatPaginator;
 
@@ -35,6 +37,9 @@ export class ListarPuestoComponent implements OnInit, AfterViewInit  {
     private toasterService: ToasterService
   ) {}
 
+  changeTab(num: number) {
+    this.tabs = num;
+  }
  
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
@@ -59,6 +64,7 @@ export class ListarPuestoComponent implements OnInit, AfterViewInit  {
   edit(id:number){
     this.selectedId = id;
     this.list = false;
+    
   }
 
   deleteCiudad(id:any){

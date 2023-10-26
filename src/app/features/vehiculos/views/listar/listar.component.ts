@@ -65,7 +65,7 @@ export class ListarVehiculosComponent implements OnInit, AfterViewInit  {
     if(id){
       this.vehiculoService.delete(id).subscribe({
         next: () => {
-          this.toasterService.show({message:'Usuario eliminado',type:ToasterEnum.SUCCESS})
+          this.toasterService.show({message:'Vehuculo eliminado',type:ToasterEnum.SUCCESS})
           this.getAll();
         },
       

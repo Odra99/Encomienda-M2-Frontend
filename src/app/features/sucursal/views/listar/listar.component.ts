@@ -62,7 +62,7 @@ export class ListarSucursalComponent implements OnInit, AfterViewInit  {
     this.list = false;
   }
 
-  deleteCiudad(id:any){
+  deleteSucursal(id:any){
     if(id){
       this.sucursalService.delete(id).subscribe({
         next: () => {

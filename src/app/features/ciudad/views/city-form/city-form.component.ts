@@ -24,6 +24,7 @@ export class CityFormComponent implements OnInit,OnChanges {
   selectFormControl = new FormControl('', Validators.required);
 
   @ViewChild('cityForm', { read: NgForm }) form!: NgForm;
+  
   ngOnInit(): void {
     if(this.ciudadId){
       this.ciudadService.get(this.ciudadId).subscribe({
