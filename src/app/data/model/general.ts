@@ -51,3 +51,8 @@ export class Vehiculo{
   sucursal!: string;
   tipovehiculo!: string;
 }
+
+export class ConceptoGasto{
+  id!:number;
+  nombre!:string;
+}
