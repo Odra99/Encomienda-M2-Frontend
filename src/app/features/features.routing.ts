@@ -7,6 +7,7 @@ import { AllowNavigationGuard } from "../security/guards/allow-navigation-admin.
 import { PuestosComponent } from "./puestos/puestos.component";
 import { SucursalesComponent } from "./sucursal/sucursal.component";
 import { UsuariosComponent } from "./usuarios/usuarios.component";
+import { ConceptoGastoComponent } from "./gasto/concepto-gasto/concepto-gasto.component";
 export const FeaturesRouter: Routes = [
   {
     path: '',
@@ -37,6 +38,10 @@ export const FeaturesRouter: Routes = [
         canActivate: [AllowNavigationGuard],
       },{
         path: 'ciudades', component: CiudadComponent,
+        
+        canActivate: [AllowNavigationGuard],
+      },{
+        path: 'concepto-gasto', component: ConceptoGastoComponent,
         
         canActivate: [AllowNavigationGuard],
       }
