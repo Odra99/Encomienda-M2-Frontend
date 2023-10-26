@@ -15,17 +15,16 @@ export class PuestoService {
 
   save(entity: Puesto): Observable<any> {
     if (entity.id) {
-      return this.http.patch<any>(`${baseUrl}/{id}?puesto_id=${entity.id}`, entity);
+      return this.http.patch<any>(`${baseUrl}/${entity.id}`, entity);
     }
     return this.http.post<any>(`${baseUrl}`, entity);
   }
-
   get(id: number): Observable<any> {
-    return this.http.get<any>(`${baseUrl}/{id}?puesto_id=${id}`);
+    return this.http.get<any>(`${baseUrl}/${id}`);
   }
 
   delete(id: number): Observable<HttpResponse<any>> {
-    return this.http.delete<HttpResponse<any>>(`${baseUrl}/{id}?puesto_id=${id}`);
+    return this.http.delete<HttpResponse<any>>(`${baseUrl}/${id}`);
   }
 
   listAllHttp(queryParams: any): Observable<HttpResponse<any>> {

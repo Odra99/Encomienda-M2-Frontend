@@ -24,42 +24,42 @@
                             Usuario:
                         </label>
                         <input type="text" name="usuario" id="usuario" class="formbold-form-input" #usuarioInput="ngModel" 
-                        [(ngModel)]="usuario.nombreUsuario" required/>
+                        [(ngModel)]="user.username" required/>
                     </div>
                     <div>
                         <label for="firstname" class="formbold-form-label">
                             Nombre:
                         </label>
                         <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel" 
-                        [(ngModel)]="usuario.nombre" required/> />
+                        [(ngModel)]="user.nombre" required/> 
                     </div>
                 </div>
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"> Correo </label>
                         <input type="emNombreail" name="email" id="email" class="formbold-form-input" #emailInput="ngModel" 
-                        [(ngModel)]="usuario.correo" required/> />
+                        [(ngModel)]="user.email" required/> 
                     </div>
                     <div>
                         <label for="email" class="formbold-form-label"> Contraseña</label>
                         <input type="text" name="password" id="password" class="formbold-form-input" #passwordInput="ngModel" 
-                        [(ngModel)]="usuario.password" required/> />
+                        [(ngModel)]="user.password" required/> 
                     </div>
                 </div>
 
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"> Rol:</label>
-                        <select class="formbold-form-input" #idRolInput="ngModel" 
-                        [(ngModel)]="usuario.idRol" required >
+                        <select class="formbold-form-input" #idRolInput="ngModel" name="rol" 
+                        [(ngModel)]="user.rol_id" required >
                             <option value="1">admin</option>
                             <option value="2">usuario</option>
                         </select>
                     </div>
                     <div>
                         <label for="idEmpleado" class="formbold-form-label">Puesto:</label>
-                        <select class="formbold-form-input" #idPuestoInput="ngModel" 
-                        [(ngModel)]="usuario.idPuesto" required >
+                        <select class="formbold-form-input" #idPuestoInput="ngModel" name="puesto" 
+                        [(ngModel)]="user.puesto_id" required >
                             <option>admin</option>
                             <option>usuario</option>
                         </select>
@@ -70,12 +70,12 @@
                     <div>
                         <label for="horaslbl" class="formbold-form-label"> Horas de trabajo diarias:</label>
                         <input type="text" name="horas" id="horas" class="formbold-form-input" #horasInput="ngModel" 
-                        [(ngModel)]="usuario.horasTrabajo" required >
+                        [(ngModel)]="user.horas" required >
                     </div>
                     <div>
                         <label for="phone" class="formbold-form-label">Sucursal</label>
-                        <select class="formbold-form-input" #SucursalInput="ngModel" 
-                        [(ngModel)]="usuario.idSucursal" required >
+                        <select class="formbold-form-input" #SucursalInput="ngModel"  name="sucursal" 
+                        [(ngModel)]="user.sucursal_id" required >
                             <option>sucursal 1</option>
                             <option>sucursal 2</option>
                         </select>

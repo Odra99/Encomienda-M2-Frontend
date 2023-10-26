@@ -1,6 +1,12 @@
-import { Component, ViewChild, ElementRef,Renderer2 } from '@angular/core';
-
-//import {SearchComponent} from './views/search/search.component';
+import { Component, ViewChild, ElementRef,Renderer2,OnInit, AfterViewInit } from '@angular/core';
+import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
+import { DialogService } from 'src/app/services/others/dialog.service';
+import { Sucursal } from 'src/app/data/model/general';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { SucursalService } from 'src/app/services/backend/sucursal.service';
+import { ToasterEnum } from 'src/global/toaster-enum';
+import { ToasterService } from 'src/app/services/others/toaster.service';
 
 @Component({
   selector: 'app-puestos',
@@ -9,50 +15,85 @@ import { Component, ViewChild, ElementRef,Renderer2 } from '@angular/core';
 })
 
 export class SucursalesComponent {
+  tabs = 0;
 
-  constructor(private renderer2: Renderer2) {}
-
-
-  @ViewChild("astxt1") txt1!: ElementRef;
-  @ViewChild("astxt2") txt2!: ElementRef;
-  @ViewChild("astxt3") txt3!: ElementRef;
-
-  @ViewChild("li0") li0!: ElementRef;
-  @ViewChild("li1") li1!: ElementRef;
-  @ViewChild("li2") li2!: ElementRef;
- 
+  displayedColumns: string[] = [
+    'index',
+    'name',
+    'direccion',
+    'ciudad',
+    'tipoSucursal',
+    'actions',
+  ];
   
-  tabs( panelIndex:number): void{
-    const astxt0=this.txt1.nativeElement;
-    const astxt2=this.txt2.nativeElement;
-    const astxt3=this.txt3.nativeElement;
+  datos: Sucursal[] = [];
+  @ViewChild('paginator') paginator: MatPaginator;
+  
+  dataSource = new MatTableDataSource<Sucursal>(this.datos);
+  
+  list = true;
+  selectedId:number
+  
+  
 
-    const asli0=this.li0.nativeElement;
-    const asli1=this.li1.nativeElement;
-    const asli2=this.li2.nativeElement;
+  constructor(
+    private renderer2: Renderer2,
+    private sucursalService: SucursalService,
+    private toasterService: ToasterService,
+    private confirmationDialogService: DialogService
+    ) {}
 
-    this.renderer2.removeClass(asli0,'active');
-    this.renderer2.removeClass(asli1,'active');
-    this.renderer2.removeClass(asli2,'active');
 
-    
-    if(panelIndex==0){
-      this.renderer2.addClass(asli0,'active');
-      this.renderer2.setStyle(astxt0,'display', 'block');
-      this.renderer2.setStyle(astxt2,'display', 'none');
-      this.renderer2.setStyle(astxt3,'display', 'none');
-    }else if(panelIndex==1){
+ 
+  changeTab(num: number) {
+    this.tabs = num;
+  }
+  
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+  }
 
-      this.renderer2.addClass(asli1,'active');
-      this.renderer2.setStyle(astxt0,'display', 'none');
-      this.renderer2.setStyle(astxt2,'display', 'block');
-      this.renderer2.setStyle(astxt3,'display', 'none');
-    }else{
+  ngOnInit(): void {
+    this.getAll();
+  }
 
-      this.renderer2.addClass(asli2,'active');
-      this.renderer2.setStyle(astxt0,'display', 'none');
-      this.renderer2.setStyle(astxt2,'display', 'none');
-      this.renderer2.setStyle(astxt3,'display', 'block');
+  getAll() {
+    this.sucursalService.listAllHttp({}).subscribe({
+      next: (value) => {
+        this.datos = value.body.result;
+        this.dataSource = new MatTableDataSource<Sucursal>(this.datos);
+      },
+      error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+
+  edit(id:number){
+    this.selectedId = id;
+    this.list = false;
+  }
+
+  setListView(){
+    this.getAll();
+    this.tabs = 0;
+    this.list = true;
+  }
+
+  @needConfirmation()
+  deleteSucursal(id:any){
+    if(id){
+      this.sucursalService.delete(id).subscribe({
+        next: () => {
+          this.toasterService.show({message:'Sucursal eliminada',type:ToasterEnum.SUCCESS})
+          this.getAll();
+        },
+      
+        error: () => {
+          this.toasterService.showGenericErrorToast();
+        },
+      })
     }
   }
+
 }

@@ -5,7 +5,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { SucursalService } from 'src/app/services/backend/sucursal.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
-import { ToasterService } from 'src/app/services/toaster.service';
+import { ToasterService } from 'src/app/services/others/toaster.service';
+
 @Component({
   selector: 'app-listar-sucursales',
   templateUrl: './listar.component.html',
@@ -62,7 +63,7 @@ export class ListarSucursalComponent implements OnInit, AfterViewInit  {
     this.list = false;
   }
 
-  deleteCiudad(id:any){
+  deleteSucursal(id:any){
     if(id){
       this.sucursalService.delete(id).subscribe({
         next: () => {

@@ -2,9 +2,8 @@ import { Component, EventEmitter, Output,ViewChild } from '@angular/core';
 import { Puesto } from 'src/app/data/model/general';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { PuestoService } from 'src/app/services/backend/puesto.service';
-import { ToasterService } from 'src/app/services/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
-
+import { ToasterService } from 'src/app/services/others/toaster.service';
 @Component({
   selector: 'app-crear-puesto',
   templateUrl: './crear.component.html',
@@ -17,18 +16,17 @@ export class CrearPuestoComponent {
     private toasterService: ToasterService,
     private puestoService: PuestoService
   ) {}
+
+
   @Output() finishEvent = new EventEmitter<any>();
   @ViewChild('puestoForm', { read: NgForm }) form!: NgForm;
   puesto: Puesto = new Puesto();
-
+  list = true;
 
   nombre = new FormControl<string | null>(null, Validators.required);
   save() {
-
     this.form.form.markAllAsTouched();
-    if (!this.form.form.valid) {
-      return;
-    }
+   
     this.puestoService.save(this.puesto).subscribe({
       next: () => {
         if(!this.puesto){
@@ -44,6 +42,7 @@ export class CrearPuestoComponent {
         }
         this.finish();
       },error:()=> {
+        console.log("error")
         this.toasterService.showGenericErrorToast();
       },
     });

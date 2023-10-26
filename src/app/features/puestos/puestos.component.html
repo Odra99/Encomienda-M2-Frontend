@@ -6,20 +6,102 @@
 
         <div class="navBarP">
             <ul>
-                <li (click)="tabs(0);" class="user-post active" #li0>Ver Puestos</li>
-                <li (click)="tabs(1);" class="user-review"  #li1>Crear Puestos</li>
-                <li (click)="tabs(2);" class="user-setting"  #li2>Editar Puesto</li>
+                <li (click)="changeTab(0);" class="user-post active" [ngClass]="{'active':tabs==0}">Ver Puestos</li>
+                <li (click)="changeTab(1);" class="user-review"  [ngClass]="{'active':tabs==1}">Crear Puestos</li>
+                <li (click)="changeTab(2);" class="user-setting"  [ngClass]="{'active':tabs==2}">Editar Puesto</li>
             </ul>
         </div>
         <div class="profile-body">
-            <div class="profile-posts tab" #astxt1 >
-                <app-listar-puestos></app-listar-puestos>
+            <div *ngIf="tabs==0" class="profile-posts tab"  >
+                <div class="col-lg-12" *ngIf="list">
+                    <mat-card class="cardWithShadow">
+                        <mat-card-content class="p-24">
+                            <mat-card-title>Puestos</mat-card-title>
+                            <div class="table-responsive m-t-16">
+                                <table mat-table [dataSource]="dataSource" class="w-100">
+                                    <ng-container matColumnDef="index">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                            id Puesto
+                                        </th>
+                                        <td mat-cell *matCellDef="let element; let i = index">
+                                            <div class="d-flex align-items-center">
+                
+                                                <div class="m-l-16">
+                                                    <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                                                        {{element.idPuesto}}
+                                                    </h6>
+                
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+                
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="name">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                            Puesto
+                                        </th>
+                                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                                            {{ element.nombre }}
+                                        </td>
+                                    </ng-container>
+                
+                                    <!-- Weight Column -->
+                                    <ng-container matColumnDef="pay">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                            Descripcion
+                                        </th>
+                                        <td mat-cell *matCellDef="let element">
+                
+                                            <span class="bg-light-accent text-accent rounded f-w-600 p-6 p-y-4 f-s-12">
+                                                {{ element.descripcion }}
+                                            </span>
+                
+                                        </td>
+                                    </ng-container>
+                
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="description">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                            Salario/Hora
+                                        </th>
+                                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                                            {{ element.salarioHora }}
+                                        </td>
+                                    </ng-container>
+                
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="actions">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 ">
+                                            Acciones
+                                        </th>
+                                        <td mat-cell *matCellDef="let element" class="mat-body-1 ">
+                                            <button mat-mini-fab class="bg-light-primary text-primary m-1" matTooltip="Editar"
+                                                (click)="edit(element.id)">
+                                                <i-tabler name="edit-circle" class="icon-16"></i-tabler>
+                                            </button>
+                                            <button mat-mini-fab class="bg-light-error text-error m-1" matTooltip="Eliminar"
+                                                (click)="deletePuesto(element.id)">
+                                                <i-tabler name="trash-filled" class="icon-16"></i-tabler>
+                                            </button>
+                                        </td>
+                                    </ng-container>
+                
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                
+                                </table>
+                                <mat-paginator #paginator [pageSizeOptions]="[5,10,15,20]" showFirstLastButtons></mat-paginator>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
             </div>
-            <div class="profile-reviews tab" #astxt2 style="display: none;">
-                <app-crear-puesto></app-crear-puesto>
+            <div *ngIf="tabs==1" class="profile-reviews tab" #astxt2 >
+                <app-crear-puesto (finishEvent)="setListView()"></app-crear-puesto>
             </div>
-            <div class="profile-settings tab" #astxt3 style="display: none;">
-                <app-editar-puesto></app-editar-puesto>
+            <div *ngIf="tabs==2" class="profile-settings tab" #astxt3 >
+                <app-editar-puesto (finishEvent)="setListView()"></app-editar-puesto>
             </div>
         </div>
     </mat-card-content>

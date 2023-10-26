@@ -1,4 +1,4 @@
-<div class="formbold-main-wrapper">
+<div class="formbold-main-wrapper"  *ngIf="list">
     <div class="formbold-form-wrapper">
         <form #sucursalForm>
             <div class="formbold-form-title">
@@ -15,53 +15,50 @@
                         <label for="firstname" class="formbold-form-label">
                             Nombre:
                         </label>
-                        <input type="text" name="nombre" id="nombre" class="formbold-form-input"
-                            [formControl]="nombre" />
+                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel" 
+                        [(ngModel)]="sucursal.nombre" required />
                     </div>
                     <div>
                         <label for="lastname" class="formbold-form-label"> Direccion </label>
-                        <input type="text" name="direccion" id="direccion" class="formbold-form-input"
-                            [formControl]="direccion" />
+                        <input type="text" name="direccion" id="direccion" class="formbold-form-input"#direccionInput="ngModel" 
+                        [(ngModel)]="sucursal.direccion" required />
                     </div>
                 </div>
 
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"> Ciudad</label>
-                        <select class="formbold-form-input" [formControl]="ciudad">
-
-                        </select>
-                    </div>
-                    <div>
-                        <label for="phone" class="formbold-form-label"> Departamento</label>
-                        <select class="formbold-form-input" [formControl]="departamento">
-
+                        <select class="formbold-form-input" name="ciudad"  #ciudadInput="ngModel" 
+                        [(ngModel)]="sucursal.ciudad_id" required >
+                            <option [ngValue]=1>Guatemala</option>
                         </select>
                     </div>
                 </div>
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"> Latitud</label>
-                        <select class="formbold-form-input" [formControl]="latitud">
-
-                        </select>
+                        <input type="number" name="latitud" id="latitud" class="formbold-form-input" #latitudInput="ngModel" 
+                        [(ngModel)]="sucursal.latitud" required />
                     </div>
                     <div>
-                        <label for="phone" class="formbold-form-label"> Longitud</label>
-                        <input type="number" name="longitud" id="longitud" class="formbold-form-input"
-                            [formControl]="longitud" />
+                        <label for="longitud" class="formbold-form-label"> Longitud</label>
+                        <input type="number" name="longitud" id="longitud" class="formbold-form-input" #longitudInput="ngModel" 
+                        [(ngModel)]="sucursal.longitud" required />
                     </div>
                 </div>
                 <div class="formbold-mb-3">
                     <label for="address" class="formbold-form-label">
                         Tipo Sucursal
                     </label>
-                    <input type="text" name="tipoSucursal" id="tipoSucursal" class="formbold-form-input"
-                        [formControl]="tipoSucursal" />
+                    <select  class="formbold-form-input" name="ciudad"  #tipoSucursalInput="ngModel" 
+                    [(ngModel)]="sucursal.tiposucursal_id" required >
+                        <option [ngValue]=1>Fija</option>
+                        <option  [ngValue]=2>bodega</option>
+                    </select>
                 </div>
             </div>
             <hr />
-            <button class="formbold-btn"  type="submit" (click)="save()">Crear Nuevo Puesto</button>
+            <button class="formbold-btn"  type="submit" (click)="save()">Crear Nueva Sucursal</button>
         </form>
     </div>
 </div>

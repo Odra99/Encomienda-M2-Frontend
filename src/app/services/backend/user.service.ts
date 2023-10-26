@@ -24,9 +24,18 @@ export class UserService {
   
   save(entity: Usuario): Observable<any> {
     if (entity.id) {
-      return this.http.patch<any>(`${baseUrl}/{id}?usuario_id=${entity.id}`, entity);
+      return this.http.patch<any>(`${baseUrl}/${entity.id}`, entity);
     }
     return this.http.post<any>(`${baseUrl}`, entity);
+  }
+
+  delete(id: number): Observable<HttpResponse<any>> {
+    return this.http.delete<HttpResponse<any>>(`${baseUrl}/${id}`);
+  }
+
+
+  get(id: number): Observable<any> {
+    return this.http.get<any>(`${baseUrl}/${id}`);
   }
 
   private getQueryParams(queryParams: any): HttpParams {
