@@ -1,33 +1,31 @@
 export class Ciudad {
-  id!:number;
+  id!: number;
   nombre!: string;
   descripcion!: string;
   departamento!: string;
 }
 
 export class Puesto {
-  id!:number;
+  id!: number;
   descripcion!: string;
   nombre!: string;
   salario_horario!: number;
-  
 }
 
-
 export class Sucursal {
-  id!:number;
+  id!: number;
   nombre!: string;
   direccion!: string;
   latitud!: number;
   longitud!: number;
   ciudad_id!: number;
   ciudad!: string;
-  tiposucursal_id:number;
+  tiposucursal_id: number;
   tipoSucursal!: string;
 }
 
 export class Usuario {
-  id!:number;
+  id!: number;
   nombre!: string;
   username!: string;
   email!: string;
@@ -35,16 +33,16 @@ export class Usuario {
   horas!: number;
   rol_id!: number;
   sucursal_id!: number;
-  puesto_id!:string;
-  rol:string;
-  sucursal:string;
-  puesto:string
+  puesto_id!: string;
+  rol: string;
+  sucursal: string;
+  puesto: string;
 }
 
-export class Vehiculo{
-  id!:number;
+export class Vehiculo {
+  id!: number;
   placa!: string;
-  capacidad_lb!:number;
+  capacidad_lb!: number;
   costokm!: number;
   tipovehiculo_id!: number;
   sucursal_id!: number;
@@ -52,7 +50,31 @@ export class Vehiculo{
   tipovehiculo!: string;
 }
 
-export class ConceptoGasto{
-  id!:number;
-  nombre!:string;
+export class ConceptoGasto {
+  id!: number;
+  nombre!: string;
+}
+
+export class Gasto {
+  id!: number;
+  sucursal_id!: number;
+  tipo_gasto_id!: number;
+  concepto_gasto_id!: number;
+  detalles!: string;
+  monto!: number;
+  fecha!: string;
+
+  sucursal!:Sucursal
+  tipoGasto!:TipoGasto
+  conceptoGasto!:ConceptoGasto
+}
+
+interface Tipos {
+  id: number;
+  nombre: string;
+}
+
+export class TipoGasto implements Tipos {
+  id!: number;
+  nombre!: string;
 }

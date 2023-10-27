@@ -67,6 +67,11 @@ export const navItems: NavItem[] = [
     route: '/features/concepto-gasto',
   },
   {
+    displayName: 'Manejo de Gastos',
+    iconName: 'currency-dollar',
+    route: '/features/gastos',
+  },
+  {
     navCap: 'AUTENTIFICACION',
   },
   {

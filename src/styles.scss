@@ -6,6 +6,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
 
-.mat-error{
-    color: red;
-}
+.mat-error, .mat-mdc-form-field-error, .mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label{
+    color: red !important;
+}   

@@ -42,7 +42,23 @@ import {ListarUsuariosComponent} from './usuarios/views/listar/listar.component'
 import {EditarUsuarioComponent} from './usuarios/views/editar/editar.component';
 import { ConceptoGastoComponent } from './gasto/concepto-gasto/concepto-gasto.component';
 import { ConceptoGastoFormComponent } from './gasto/concepto-gasto/views/concepto-gasto-form/concepto-gasto-form.component';
+import { GastoComponent } from './gasto/gasto/gasto.component';
+import { GastoFormComponent } from './gasto/gasto/views/gasto-form/gasto-form.component';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'MM/YYYY',
+  },
+  display: {
+    dateInput: 'MM/YYYY',
+    monthYearLabel: 'MMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY',
+  },
+};
 
 @NgModule({
   declarations: [
@@ -76,6 +92,8 @@ import { ConceptoGastoFormComponent } from './gasto/concepto-gasto/views/concept
     EditarPuestoComponent,
     ConceptoGastoComponent,
     ConceptoGastoFormComponent,
+    GastoComponent,
+    GastoFormComponent,
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),
@@ -86,5 +104,13 @@ import { ConceptoGastoFormComponent } from './gasto/concepto-gasto/views/concept
     FormsModule,
     TablerIconsModule.pick(TablerIcons),
   ],
+  providers:[
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS],
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MY_FORMATS},
+  ]
 })
 export class FeaturesModule {}
