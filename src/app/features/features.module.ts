@@ -46,6 +46,8 @@ import { GastoComponent } from './gasto/gasto/gasto.component';
 import { GastoFormComponent } from './gasto/gasto/views/gasto-form/gasto-form.component';
 import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
+import { SegmentoComponent } from './segmento/segmento.component';
+import { SegmentoFormComponent } from './segmento/views/segmento-form/segmento-form.component';
 
 
 export const MY_FORMATS = {
@@ -94,6 +96,8 @@ export const MY_FORMATS = {
     ConceptoGastoFormComponent,
     GastoComponent,
     GastoFormComponent,
+    SegmentoComponent,
+    SegmentoFormComponent,
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),

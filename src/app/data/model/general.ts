@@ -69,6 +69,17 @@ export class Gasto {
   conceptoGasto!:ConceptoGasto
 }
 
+export class Segmento {
+  id!:number
+  sucursal_origen_id!:number
+  sucursal_destino_id!:number
+  descripcion!:string
+  distancia!:number
+
+  sucursal_origen!:Sucursal
+  sucursal_destino!:Sucursal
+}
+
 interface Tipos {
   id: number;
   nombre: string;

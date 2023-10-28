@@ -9,6 +9,7 @@ import { SucursalesComponent } from "./sucursal/sucursal.component";
 import { UsuariosComponent } from "./usuarios/usuarios.component";
 import { ConceptoGastoComponent } from "./gasto/concepto-gasto/concepto-gasto.component";
 import { GastoComponent } from "./gasto/gasto/gasto.component";
+import { SegmentoComponent } from "./segmento/segmento.component";
 export const FeaturesRouter: Routes = [
   {
     path: '',
@@ -47,6 +48,10 @@ export const FeaturesRouter: Routes = [
         canActivate: [AllowNavigationGuard],
       },{
         path: 'gastos', component: GastoComponent,
+        
+        canActivate: [AllowNavigationGuard],
+      },{
+        path: 'segmentos', component: SegmentoComponent,
         
         canActivate: [AllowNavigationGuard],
       }
