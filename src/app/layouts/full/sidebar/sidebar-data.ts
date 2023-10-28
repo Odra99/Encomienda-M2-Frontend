@@ -68,12 +68,12 @@ export const navItems: NavItem[] = [
   },
   {
     displayName: 'Manejo de Gastos',
-    iconName: 'currency-dollar',
+    iconName: 'receipt-2',
     route: '/features/gastos',
   },
   {
     displayName: 'Manejo de Segmentos',
-    iconName: 'currency-dollar',
+    iconName: 'road',
     route: '/features/segmentos',
   },
   {

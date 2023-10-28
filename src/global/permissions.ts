@@ -5,7 +5,9 @@ export enum PermissionTypeEnum{
     READ,
     UPDATE,
     DELETE,
-    ALL
+    ALL,
+    NULL,
+    NONE
 }
 
 export enum EntityEnum{
@@ -16,39 +18,18 @@ export enum EntityEnum{
 
 class Permission {
     types: PermissionTypeEnum[]
-    entity: EntityEnum
+    // entities: EntityEnum
     rol: RoleEnum
 }
 
-const rolePermissions : Permission[] =[
+export const rolePermissions : Permission[] =[
     {
         types:[PermissionTypeEnum.ALL],
-        entity: EntityEnum.CIUDAD,
-        rol: RoleEnum.ADMIN
-    },
-    {
-        types:[PermissionTypeEnum.ALL],
-        entity: EntityEnum.PAQUETE,
-        rol: RoleEnum.ADMIN
-    },
-    {
-        types:[PermissionTypeEnum.ALL],
-        entity: EntityEnum.VEHICULO,
         rol: RoleEnum.ADMIN
     },
     {
         types:[PermissionTypeEnum.READ],
-        entity: EntityEnum.CIUDAD,
-        rol: RoleEnum.OPERATOR
-    },
-    {
-        types:[PermissionTypeEnum.READ],
-        entity: EntityEnum.PAQUETE,
-        rol: RoleEnum.OPERATOR
-    },
-    {
-        types:[PermissionTypeEnum.READ],
-        entity: EntityEnum.VEHICULO,
         rol: RoleEnum.OPERATOR
     }
+    
 ]

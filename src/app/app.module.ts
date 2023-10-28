@@ -28,6 +28,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UnauthInterceptor } from './security/interceptors/unauth-interceptor';
 import { ToasterComponent } from './commos/toaster/toaster.component';
+import { CheckPermissionDirective } from './directives/check-permission.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,7 +38,7 @@ import { ToasterComponent } from './commos/toaster/toaster.component';
     HeaderComponent,
     BrandingComponent,
     AppNavItemComponent,
-    ToasterComponent,
+    ToasterComponent
   ],
   imports: [
     BrowserModule,

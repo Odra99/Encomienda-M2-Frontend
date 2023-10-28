@@ -1,4 +1,6 @@
 export enum RoleEnum {
     ADMIN='Admin',
-    OPERATOR='Operador'
+    OPERATOR='Operador',
+    NULL='',
+    NONE=-1
 }

@@ -48,6 +48,7 @@ import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/materia
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/material-moment-adapter';
 import { SegmentoComponent } from './segmento/segmento.component';
 import { SegmentoFormComponent } from './segmento/views/segmento-form/segmento-form.component';
+import { CheckPermissionDirective } from '../directives/check-permission.directive';
 
 
 export const MY_FORMATS = {
@@ -98,6 +99,7 @@ export const MY_FORMATS = {
     GastoFormComponent,
     SegmentoComponent,
     SegmentoFormComponent,
+    CheckPermissionDirective
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),
@@ -107,6 +109,10 @@ export const MY_FORMATS = {
     ReactiveFormsModule,
     FormsModule,
     TablerIconsModule.pick(TablerIcons),
+  ],
+  exports:[
+
+    CheckPermissionDirective
   ],
   providers:[
     {

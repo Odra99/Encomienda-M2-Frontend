@@ -6,6 +6,7 @@ import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
 import { CiudadService } from 'src/app/services/backend/ciudad.service';
 import { DialogService } from 'src/app/services/others/dialog.service';
 import { ToasterService } from 'src/app/services/others/toaster.service';
+import { PermissionTypeEnum } from 'src/global/permissions';
 import { ToasterEnum } from 'src/global/toaster-enum';
 
 @Component({
@@ -31,10 +32,12 @@ export class CiudadComponent implements OnInit, AfterViewInit {
   list = true;
   selectedId:number
 
+  permissionTypes = PermissionTypeEnum
+
   constructor(
     private ciudadService: CiudadService,
     private toasterService: ToasterService,
-    private confirmationDialogService: DialogService
+    private confirmationDialogService: DialogService,
   ) {}
 
   changeTab(num: number) {
