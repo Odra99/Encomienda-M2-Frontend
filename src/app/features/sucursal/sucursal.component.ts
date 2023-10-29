@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef,Renderer2,OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChild, ElementRef,Renderer2,Input, AfterViewInit } from '@angular/core';
 import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
 import { DialogService } from 'src/app/services/others/dialog.service';
 import { Sucursal } from 'src/app/data/model/general';
@@ -28,7 +28,7 @@ export class SucursalesComponent {
   
   datos: Sucursal[] = [];
   @ViewChild('paginator') paginator: MatPaginator;
-  
+  @Input() sucursalId : number;
   dataSource = new MatTableDataSource<Sucursal>(this.datos);
   
   list = true;

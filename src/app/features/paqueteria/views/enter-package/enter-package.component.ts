@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef,Renderer2 } from '@angular/core';
-
+import { Paquete } from 'src/app/data/model/general';
 @Component({
   selector: 'app-enter-package',
   templateUrl: './enter-package.component.html',
@@ -7,4 +7,6 @@ import { Component, ViewChild, ElementRef,Renderer2 } from '@angular/core';
 })
 
 export class EnterPackageComponent {
+  paquete: Paquete = new Paquete();
+
 }

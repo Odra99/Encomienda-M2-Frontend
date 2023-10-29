@@ -1,19 +1,18 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Vehiculo } from 'src/app/data/model/general';
+import { tipoVehiculo } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment.encomiendaBackendUrl + 'vehiculo';
+const baseUrl = environment.encomiendaBackendUrl + 'tipo_vehiculo';
 
 @Injectable({
   providedIn: 'root',
 })
-export class VehiculoService {
+export class TipoVehiculoService {
   constructor(private http: HttpClient) {}
 
-
-  save(entity: Vehiculo): Observable<any> {
+  save(entity: tipoVehiculo): Observable<any> {
     if (entity.id) {
       return this.http.patch<any>(`${baseUrl}/${entity.id}`, entity);
     }

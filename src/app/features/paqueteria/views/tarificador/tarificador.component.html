@@ -4,151 +4,143 @@
             <mat-card-title class="m-b-0">Calcular Precio</mat-card-title>
         </mat-card-header>
         <mat-card-content class="b-t-1">
-            <div class="formbold-form-wrapper">
-                <div>
-                    <div class="formbold-steps">
-                        <ul>
-                            <li class="formbold-step-menu1 active" #f1>
-                                <span>1</span>
-                                Origen
-                            </li>
-                            <li class="formbold-step-menu2" #f2>
-                                <span>2</span>
-                                Destino
-                            </li>
-                            <li class="formbold-step-menu3" #f3>
-                                <span>3</span>
-                                Tarifa Final
-                            </li>
-                        </ul>
-                    </div>
-
-                    <div class="formbold-form-step-1 active" #fb1>
-                        <div class="formbold-input-flex">
-                            <div>
-                                <label for="firstname" class="formbold-form-label"> Departamento</label>
-
-                                <select name="select" class="formbold-form-input">
-                                    <option>Guatemala</option>
-                                    <option>Quetzaltenango</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="firstname" class="formbold-form-label"> Municipio</label>
-                                <select name="select" class="formbold-form-input" #municipio>
-                                    <option>Guatemala</option>
-                                    <option>Quetzaltenango</option>
-                                </select>
-                            </div>
-
-                        </div>
-                        <div class="formbold-input-flex">
-                            <div>
-                                <label for="lastname" class="formbold-form-label">Peso del Paquete </label>
-                                <input type="text" name="lastname" placeholder="Peso en libras" id="lastname"
-                                    class="formbold-form-input" />
-                            </div>
-                        </div>
-                        <div class="formbold-input-flex">
-                            <div>
-                                <label for="alto" class="formbold-form-label"> Ancho</label>
-                                <input type="number" name="ancho" id="ancho" class="formbold-form-input"
-                                    placeholder="metros" #ancho />
-                            </div>
-                            <div>
-                                <label for="alto" class="formbold-form-label"> Alto </label>
-                                <input type="number" name="alto" placeholder="metros" id="alto"
-                                    class="formbold-form-input" #alto />
-                            </div>
-                            <div>
-                                <label for="alto" class="formbold-form-label"> Largo </label>
-                                <input type="number" name="largo" placeholder="metros" id="largo"
-                                    class="formbold-form-input" #largo />
-                            </div>
+            <form #paqueteForm>
+                <div class="formbold-form-wrapper">
+                    <div>
+                        <div class="formbold-steps">
+                            <ul>
+                                <li class="formbold-step-menu1 active" #f1>
+                                    <span>1</span>
+                                    Origen
+                                </li>
+                                <li class="formbold-step-menu2" #f2>
+                                    <span>2</span>
+                                    Destino
+                                </li>
+                                <li class="formbold-step-menu3" #f3>
+                                    <span>3</span>
+                                    Tarifa Final
+                                </li>
+                            </ul>
                         </div>
 
-                        <div>
-                            <label for="address" class="formbold-form-label"> Observaciones</label>
-                            <input type="text" name="desc" id="desc" placeholder="Ingresa una pequeña descripcion"
-                                class="formbold-form-input" #descripcion />
-                        </div>
-                    </div>
-
-                    <div class="formbold-form-step-2" #fb2>
-                        <div>
-                            <div>
-                                <label for="firstname" class="formbold-form-label"> Departamento</label>
-
-                                <select name="select" class="formbold-form-input" #departamento>
-                                    <option>Guatemala</option>
-                                    <option>Quetzaltenango</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="firstname" class="formbold-form-label"> Municipio</label>
-                                <select name="select" class="formbold-form-input" #municipio>
-                                    <option>Guatemala</option>
-                                    <option>Quetzaltenango</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="address" class="formbold-form-label"> Referencia</label>
-                                <input type="text" name="desc" id="desc" placeholder="Referencia para la entrega"
-                                    class="formbold-form-input" #descripcion />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="formbold-form-step-3" #fb3>
-                        <div class="formbold-form-confirm">
-                            <h4>Resumen:</h4>
+                        <div class="formbold-form-step-1 active" #fb1>
+                            
                             <div class="formbold-input-flex">
-                                <label style="font-weight: bold;">Origen:</label>
-                                <label>Origen</label>
+                                <div>
+                                    <label for="peso" class="formbold-form-label">Peso del Paquete </label>
+                                    <input type="text" name="lastname" placeholder="Peso en libras" id="lastname" 
+                                        class="formbold-form-input" [(ngModel)]="paquete.peso"/>
+                                </div>
                             </div>
-                         
                             <div class="formbold-input-flex">
-                                <label style="font-weight: bold;">Entrega:</label>
-                                <label>Entrega:</label>
+                                <div>
+                                    <label for="alto" class="formbold-form-label"> Ancho</label>
+                                    <input type="number" name="ancho" id="ancho" class="formbold-form-input"
+                                        placeholder="metros" [(ngModel)]="paquete.ancho" #ancho />
+                                </div>
+                                <div>
+                                    <label for="alto" class="formbold-form-label"> Alto </label>
+                                    <input type="number" name="alto" placeholder="metros" id="alto"
+                                        class="formbold-form-input" [(ngModel)]="paquete.alto" #alto />
+                                </div>
+                                <div>
+                                    <label for="alto" class="formbold-form-label"> Largo </label>
+                                    <input type="number" name="largo" placeholder="metros" id="largo"
+                                        class="formbold-form-input" [(ngModel)]="paquete.largo"#largo />
+                                </div>
                             </div>
-                            <div class="formbold-input-flex" style="display: none;" #divTiempoEst>
-                                <label style="font-weight: bold;">Tiempo Estimado en dias:</label>
-                                <label>5 dias</label>
-                            </div>
-                            <div class="formbold-input-flex" style="display: none;"#divPrecioEst>
-                                <label style="font-weight: bold;">Precio Estimado:</label>
-                                <label class="precioLbl">Q.90.00</label>
+
+                            <div>
+                                <label for="address" class="formbold-form-label"> Descripcion</label>
+                                <input type="text" name="desc" id="desc" placeholder="Ingresa una pequeña descripcion"
+                                    class="formbold-form-input" [(ngModel)]="paquete.descripcion" #descripcion />
                             </div>
                         </div>
-                        <button class="formbold-calcule-btn" (click)="calularPrecio()" #calcular>
-                            CALCULAR
-                        </button>
-                    </div>
 
-                    <div class="formbold-form-btn-wrapper">
-                        <button class="formbold-back-btn" #regresoBtn>
-                            Regresar
-                        </button>
+                        <div class="formbold-form-step-2" #fb2>
+                            <div>
+                                <div class="formbold-mb-3">
+                                    <div>
+                                        <label for="email" class="formbold-form-label"> Sucursal de Origen</label>
+                                        <select class="formbold-form-input" name="ciudadInicio" #ciudadInicio="ngModel"
+                                            [(ngModel)]="paquete.ciudadInicioObject" required>
+                                            <option *ngFor="let element of sucursalesSelect" value="{{element}}">
+                                                {{element.nombre}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div>
+                                    <label for="email" class="formbold-form-label"> Sucursal Destino</label>
+                                    <select class="formbold-form-input" name="ciudadDestino" #ciudadDestino="ngModel"
+                                    [(ngModel)]="paquete.ciudadDestinoObject" required>
+                                    <option *ngFor="let element of sucursalesSelect" value="{{element}}" >
+                                        {{element.nombre}}</option>
+                                </select>
+                                </div>
+                               <!-- <div>
+                                    <label for="address" class="formbold-form-label"> Referencia</label>
+                                    <input type="text" name="desc" id="desc" placeholder="Referencia para la entrega"
+                                        class="formbold-form-input" #descripcion />
+                                </div>-->
+                            </div>
+                        </div>
 
-                        <button class="formbold-btn active" (click)="cambiar()" #btnSigueinte>
-                            Siguiente
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g clip-path="url(#clip0_1675_1807)">
-                                    <path
-                                        d="M10.7814 7.33312L7.20541 3.75712L8.14808 2.81445L13.3334 7.99979L8.14808 13.1851L7.20541 12.2425L10.7814 8.66645H2.66675V7.33312H10.7814Z"
-                                        fill="white" />
-                                </g>
-                                <defs>
-                                    <clipPath id="clip0_1675_1807">
-                                        <rect width="16" height="16" fill="white" />
-                                    </clipPath>
-                                </defs>
-                            </svg>
-                        </button>
+                        <div class="formbold-form-step-3" #fb3>
+                            <div class="formbold-form-confirm">
+                                <h4>Resumen:</h4>
+                                <div class="formbold-input-flex">
+                                    <label style="font-weight: bold;">Origen:</label>
+                                    <label #origenLbl>{{ paquete.ciudadInicio }}</label>
+                                </div>
+
+                                <div class="formbold-input-flex">
+                                    <label style="font-weight: bold;">Entrega:</label>
+                                    <label #destinoLbl>{{ paquete.ciudadDestino }}</label>
+                                </div>
+                                <div class="formbold-input-flex">
+                                    <label style="font-weight: bold;">Volumen:</label>
+                                    <label #destinoLbl>{{ paquete.alto*paquete.ancho*paquete.largo }} m3</label>
+                                </div>
+                                <div class="formbold-input-flex" style="display: none;" #divTiempoEst>
+                                    <label style="font-weight: bold;">Tiempo Estimado en dias:</label>
+                                    <label>5 dias</label>
+                                </div>
+                                <div class="formbold-input-flex" style="display: none;" #divPrecioEst>
+                                    <label style="font-weight: bold;">Precio Estimado:</label>
+                                    <label class="precioLbl">Q.90.00</label>
+                                </div>
+                            </div>
+                            <button class="formbold-calcule-btn" (click)="calularPrecio()" #calcular>
+                                CALCULAR
+                            </button>
+                        </div>
+
+                        <div class="formbold-form-btn-wrapper">
+                            <button class="formbold-back-btn" #regresoBtn>
+                                Regresar
+                            </button>
+
+                            <button class="formbold-btn active" (click)="cambiar()" #btnSigueinte>
+                                Siguiente
+                                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <g clip-path="url(#clip0_1675_1807)">
+                                        <path
+                                            d="M10.7814 7.33312L7.20541 3.75712L8.14808 2.81445L13.3334 7.99979L8.14808 13.1851L7.20541 12.2425L10.7814 8.66645H2.66675V7.33312H10.7814Z"
+                                            fill="white" />
+                                    </g>
+                                    <defs>
+                                        <clipPath id="clip0_1675_1807">
+                                            <rect width="16" height="16" fill="white" />
+                                        </clipPath>
+                                    </defs>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </mat-card-content>
     </mat-card>
 

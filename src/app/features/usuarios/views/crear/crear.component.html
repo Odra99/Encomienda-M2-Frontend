@@ -1,8 +1,8 @@
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
-        <form #usuarioForm >
-            
-            
+        <form #usuarioForm>
+
+
             <div class="formbold-form-title">
                 <h2 class=""> Nuevo Usuario</h2>
                 <p>
@@ -15,45 +15,44 @@
                         <label for="firstname" class="formbold-form-label">
                             Usuario:
                         </label>
-                        <input type="text" name="usuario" id="usuario" class="formbold-form-input" #usuarioInput="ngModel" 
-                        [(ngModel)]="usuario.username" required/>
+                        <input type="text" name="usuario" id="usuario" class="formbold-form-input"
+                            #usuarioInput="ngModel" [(ngModel)]="usuario.username" required />
                     </div>
                     <div>
                         <label for="firstname" class="formbold-form-label">
                             Nombre:
                         </label>
-                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel" 
-                        [(ngModel)]="usuario.nombre" required/> 
+                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel"
+                            [(ngModel)]="usuario.nombre" required />
                     </div>
                 </div>
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"> Correo </label>
-                        <input type="emNombreail" name="email" id="email" class="formbold-form-input" #emailInput="ngModel" 
-                        [(ngModel)]="usuario.email" required/> 
+                        <input type="emNombreail" name="email" id="email" class="formbold-form-input"
+                            #emailInput="ngModel" [(ngModel)]="usuario.email" required />
                     </div>
                     <div>
                         <label for="password" class="formbold-form-label"> Contraseña</label>
-                        <input type="text" name="password" id="password" class="formbold-form-input" #passwordInput="ngModel" 
-                        [(ngModel)]="usuario.password" required/>
+                        <input type="text" name="password" id="password" class="formbold-form-input"
+                            #passwordInput="ngModel" [(ngModel)]="usuario.password" required />
                     </div>
                 </div>
 
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"> Rol:</label>
-                        <select class="formbold-form-input" name="rol"  #idRolInput="ngModel" 
-                        [(ngModel)]="usuario.rol_id" required >
-                            <option [ngValue]=1>admin</option>
-                            <option [ngValue]=2>usuario</option>
+                        <select class="formbold-form-input" name="rol" #idRolInput="ngModel"
+                            [(ngModel)]="usuario.rol_id" required>
+                            <option *ngFor="let element of rolSelect" value="{{element.id}}">{{element.nombre}}</option>
                         </select>
                     </div>
                     <div>
                         <label for="idEmpleado" class="formbold-form-label">Puesto:</label>
-                        <select class="formbold-form-input" name="puesto"  #idPuestoInput="ngModel" 
-                        [(ngModel)]="usuario.puesto_id" required >
-                            <option [ngValue]=1>admin</option>
-                            <option [ngValue]=2>usuario</option>
+                        <select class="formbold-form-input" name="puesto" #idPuestoInput="ngModel"
+                            [(ngModel)]="usuario.puesto_id" required>
+                            <option *ngFor="let element of puestosSelect" value="{{element.id}}">{{element.nombre}}
+                            </option>
                         </select>
                     </div>
                 </div>
@@ -61,16 +60,34 @@
 
                     <div>
                         <label for="horaslbl" class="formbold-form-label"> Horas de trabajo diarias:</label>
-                        <input type="number" name="horas" id="horas" class="formbold-form-input" #horasInput="ngModel" 
-                        [(ngModel)]="usuario.horas" required >
+                        <input type="number" name="horas" id="horas" class="formbold-form-input" #horasInput="ngModel"
+                            [(ngModel)]="usuario.horas" required>
                     </div>
                     <div>
                         <label for="phone" class="formbold-form-label">Sucursal</label>
-                        <select class="formbold-form-input" #SucursalInput="ngModel"  name="sucursal" 
-                        [(ngModel)]="usuario.sucursal_id" required >
-                            <option [ngValue]=1>sucursal 1</option>
-                            <option [ngValue]=2>sucursal 2</option>
+                        <select class="formbold-form-input" name="puesto" #idPuestoInput="ngModel"
+                            [(ngModel)]="usuario.sucursal_id" required>
+                            <option *ngFor="let element of sucursalesSelect" value="{{element.id}}">{{element.nombre}}
+                            </option>
                         </select>
+                        <!-- <ng-autocomplete 
+                            [initialValue]='inicial'
+                            [data]="sucursalesSelect" 
+                            [searchKeyword]="keyword"
+                            placeholder="Selecciona la Sucursal" 
+                            [itemTemplate]="itemTemplate"
+                            [notFoundTemplate]="notFoundTemplate"
+                             >
+                        </ng-autocomplete>
+
+                        <ng-template #itemTemplate let-item >
+                            <option  (click)='selectEvent(item.id)' [value]="item.id" [innerHTML]="item.nombre">
+                            </option>
+                        </ng-template>
+
+                        <ng-template #notFoundTemplate let-notFound>
+                            <div [innerHTML]="notFound"></div>
+                        </ng-template>-->
                     </div>
                 </div>
                 <!-- <div class="formbold-mb-3">
@@ -81,7 +98,11 @@
             </div>-->
             </div>
             <hr />
-            <button class="formbold-btn"  type="submit" (click)="save()">Generar Nuevo Usuario</button>
+            <button class="formbold-btn" type="submit" (click)="save()">Generar Nuevo Usuario</button>
         </form>
     </div>
+</div>
+<div class="ng-autocomplete">
+
+
 </div>

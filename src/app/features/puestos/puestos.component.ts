@@ -6,6 +6,7 @@ import { ToasterEnum } from 'src/global/toaster-enum';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToasterService } from 'src/app/services/others/toaster.service';
+import { DialogService } from 'src/app/services/others/dialog.service';
 
 @Component({
   selector: 'app-puestos',
@@ -35,7 +36,8 @@ export class PuestosComponent {
 
   constructor(private renderer2: Renderer2,
     private puestoService: PuestoService,
-    private toasterService: ToasterService
+    private toasterService: ToasterService,
+    private confirmationDialogService: DialogService
     ) {}
 
   changeTab(num: number) {

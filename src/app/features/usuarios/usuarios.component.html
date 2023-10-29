@@ -8,7 +8,6 @@
             <ul>
                 <li (click)="changeTab(0);" class="user-post active" [ngClass]="{'active':tabs==0}">Ver Usuarios</li>
                 <li (click)="changeTab(1);" class="user-review" [ngClass]="{'active':tabs==1}">Crear Usario</li>
-                <li (click)="changeTab(2);" class="user-setting" [ngClass]="{'active':tabs==2}">Editar Usuario</li>
             </ul>
         </div>
         <div class="profile-body">
@@ -122,12 +121,10 @@
                         </mat-card-content>
                     </mat-card>
                 </div>
+                <app-crear-usuario *ngIf="!list" [sucursalId]="selectedId" (finishEvent)="setListView()"></app-crear-usuario>
             </div>
             <div class="profile-reviews tab" #astxt2 *ngIf="tabs==1">
                 <app-crear-usuario></app-crear-usuario>
-            </div>
-            <div class="profile-settings tab" #astxt3 *ngIf="tabs==2">
-                <app-editar-usuario></app-editar-usuario>
             </div>
         </div>
     </mat-card-content>

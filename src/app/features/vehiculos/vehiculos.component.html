@@ -8,7 +8,6 @@
             <ul>
                 <li (click)="changeTab(0);" class="user-post active" [ngClass]="{'active':tabs==0}">Ver Vehiculos</li>
                 <li (click)="changeTab(1);" class="user-review" [ngClass]="{'active':tabs==1}">Ingresar nuevo Vehiculo </li>
-                <li (click)="changeTab(2);" class="user-setting" [ngClass]="{'active':tabs==2}">Ver estado de vehiculo</li>
             </ul>
         </div>
         <div class="profile-body">
@@ -119,9 +118,6 @@
             </div>
             <div class="profile-reviews tab" *ngIf="tabs==1">
                 <app-crear-vehiculo></app-crear-vehiculo>
-            </div>
-            <div class="profile-settings tab" *ngIf="tabs==2">
-                <app-editar-vehiculo></app-editar-vehiculo>
             </div>
         </div>
     </mat-card-content>

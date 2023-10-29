@@ -8,7 +8,7 @@
             <ul>
                 <li (click)="changeTab(0);" class="user-post active" [ngClass]="{'active':tabs==0}">Ver Puestos</li>
                 <li (click)="changeTab(1);" class="user-review"  [ngClass]="{'active':tabs==1}">Crear Puestos</li>
-                <li (click)="changeTab(2);" class="user-setting"  [ngClass]="{'active':tabs==2}">Editar Puesto</li>
+                
             </ul>
         </div>
         <div class="profile-body">
@@ -96,12 +96,10 @@
                         </mat-card-content>
                     </mat-card>
                 </div>
+                <app-crear-puesto *ngIf="!list" [puestoId]="selectedId" (finishEvent)="setListView()"></app-crear-puesto>
             </div>
             <div *ngIf="tabs==1" class="profile-reviews tab" #astxt2 >
                 <app-crear-puesto (finishEvent)="setListView()"></app-crear-puesto>
-            </div>
-            <div *ngIf="tabs==2" class="profile-settings tab" #astxt3 >
-                <app-editar-puesto (finishEvent)="setListView()"></app-editar-puesto>
             </div>
         </div>
     </mat-card-content>
