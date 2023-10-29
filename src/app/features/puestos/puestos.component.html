@@ -76,14 +76,16 @@
                                             Acciones
                                         </th>
                                         <td mat-cell *matCellDef="let element" class="mat-body-1 ">
+                                           <ng-container *ngIf="!element.estatico">
                                             <button mat-mini-fab class="bg-light-primary text-primary m-1" matTooltip="Editar" [appCheckPermission]="permissionTypes.UPDATE" 
-                                                (click)="edit(element.id)">
-                                                <i-tabler name="edit-circle" class="icon-16"></i-tabler>
-                                            </button>
-                                            <button mat-mini-fab class="bg-light-error text-error m-1" matTooltip="Eliminar" [appCheckPermission]="permissionTypes.DELETE" 
-                                                (click)="deletePuesto(element.id)">
-                                                <i-tabler name="trash-filled" class="icon-16"></i-tabler>
-                                            </button>
+                                            (click)="edit(element.id)">
+                                            <i-tabler name="edit-circle" class="icon-16"></i-tabler>
+                                        </button>
+                                        <button mat-mini-fab class="bg-light-error text-error m-1" matTooltip="Eliminar" [appCheckPermission]="permissionTypes.DELETE" 
+                                            (click)="deletePuesto(element.id)">
+                                            <i-tabler name="trash-filled" class="icon-16"></i-tabler>
+                                        </button>
+                                           </ng-container>
                                         </td>
                                     </ng-container>
                 

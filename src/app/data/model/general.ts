@@ -3,6 +3,7 @@ export class Ciudad {
   nombre!: string;
   descripcion!: string;
   departamento!: string;
+  estatico:boolean = false;
 }
 
 export class Puesto {
@@ -10,6 +11,7 @@ export class Puesto {
   descripcion!: string;
   nombre!: string;
   salario_horario!: number;
+  estatico:boolean = false;
 }
 
 export class Sucursal {
@@ -21,7 +23,8 @@ export class Sucursal {
   ciudad_id!: number;
   ciudad!: Ciudad;
   tiposucursal_id: number;
-  tipoSucursal!: tipoSucursal;
+  tipoSucursal!: TipoSucursal;
+  estatico:boolean = false;
 }
 
 export class Usuario {
@@ -37,6 +40,7 @@ export class Usuario {
   rol: Rol;
   sucursal: Sucursal;
   puesto: Puesto;
+  estatico:boolean = false;
 }
 
 export class Vehiculo {
@@ -47,12 +51,13 @@ export class Vehiculo {
   tipovehiculo_id!: number;
   sucursal_id!: number;
   sucursal!: Sucursal;
-  tipoVehiculo!: tipoVehiculo;
+  tipoVehiculo!: TipoVehiculo;
 }
 
 export class ConceptoGasto {
   id!: number;
   nombre!: string;
+  estatico:boolean = false;
 }
 
 export class Gasto {
@@ -83,30 +88,31 @@ export class Segmento {
 interface Tipos {
   id: number;
   nombre: string;
+  estatico:boolean;
 }
 
 export class TipoGasto implements Tipos {
   id!: number;
   nombre!: string;
+  estatico!: boolean;
 }
 
-export class tipoSucursal implements Tipos{
+export class TipoSucursal implements Tipos{
   id: number;
   nombre: string;
+  estatico!:boolean
 }
-export class TipoSucursal{
+export class TipoVehiculo implements Tipos{
   id!:number;
   nombre!:string;
-}
-export class tipoVehiculo{
-  id!:number;
-  nombre!:string;
+  estatico!: boolean;
 }
 
 export class Rol{
   id!:number;
   nombre!: string;
   descripcion!: string;
+  estatico:boolean = false;
   
 }
 
