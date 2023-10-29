@@ -5,7 +5,7 @@
                 <form #gastoForm class="m-t-30">
 
                     <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Sucursal</mat-label>
-                    <mat-form-field class="w-100">
+                    <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Selecciona una opcion</mat-label>
                         <mat-select [formControl]="sucursal" [(value)]="gasto.sucursal_id" required>
                             <mat-option></mat-option>
@@ -16,7 +16,7 @@
                             sucursal</mat-error>
                     </mat-form-field>
                     <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Tipo de Gasto</mat-label>
-                    <mat-form-field class="w-100">
+                    <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Selecciona una opcion</mat-label>
                         <mat-select [formControl]="tipoGasto" [(value)]="gasto.tipo_gasto_id" required>
                             <mat-option></mat-option>
@@ -27,7 +27,7 @@
                             gasto</mat-error>
                     </mat-form-field>
                     <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Concepto de Gasto</mat-label>
-                    <mat-form-field class="w-100">
+                    <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Selecciona una opcion</mat-label>
                         <mat-select [formControl]="conceptoGasto" [(value)]="gasto.concepto_gasto_id" required>
                             <mat-option></mat-option>
@@ -54,12 +54,12 @@
                         <mat-hint class="mat-error" *ngIf="!gasto.monto && nombreInput.touched">Ingresa el monto del
                             gasto</mat-hint>
                     </mat-form-field>
-                    <mat-form-field class="w-100">
+                    <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Mes y Año</mat-label>
-                        <input matInput [matDatepicker]="dp" [formControl]="date" [(ngModel)]="gasto.fecha">
+                        <input matInput [matDatepicker]="dp" [formControl]="date">
                         <mat-hint>MM/YYYY</mat-hint>
-                        <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
-                        <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)"
+                        <mat-datepicker-toggle matIconSuffix [for]="dp" ></mat-datepicker-toggle>
+                        <mat-datepicker #dp startView="multi-year"  (monthSelected)="setMonthAndYear($event, dp)"
                             panelClass="example-month-picker">
                         </mat-datepicker>
                     </mat-form-field>

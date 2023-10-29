@@ -5,6 +5,15 @@
             <mat-label>Porcentaje de ganacia (%)</mat-label>
             <input matInput type="number" min="0" />
           </mat-form-field>
+          <mat-form-field  appearance="outline">
+            <mat-label>Mes y Año</mat-label>
+            <input matInput [matDatepicker]="dp" [formControl]="date" >
+            <mat-hint>MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+            <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)"
+                panelClass="example-month-picker">
+            </mat-datepicker>
+        </mat-form-field>
         <button type="button"  mat-flat-button color="primary" >
             Calcular
         </button>
@@ -113,10 +122,6 @@
                                                 <mat-icon>more_vert</mat-icon>
                                               </button>
                                               <mat-menu #menu="matMenu">
-                                                <button mat-menu-item>
-                                                  <i-tabler name="users-group" class="icon-16"></i-tabler>
-                                                  <span>Ver Empleados</span>
-                                                </button>
                                                 <button mat-menu-item>                                                    
                                                   <i-tabler name="receipt-2" class="icon-16"></i-tabler>
                                                   <span>Ver Gastos</span>

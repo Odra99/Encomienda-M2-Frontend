@@ -1,7 +1,10 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import * as moment from 'moment';
 import { Sucursal } from 'src/app/data/model/general';
 import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
 import { SucursalService } from 'src/app/services/backend/sucursal.service';
@@ -101,7 +104,20 @@ export class TarifarioComponent implements OnInit, AfterViewInit {
     this.selection.select(...this.dataSource.data);
   }
 
-  
+  date = new FormControl(moment());
+
+  setMonthAndYear(
+    normalizedMonthAndYear: moment.Moment,
+    datepicker: MatDatepicker<moment.Moment>
+  ) {
+    const ctrlValue = this.date.value!;
+    if (ctrlValue) {
+      ctrlValue.month(normalizedMonthAndYear.month());
+      ctrlValue.year(normalizedMonthAndYear.year());
+      this.date.setValue(ctrlValue);
+      datepicker.close();
+    }
+  }
 
 
 }

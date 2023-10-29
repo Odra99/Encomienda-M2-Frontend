@@ -63,6 +63,7 @@ export class GastoFormComponent implements OnInit, OnChanges {
     if (ctrlValue) {
       ctrlValue.month(normalizedMonthAndYear.month());
       ctrlValue.year(normalizedMonthAndYear.year());
+      this.gasto.fecha = normalizedMonthAndYear.format();
       this.date.setValue(ctrlValue);
       datepicker.close();
     }
@@ -78,6 +79,10 @@ export class GastoFormComponent implements OnInit, OnChanges {
           this.toasterService.showGenericErrorToast();
         },
       });
+    } else {
+      if (this.date.value) {
+        this.gasto.fecha = this.date.value.format();
+      }
     }
     this.getSucursales();
     this.getConceptoGastos();
