@@ -46,8 +46,8 @@ export class Vehiculo {
   costokm!: number;
   tipovehiculo_id!: number;
   sucursal_id!: number;
-  sucursal!: string;
-  tipovehiculo!: string;
+  sucursal!: Sucursal;
+  tipoVehiculo!: tipoVehiculo;
 }
 
 export class ConceptoGasto {

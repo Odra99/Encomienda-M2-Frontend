@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { VehiculoService } from 'src/app/services/backend/vehiculo.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { ToasterService } from 'src/app/services/others/toaster.service';
+import { PermissionTypeEnum } from 'src/global/permissions';
 
 @Component({
   selector: 'app-vehiculos',
@@ -32,6 +33,7 @@ export class VehiculosComponent {
 
   list = true;
   selectedId:number
+  permissionTypes = PermissionTypeEnum
 
   constructor(
     private userService: VehiculoService,
@@ -56,6 +58,7 @@ export class VehiculosComponent {
       next: (value) => {
         this.datos = value.body.result;
         this.dataSource = new MatTableDataSource<Vehiculo>(this.datos);
+        this.dataSource.paginator = this.paginator
       },
       error: () => {
         this.toasterService.showGenericErrorToast();
