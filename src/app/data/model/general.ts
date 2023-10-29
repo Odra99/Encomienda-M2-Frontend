@@ -19,9 +19,9 @@ export class Sucursal {
   latitud!: number;
   longitud!: number;
   ciudad_id!: number;
-  ciudad!: string;
+  ciudad!: Ciudad;
   tiposucursal_id: number;
-  tipoSucursal!: string;
+  tipoSucursal!: tipoSucursal;
 }
 
 export class Usuario {
@@ -88,4 +88,9 @@ interface Tipos {
 export class TipoGasto implements Tipos {
   id!: number;
   nombre!: string;
+}
+
+export class tipoSucursal implements Tipos{
+  id: number;
+  nombre: string;
 }

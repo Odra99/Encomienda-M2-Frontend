@@ -49,6 +49,7 @@ import { MAT_MOMENT_DATE_ADAPTER_OPTIONS, MomentDateAdapter } from '@angular/mat
 import { SegmentoComponent } from './segmento/segmento.component';
 import { SegmentoFormComponent } from './segmento/views/segmento-form/segmento-form.component';
 import { CheckPermissionDirective } from '../directives/check-permission.directive';
+import { TarifarioComponent } from './tarifario/tarifario.component';
 
 
 export const MY_FORMATS = {
@@ -99,7 +100,8 @@ export const MY_FORMATS = {
     GastoFormComponent,
     SegmentoComponent,
     SegmentoFormComponent,
-    CheckPermissionDirective
+    CheckPermissionDirective,
+    TarifarioComponent
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),

@@ -10,6 +10,11 @@ export const navItems: NavItem[] = [
     route: '/dashboard',
   },
   {
+    displayName: 'Tarifario',
+    iconName: 'calculator',
+    route: '/features/tarifario',
+  },
+  {
     navCap: 'Menu Principal',
   },
   {

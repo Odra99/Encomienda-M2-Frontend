@@ -72,6 +72,7 @@ export class SucursalesComponent {
   edit(id:number){
     this.selectedId = id;
     this.list = false;
+    this.tabs=2
   }
 
   setListView(){

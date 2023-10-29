@@ -10,6 +10,7 @@ import { UsuariosComponent } from "./usuarios/usuarios.component";
 import { ConceptoGastoComponent } from "./gasto/concepto-gasto/concepto-gasto.component";
 import { GastoComponent } from "./gasto/gasto/gasto.component";
 import { SegmentoComponent } from "./segmento/segmento.component";
+import { TarifarioComponent } from "./tarifario/tarifario.component";
 export const FeaturesRouter: Routes = [
   {
     path: '',
@@ -54,6 +55,10 @@ export const FeaturesRouter: Routes = [
         path: 'segmentos', component: SegmentoComponent,
         
         canActivate: [AllowNavigationGuard],
+      },{
+        path: 'tarifario', component: TarifarioComponent,
+
+        canActivate: [AllowNavigationGuard]
       }
     ],
   },

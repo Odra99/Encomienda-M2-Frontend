@@ -40,7 +40,8 @@ export class SegmentoComponent implements OnInit, AfterViewInit {
 
   changeTab(num: number) {
     this.tabs = num;
-  }
+    this.list = true; 
+  } 
 
   ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
