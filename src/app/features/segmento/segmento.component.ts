@@ -6,6 +6,7 @@ import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
 import { SegmentoService } from 'src/app/services/backend/segmento.service';
 import { DialogService } from 'src/app/services/others/dialog.service';
 import { ToasterService } from 'src/app/services/others/toaster.service';
+import { PermissionTypeEnum } from 'src/global/permissions';
 import { ToasterEnum } from 'src/global/toaster-enum';
 
 @Component({
@@ -31,6 +32,8 @@ export class SegmentoComponent implements OnInit, AfterViewInit {
 
   list = true;
   selectedId:number
+
+  permissionTypes=PermissionTypeEnum
 
   constructor(
     private segmentoService: SegmentoService,

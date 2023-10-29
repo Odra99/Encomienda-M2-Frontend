@@ -8,12 +8,13 @@ import { CiudadService } from 'src/app/services/backend/ciudad.service';
 import { GastoService } from 'src/app/services/backend/gastos.service';
 import { DialogService } from 'src/app/services/others/dialog.service';
 import { ToasterService } from 'src/app/services/others/toaster.service';
+import { PermissionTypeEnum } from 'src/global/permissions';
 import { ToasterEnum } from 'src/global/toaster-enum';
 
 @Component({
   selector: 'app-gasto',
   templateUrl: './gasto.component.html',
-  styleUrls: ['./gasto.component.scss']
+  styleUrls: ['./gasto.component.scss'],
 })
 export class GastoComponent implements OnInit, AfterViewInit {
   tabs = 0;
@@ -33,7 +34,8 @@ export class GastoComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Gasto>(this.datos);
 
   list = true;
-  selectedId:number
+  selectedId: number;
+  permissionTypes= PermissionTypeEnum;
 
   constructor(
     private gastoService: GastoService,
@@ -43,6 +45,7 @@ export class GastoComponent implements OnInit, AfterViewInit {
 
   changeTab(num: number) {
     this.tabs = num;
+    this.list = true;
   }
 
   ngAfterViewInit(): void {
@@ -66,35 +69,37 @@ export class GastoComponent implements OnInit, AfterViewInit {
     });
   }
 
-  edit(id:number){
+  edit(id: number) {
     this.selectedId = id;
     this.list = false;
   }
 
-  setListView(){
+  setListView() {
     this.getAll();
     this.tabs = 0;
     this.list = true;
   }
 
   @needConfirmation()
-  deleteCiudad(id:any){
-    if(id){
+  deleteCiudad(id: any) {
+    if (id) {
       this.gastoService.delete(id).subscribe({
         next: () => {
-          this.toasterService.show({message:'Gasto eliminado',type:ToasterEnum.SUCCESS})
+          this.toasterService.show({
+            message: 'Gasto eliminado',
+            type: ToasterEnum.SUCCESS,
+          });
           this.getAll();
         },
-      
+
         error: () => {
           this.toasterService.showGenericErrorToast();
         },
-      })
+      });
     }
   }
 
-  formatDate(date:string){
-    return  moment(date).format('MM/YYYY');
+  formatDate(date: string) {
+    return moment(date).format('MM/YYYY');
   }
-
 }

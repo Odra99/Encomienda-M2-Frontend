@@ -1,4 +1,4 @@
-<div class="col-lg-12" *ngIf="list">
+<div class="col-lg-12" [hidden]="!list">
     <mat-card class="cardWithShadow">
         <mat-card-content class="p-24">
             <mat-card-title>Usuarios</mat-card-title>

@@ -7,6 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SucursalService } from 'src/app/services/backend/sucursal.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { ToasterService } from 'src/app/services/others/toaster.service';
+import { PermissionTypeEnum } from 'src/global/permissions';
 
 @Component({
   selector: 'app-puestos',
@@ -34,7 +35,7 @@ export class SucursalesComponent {
   list = true;
   selectedId:number
   
-  
+  permissionTypes=PermissionTypeEnum
 
   constructor(
     private renderer2: Renderer2,
@@ -47,6 +48,7 @@ export class SucursalesComponent {
  
   changeTab(num: number) {
     this.tabs = num;
+    this.list = true
   }
   
   ngAfterViewInit(): void {
@@ -62,6 +64,7 @@ export class SucursalesComponent {
       next: (value) => {
         this.datos = value.body.result;
         this.dataSource = new MatTableDataSource<Sucursal>(this.datos);
+        this.dataSource.paginator = this.paginator;
       },
       error: () => {
         this.toasterService.showGenericErrorToast();

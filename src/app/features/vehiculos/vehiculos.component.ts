@@ -27,22 +27,26 @@ export class VehiculosComponent {
     'actions'
   ];
   datos: Vehiculo[] = [];
-  @ViewChild('paginator') paginator: MatPaginator;
+  @ViewChild('paginator') paginator!: MatPaginator;
 
   dataSource = new MatTableDataSource<Vehiculo>(this.datos);
+  
+  
 
   list = true;
   selectedId:number
   permissionTypes = PermissionTypeEnum
+  
 
   constructor(
-    private userService: VehiculoService,
+    private vehiculoService: VehiculoService,
     private toasterService: ToasterService,
     private confirmationDialogService: DialogService
   ) {}
 
   changeTab(num: number) {
     this.tabs = num;
+    this.list = true;
   }
 
   ngAfterViewInit(): void {
@@ -54,7 +58,7 @@ export class VehiculosComponent {
   }
 
   getAll() {
-    this.userService.listAllHttp({}).subscribe({
+    this.vehiculoService.listAllHttp({}).subscribe({
       next: (value) => {
         this.datos = value.body.result;
         this.dataSource = new MatTableDataSource<Vehiculo>(this.datos);
@@ -80,9 +84,9 @@ export class VehiculosComponent {
   @needConfirmation()
   deleteVehiculo(id:any){
     if(id){
-      this.userService.delete(id).subscribe({
+      this.vehiculoService.delete(id).subscribe({
         next: () => {
-          this.toasterService.show({message:'Usuario eliminado',type:ToasterEnum.SUCCESS})
+          this.toasterService.show({message:'Vehiculo eliminado',type:ToasterEnum.SUCCESS})
           this.getAll();
         },
       

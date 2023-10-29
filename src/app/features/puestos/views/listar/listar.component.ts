@@ -39,6 +39,7 @@ export class ListarPuestoComponent implements OnInit, AfterViewInit  {
 
   changeTab(num: number) {
     this.tabs = num;
+    this.list = true
   }
  
   ngAfterViewInit(): void {

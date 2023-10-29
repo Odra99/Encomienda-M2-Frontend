@@ -8,6 +8,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { UserService } from 'src/app/services/backend/user.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { ToasterService } from 'src/app/services/others/toaster.service';
+import { PermissionTypeEnum } from 'src/global/permissions';
 //import {SearchComponent} from './views/search/search.component';
 
 @Component({
@@ -38,6 +39,7 @@ export class UsuariosComponent implements OnInit, AfterViewInit{
 
   list = true;
   selectedId:number
+  permissionTypes=PermissionTypeEnum
 
   constructor(
     private userService: UserService,
@@ -47,6 +49,7 @@ export class UsuariosComponent implements OnInit, AfterViewInit{
 
   changeTab(num: number) {
     this.tabs = num;
+    this.list = true
   }
 
   ngAfterViewInit(): void {
@@ -62,6 +65,7 @@ export class UsuariosComponent implements OnInit, AfterViewInit{
       next: (value) => {
         this.datos = value.body.result;
         this.dataSource = new MatTableDataSource<Usuario>(this.datos);
+        this.dataSource.paginator = this.paginator;
       },
       error: () => {
         this.toasterService.showGenericErrorToast();

@@ -34,9 +34,9 @@ export class Usuario {
   rol_id!: number;
   sucursal_id!: number;
   puesto_id!: string;
-  rol: string;
-  sucursal: string;
-  puesto: string;
+  rol: Rol;
+  sucursal: Sucursal;
+  puesto: Puesto;
 }
 
 export class Vehiculo {

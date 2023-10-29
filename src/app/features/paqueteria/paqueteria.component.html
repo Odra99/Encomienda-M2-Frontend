@@ -12,7 +12,7 @@
             </ul>
         </div>
         <div class="profile-body">
-            <div class="profile-posts tab"  *ngIf="tabs==0" >
+            <div class="profile-posts tab"  [hidden]="tabs!=0" >
                 <app-enter-package></app-enter-package>
             </div>
             <div class="profile-reviews tab"  *ngIf="tabs==1">

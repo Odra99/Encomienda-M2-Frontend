@@ -12,8 +12,8 @@
             </ul>
         </div>
         <div class="profile-body">
-            <div *ngIf="tabs==0" class="profile-posts tab" [appCheckPermission]="permissionTypes.READ">
-                <div class="col-lg-12" *ngIf="list">
+            <div [hidden]="tabs!=0" class="profile-posts tab" [appCheckPermission]="permissionTypes.READ">
+                <div class="col-lg-12" [hidden]="!list">
                     <mat-card class="cardWithShadow">
                         <mat-card-content class="p-24">
                             <mat-card-title>Ciudades</mat-card-title>

@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { ToasterService } from 'src/app/services/others/toaster.service';
 import { DialogService } from 'src/app/services/others/dialog.service';
+import { PermissionTypeEnum } from 'src/global/permissions';
 
 @Component({
   selector: 'app-puestos',
@@ -34,6 +35,8 @@ export class PuestosComponent {
   list = true;
   selectedId:number
 
+  permissionTypes=PermissionTypeEnum
+
   constructor(private renderer2: Renderer2,
     private puestoService: PuestoService,
     private toasterService: ToasterService,
@@ -42,6 +45,7 @@ export class PuestosComponent {
 
   changeTab(num: number) {
     this.tabs = num;
+    this.list = true
   }
 
   ngAfterViewInit(): void {
@@ -57,6 +61,7 @@ export class PuestosComponent {
       next: (value) => {
         this.datos = value.body.result;
         this.dataSource = new MatTableDataSource<Puesto>(this.datos);
+        this.dataSource.paginator = this.paginator;
       },
       error: () => {
         this.toasterService.showGenericErrorToast();

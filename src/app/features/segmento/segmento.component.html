@@ -6,14 +6,14 @@
 
         <div class="navBarP">
             <ul>
-                <li (click)="changeTab(0);" class="user-post active" [ngClass]="{'active':tabs==0}">Ver Segmentos
+                <li (click)="changeTab(0);" [appCheckPermission]="permissionTypes.READ"  class="user-post active" [ngClass]="{'active':tabs==0}">Ver Segmentos
                 </li>
-                <li (click)="changeTab(1);" class="user-review" [ngClass]="{'active':tabs==1}">Ingresar Segmento</li>
+                <li (click)="changeTab(1);" [appCheckPermission]="permissionTypes.CREATE"  class="user-review" [ngClass]="{'active':tabs==1}">Ingresar Segmento</li>
             </ul>
         </div>
         <div class="profile-body">
-            <div *ngIf="tabs==0" class="profile-posts tab">
-                <div class="col-lg-12" *ngIf="list">
+            <div [hidden]="tabs!=0" class="profile-posts tab">
+                <div class="col-lg-12" [hidden]="!list" [appCheckPermission]="permissionTypes.READ" >
                     <mat-card class="cardWithShadow">
                         <mat-card-content class="p-24">
                             <mat-card-title>Segmentos</mat-card-title>
@@ -110,10 +110,10 @@
                         </mat-card-content>
                     </mat-card>
                 </div>
-                <app-segmento-form *ngIf="!list" [segmentoId]="selectedId" (finishEvent)="setListView()"></app-segmento-form>
+                <app-segmento-form *ngIf="!list" [segmentoId]="selectedId" (finishEvent)="setListView()" [appCheckPermission]="permissionTypes.UPDATE" ></app-segmento-form>
             </div>
             <div *ngIf="tabs==1" class="profile-reviews tab">
-                <app-segmento-form (finishEvent)="setListView()"></app-segmento-form>
+                <app-segmento-form (finishEvent)="setListView()" [appCheckPermission]="permissionTypes.CREATE" ></app-segmento-form>
             </div>
             
 
