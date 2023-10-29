@@ -29,16 +29,16 @@
                     <div>
                         <label for="email" class="formbold-form-label"> Tipo de vehiculo</label>
                         <select class="formbold-form-input"  name="tipo"  [(ngModel)]="vehiculo.tipovehiculo_id" required [formControl]="tipo">
-                            <option [ngValue]=1>camion</option>
-                            <option [ngValue]=2>vehiculo liviano</option>
+                            <option *ngFor="let element of tipoVehiculoSelect" value="{{element.id}}">{{element.nombre}}
+                            </option>
                         </select>
                     </div>
                     <div>
                         <label for="phone" class="formbold-form-label">Sucursal</label>
-                        <select class="formbold-form-input"  name="sucursal"  [(ngModel)]="vehiculo.sucursal_id" [formControl]="sucursal"
-                            required>
-                            <option [ngValue]=1>sucursal 1</option>
-                            <option [ngValue]=2>sucursal 2</option>
+                        <select class="formbold-form-input" name="sucursal" idSucursal="ngModel"
+                            [(ngModel)]="vehiculo.sucursal_id" required>
+                            <option *ngFor="let element of sucursalesSelect" value="{{element.id}}">{{element.nombre}}
+                            </option>
                         </select>
                     </div>
                 </div>

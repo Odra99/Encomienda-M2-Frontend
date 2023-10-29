@@ -21,28 +21,10 @@
                         <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombre/>
                     </div>
                     <div>
-                        <label for="lastname" class="formbold-form-label"> Nit: </label>
-                        <input type="text" name="nit" id="nit" class="formbold-form-input" #nit/>
+                        <label for="phone" class="formbold-form-label"> Telefono:</label>
+                        <input type="text" name="phone" id="phone" class="formbold-form-input" />
                     </div>
                 </div>
-           
-            <div class="formbold-input-flex">
-                <div>
-                    <label for="email" class="formbold-form-label"> Correo </label>
-                    <input type="email" name="email" id="email" class="formbold-form-input" #email/>
-                </div>
-                <div>
-                    <label for="phone" class="formbold-form-label"> Telefono:</label>
-                    <input type="text" name="phone" id="phone" class="formbold-form-input" />
-                </div>
-            </div>
-
-            <div class="formbold-mb-3">
-                <label for="address" class="formbold-form-label">
-                    Direccion
-                </label>
-                <input type="text" name="address" id="address" class="formbold-form-input" />
-            </div>
         </div>
         <hr/>
         <div>
@@ -56,23 +38,12 @@
                     <input type="text" name="firstname" id="firstname" class="formbold-form-input" />
                 </div>
                 <div>
-                    <label for="lastname" class="formbold-form-label"> CUI </label>
-                    <input type="text" name="lastname" id="lastname" class="formbold-form-input" />
+                    <label for="phone" class="formbold-form-label"> Telefono</label>
+                    <input type="text" name="phone" id="phone" class="formbold-form-input" />
                 </div>
             </div>
-       
-        <div class="formbold-input-flex">
-            <div>
-                <label for="email" class="formbold-form-label"> Correo </label>
-                <input type="email" name="email" id="email" class="formbold-form-input" />
-            </div>
-            <div>
-                <label for="phone" class="formbold-form-label"> Telefono</label>
-                <input type="text" name="phone" id="phone" class="formbold-form-input" />
-            </div>
-        </div>
         <hr/>
-        <app-rastreo></app-rastreo>
+        <app-rastreo [paquete]="paquete"></app-rastreo>
     </div>
 <!--
             <div class="formbold-input-flex">

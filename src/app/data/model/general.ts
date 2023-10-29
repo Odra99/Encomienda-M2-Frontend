@@ -94,3 +94,39 @@ export class tipoSucursal implements Tipos{
   id: number;
   nombre: string;
 }
+export class TipoSucursal{
+  id!:number;
+  nombre!:string;
+}
+export class tipoVehiculo{
+  id!:number;
+  nombre!:string;
+}
+
+export class Rol{
+  id!:number;
+  nombre!: string;
+  descripcion!: string;
+  
+}
+
+export class Paquete{
+  id!:number;
+  segmento_id: number;
+  estado_paquete_id: number;
+  no_guia: string;
+  descripcion: string;
+  peso: number;
+  volumen: number;
+  remitente: string;
+  destinatario: string;
+  idCiudadInicio: number;
+  idCiudadDestino: number;
+  alto:number;
+  ancho:number;
+  largo: number;
+  ciudadInicio: string;
+  ciudadDestino: string;
+  ciudadInicioObject: Ciudad;
+  ciudadDestinoObject: Ciudad;
+}

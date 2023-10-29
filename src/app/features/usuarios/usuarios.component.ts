@@ -1,5 +1,5 @@
 
-import { Component, ViewChild,OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewChild,OnInit, AfterViewInit ,Input} from '@angular/core';
 import { Usuario } from 'src/app/data/model/general';
 import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
 import { DialogService } from 'src/app/services/others/dialog.service';
@@ -32,6 +32,7 @@ export class UsuariosComponent implements OnInit, AfterViewInit{
   ];
   datos: Usuario[] = [];
   @ViewChild('paginator') paginator: MatPaginator;
+  @Input() usuarioId : number;
 
   dataSource = new MatTableDataSource<Usuario>(this.datos);
 

@@ -8,7 +8,6 @@
             <ul>
                 <li (click)="changeTab(0);" class="user-post active" [ngClass]="{'active':tabs==0}">Ver Sucursales</li>
                 <li (click)="changeTab(1);" class="user-review"  [ngClass]="{'active':tabs==1}">Crear Sucursal</li>
-                <li (click)="changeTab(2);" class="user-setting"  [ngClass]="{'active':tabs==2}">Editar Sucursal</li>
             </ul>
         </div>
         <div class="profile-body">
@@ -113,12 +112,10 @@
                         </mat-card-content>
                     </mat-card>
                 </div>
+                <app-crear-sucursal *ngIf="!list" [sucursalId]="selectedId" (finishEvent)="setListView()"></app-crear-sucursal>
             </div>
             <div *ngIf="tabs==1" class="profile-reviews tab" >
                 <app-crear-sucursal (finishEvent)="setListView()"></app-crear-sucursal>
-            </div>
-            <div *ngIf="tabs==2"class="profile-settings tab" >
-                <app-editar-sucursal [sucursalId]="selectedId" (finishEvent)="setListView()"></app-editar-sucursal>
             </div>
         </div>
     </mat-card-content>

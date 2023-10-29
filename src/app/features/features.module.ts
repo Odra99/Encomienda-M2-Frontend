@@ -3,6 +3,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { FeaturesRouter } from './features.routing';
+import {AutocompleteLibModule} from 'angular-ng-autocomplete';
+
 
 import { CiudadComponent } from './ciudad/ciudad.component';
 import { CityFormComponent } from './ciudad/views/city-form/city-form.component';
@@ -111,6 +113,7 @@ export const MY_FORMATS = {
     ReactiveFormsModule,
     FormsModule,
     TablerIconsModule.pick(TablerIcons),
+    AutocompleteLibModule,
   ],
   exports:[
 

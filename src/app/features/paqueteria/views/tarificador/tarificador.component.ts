@@ -1,4 +1,13 @@
-import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ViewChild, ElementRef, Renderer2,SimpleChanges,
+  Output, Input,  EventEmitter} from '@angular/core';
+  import { Sucursal,Paquete } from 'src/app/data/model/general';
+  import { FormControl, NgForm, Validators } from '@angular/forms';
+  import { PaqueteService } from 'src/app/services/backend/paquete.service';
+  import { ToasterService } from 'src/app/services/others/toaster.service';
+  import { ToasterEnum } from 'src/global/toaster-enum';
+  import { CiudadService } from 'src/app/services/backend/ciudad.service';
+import { SucursalService } from 'src/app/services/backend/sucursal.service';
+
 
 @Component({
   selector: 'app-rastreo',
@@ -11,7 +20,20 @@ import { Component, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 export class RastreoComponent {
 
-  constructor(private renderer2: Renderer2) { }
+  constructor(
+    private renderer2: Renderer2,
+    private toasterService: ToasterService,
+    private sucursalService:SucursalService,
+    private paqueteService:PaqueteService,
+    ) { }
+  @Output() finishEvent = new EventEmitter<any>();
+  @ViewChild('paqueteForm', { read: NgForm }) form!: NgForm;
+  @Input() paqueteId: number;
+  @Input() paquete: Paquete;
+  sucursalesSelect: Array<Sucursal>= new Array<Sucursal>;
+  list = true;
+
+
 
   @ViewChild("f1") form1!: ElementRef;
   @ViewChild("f2") form2!: ElementRef;
@@ -39,7 +61,14 @@ export class RastreoComponent {
   }
 
   cambiar(): void {
-    const formC1 = this.form1.nativeElement;
+    this.paquete.volumen=this.paquete.alto*this.paquete.ancho*this.paquete.largo ;
+    if(this.paquete.ciudadDestinoObject!=null){
+      this.paquete.ciudadDestino=this.paquete.ciudadDestinoObject.nombre;
+      this.paquete.idCiudadDestino=this.paquete.ciudadDestinoObject.id;
+      this.paquete.ciudadInicio=this.paquete.ciudadInicioObject.nombre;
+      this.paquete.idCiudadInicio=this.paquete.ciudadInicioObject.id;
+    }
+        const formC1 = this.form1.nativeElement;
     const formC2 = this.form2.nativeElement;
     const formC3 = this.form3.nativeElement;
 
@@ -106,4 +135,92 @@ export class RastreoComponent {
       console.log('calculando precio');
     }
   }
+
+  ngOnInit(): void {
+        if (this.paqueteId) {
+          this.paqueteService.get(this.paqueteId).subscribe({
+        next: (value) => {
+          this.paquete = value.result
+        }, error: () => {
+          this.toasterService.showGenericErrorToast();
+        },
+      })
+    }
+    this.llenarDatosSucursal();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes["paqueteId"]) {
+      this.paqueteService.get(changes["paqueteId"].currentValue).subscribe({
+        next: (value) => {
+          this.paquete = value.result
+        }, error: () => {
+          this.toasterService.showGenericErrorToast();
+        },
+      })
+    }
+  }
+
+  save() {
+    this.form.form.markAllAsTouched();
+    /*
+    if (!this.form.form.valid) {
+      return;
+    }*/
+    this.paqueteService.save(this.paquete).subscribe({
+      next: () => {
+        if (!this.paquete) {
+          this.toasterService.show({
+            message: 'Sucursal creada con exito',
+            type: ToasterEnum.SUCCESS,
+          });
+        } else {
+          this.toasterService.show({
+            message: 'Cambios realizados con exito',
+            type: ToasterEnum.SUCCESS,
+          });
+        }
+        this.finish();
+      }, error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+  finish() {
+    this.finishEvent.emit();
+  }
+
+  llenarDatosSucursal(): void {
+    this.sucursalService.listAllHttp({}).subscribe({
+      next: (value) => {
+        this.sucursalesSelect=value.body.result;
+        console.log(this.sucursalesSelect);
+      },
+      error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+
+  asignarNombreSucursalDestino(nombre:string):void{
+    console.log(nombre);
+    this.paquete.ciudadDestino=nombre;
+  }
+  asignarNombreSucursalOrigen(nombre:string):void{
+    console.log(nombre);
+    this.paquete.ciudadInicio=nombre;
+  }
+/*
+  llenarTipoSucursal():void {
+    this.tipoSucursalService.listAllHttp({}).subscribe({
+      next: (value) => {
+        this.tipoSucursal=value.body.result;
+      },
+      error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+*/
 }
+

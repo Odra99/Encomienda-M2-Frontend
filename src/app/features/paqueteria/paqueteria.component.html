@@ -6,19 +6,19 @@
 
         <div class="navBarP">
             <ul>
-                <li (click)="tabs(0);" class="user-post active" #li0>Ingresar Paquete</li>
-                <li (click)="tabs(1);" class="user-review"  #li1>Egreso de Paquete</li>
-                <li (click)="tabs(2);" class="user-setting"  #li2>Ver Paquetes</li>
+                <li (click)="changeTab(0);" class="user-post active" [ngClass]="{'active':tabs==0}">Ingresar Paquete</li>
+                <li (click)="changeTab(1);" class="user-review"  [ngClass]="{'active':tabs==1}">Egreso de Paquete</li>
+                <li (click)="changeTab(2);" class="user-setting"  [ngClass]="{'active':tabs==2}">Ver Paquetes</li>
             </ul>
         </div>
         <div class="profile-body">
-            <div class="profile-posts tab" #astxt1 >
+            <div class="profile-posts tab"  *ngIf="tabs==0" >
                 <app-enter-package></app-enter-package>
             </div>
-            <div class="profile-reviews tab" #astxt2 style="display: none;">
+            <div class="profile-reviews tab"  *ngIf="tabs==1">
                 <app-hand-package></app-hand-package>
             </div>
-            <div class="profile-settings tab" #astxt3 style="display: none;">
+            <div class="profile-settings tab"  *ngIf="tabs==2">
                 <app-search-paqueteria></app-search-paqueteria>
             </div>
         </div>
