@@ -108,6 +108,12 @@ export class TipoVehiculo implements Tipos{
   estatico!: boolean;
 }
 
+export class TipoSalida implements Tipos{
+  id!:number;
+  nombre!:string;
+  estatico!: boolean;
+}
+
 export class Rol{
   id!:number;
   nombre!: string;
@@ -135,4 +141,30 @@ export class Paquete{
   ciudadDestino: string;
   ciudadInicioObject: Ciudad;
   ciudadDestinoObject: Ciudad;
+}
+
+export class Salida{
+  id!:number;
+  tipo_salida_id!:number;
+  vehiculo_id!:number;
+  segmento_id!:number;
+  fecha_salida!:string;
+  fecha_llegada!:string;
+  fecha_programada!:string;
+  comentario!:string;
+  costo_lb!:number;
+  capacidad_lb!:number;
+  capacidad_reservada!:number;
+  capacidad_ocupada!:number;
+
+  tipoSalida!:TipoSalida
+  vehiculo!:Vehiculo
+  segmento!:Segmento
+}
+
+export class Tarifario{
+  id!:number;
+  fecha!:string;
+  ganancia_envio!:number;
+  costo_lb!:number;
 }
