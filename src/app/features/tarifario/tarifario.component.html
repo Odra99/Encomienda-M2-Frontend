@@ -1,22 +1,26 @@
 <mat-card class="cardWithShadow theme-card">
     <mat-card-header class="d-flex justify-content-between">
-        <mat-card-title class="m-b-0">Tarifario</mat-card-title>
+        <form #tarifarioForm class="w-100 d-flex justify-content-between">
+            <mat-card-title class="m-b-0">Tarifario</mat-card-title>
         <mat-form-field class="w-25"  appearance="outline">
             <mat-label>Porcentaje de ganacia (%)</mat-label>
-            <input matInput type="number" min="0" />
+            <input #porcentajeInput="ngModel" matInput name="porcentaje" id="porcentaje" type="number" min="0" [(ngModel)]="tarifario.ganancia_envio" required />
+            <mat-hint class="mat-error" *ngIf="!tarifario.ganancia_envio && porcentajeInput.touched">Ingresa el porcentaje de ganancia</mat-hint>
           </mat-form-field>
           <mat-form-field  appearance="outline">
             <mat-label>Mes y Año</mat-label>
-            <input matInput [matDatepicker]="dp" [formControl]="date" >
+            <input matInput [matDatepicker]="dp" name="fecha" id="fecha" [formControl]="date" required >
             <mat-hint>MM/YYYY</mat-hint>
             <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
             <mat-datepicker #dp startView="multi-year" (monthSelected)="setMonthAndYear($event, dp)"
                 panelClass="example-month-picker">
             </mat-datepicker>
         </mat-form-field>
-        <button type="button"  mat-flat-button color="primary" >
+        <button type="button"  mat-flat-button color="primary" (click)="createTarifario()" >
             Calcular
         </button>
+        </form>
+       
     </mat-card-header>
     <mat-card-content class="b-t-1">
 
@@ -25,24 +29,9 @@
                 <div class="col-lg-12" >
                     <mat-card class="cardWithShadow">
                         <mat-card-content class="p-24">
-                            <mat-card-title>Sucursales</mat-card-title>
+                            <mat-card-title>Tarifario</mat-card-title>
                             <div class="table-responsive m-t-16">
                                 <table mat-table [dataSource]="dataSource" class="w-100">
-                                    <ng-container matColumnDef="select">
-                                        <th mat-header-cell *matHeaderCellDef >
-                                          <mat-checkbox (change)="$event ? toggleAllRows() : null"
-                                                        [checked]="selection.hasValue() && isAllSelected()"
-                                                        [indeterminate]="selection.hasValue() && !isAllSelected()">
-                                          </mat-checkbox>
-                                        </th>
-                                        <td mat-cell *matCellDef="let row; let i = index">
-                                          <mat-checkbox (click)="$event.stopPropagation()"
-                                                        (change)="$event ? selection.toggle(row) : null"
-                                                        [checked]="selection.isSelected(row)"
-                                                        >
-                                          </mat-checkbox>
-                                        </td>
-                                      </ng-container>
                                     <ng-container matColumnDef="index">
                                         <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
                                             No.
@@ -61,53 +50,42 @@
                                     </ng-container>
 
                                     <!-- Name Column -->
-                                    <ng-container matColumnDef="name">
+                                    <ng-container matColumnDef="fecha">
                                         <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
                                             Nombre
                                         </th>
                                         <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                            {{ element.nombre }}
+                                            {{ element.fecha }}
                                         </td>
                                     </ng-container>
 
                                     <!-- Weight Column -->
-                                    <ng-container matColumnDef="direccion">
+                                    <ng-container matColumnDef="ganancia_envio">
                                         <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
                                             Direccion
                                         </th>
                                         <td mat-cell *matCellDef="let element" class="mat-body-1">
 
                                             
-                                                {{ element.direccion }}
+                                                {{ element.ganancia_envio }}
 
                                         </td>
                                     </ng-container>
                                     <!-- Weight Column -->
-                                    <ng-container matColumnDef="ciudad">
+                                    <ng-container matColumnDef="costo_lb">
                                         <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
                                             Ciudad
                                         </th>
                                         <td mat-cell *matCellDef="let element">
 
                                             <span class="bg-light-accent text-accent rounded f-w-600 p-6 p-y-4 f-s-12">
-                                                {{ element.ciudad.nombre }}
+                                                {{ element.costo_lb }}
                                             </span>
 
                                         </td>
                                     </ng-container>
                                     <!-- Symbol Column -->
-                                    <ng-container matColumnDef="tipoSucursal">
-                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                            Tipo Sucursal
-                                        </th>
-                                        <td mat-cell *matCellDef="let element">
-
-                                            <span class="bg-light-accent text-accent rounded f-w-600 p-6 p-y-4 f-s-12">
-                                                {{ element.tipoSucursal.nombre }}
-                                            </span>
-
-                                        </td>
-                                    </ng-container>
+                                    
 
 
 
