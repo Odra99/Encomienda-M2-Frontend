@@ -80,6 +80,10 @@ export const navItems: NavItem[] = [
     displayName: 'Manejo de Segmentos',
     iconName: 'road',
     route: '/features/segmentos',
+  },{
+    displayName: 'Manejo de Salidas',
+    iconName: 'truck-return',
+    route: '/features/salidas',
   },
   {
     navCap: 'AUTENTIFICACION',

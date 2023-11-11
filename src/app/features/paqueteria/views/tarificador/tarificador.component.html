@@ -25,29 +25,29 @@
                         </div>
 
                         <div class="formbold-form-step-1 active" #fb1>
-                            
+
                             <div class="formbold-input-flex">
                                 <div>
                                     <label for="peso" class="formbold-form-label">Peso del Paquete </label>
-                                    <input type="text" name="lastname" placeholder="Peso en libras" id="lastname" 
-                                        class="formbold-form-input" [(ngModel)]="paquete.peso"/>
+                                    <input type="number" name="lastname" placeholder="Peso en libras" id="lastname" pattern="^[0-9]+"  min="1" 
+                                        class="formbold-form-input" [(ngModel)]="paquete.peso" />
                                 </div>
                             </div>
                             <div class="formbold-input-flex">
                                 <div>
-                                    <label for="alto" class="formbold-form-label"> Ancho</label>
-                                    <input type="number" name="ancho" id="ancho" class="formbold-form-input"
-                                        placeholder="metros" [(ngModel)]="paquete.ancho" #ancho />
+                                    <label for="alto" class="formbold-form-label"> Ancho</label> 
+                                    <input type="number" name="ancho" id="ancho" class="formbold-form-input" pattern="^[0-9]+" min="1" 
+                                        placeholder="cm" [(ngModel)]="paquete.ancho" #ancho />
                                 </div>
                                 <div>
                                     <label for="alto" class="formbold-form-label"> Alto </label>
-                                    <input type="number" name="alto" placeholder="metros" id="alto"
+                                    <input type="number" name="alto" placeholder="cm" id="alto" pattern="^[0-9]+"  min="1" 
                                         class="formbold-form-input" [(ngModel)]="paquete.alto" #alto />
                                 </div>
                                 <div>
                                     <label for="alto" class="formbold-form-label"> Largo </label>
-                                    <input type="number" name="largo" placeholder="metros" id="largo"
-                                        class="formbold-form-input" [(ngModel)]="paquete.largo"#largo />
+                                    <input type="number" name="largo" placeholder="cm" id="largo" pattern="^[0-9]+"  min="1" 
+                                        class="formbold-form-input" [(ngModel)]="paquete.largo" #largo />
                                 </div>
                             </div>
 
@@ -64,8 +64,8 @@
                                     <div>
                                         <label for="email" class="formbold-form-label"> Sucursal de Origen</label>
                                         <select class="formbold-form-input" name="ciudadInicio" #ciudadInicio="ngModel"
-                                            [(ngModel)]="paquete.ciudadInicioObject" required>
-                                            <option *ngFor="let element of sucursalesSelect" value="{{element}}">
+                                            [(ngModel)]="paquete.sucursal_origen_id" required>
+                                            <option *ngFor="let element of sucursalesSelect" [value]="element.id">
                                                 {{element.nombre}}</option>
                                         </select>
                                     </div>
@@ -73,12 +73,12 @@
                                 <div>
                                     <label for="email" class="formbold-form-label"> Sucursal Destino</label>
                                     <select class="formbold-form-input" name="ciudadDestino" #ciudadDestino="ngModel"
-                                    [(ngModel)]="paquete.ciudadDestinoObject" required>
-                                    <option *ngFor="let element of sucursalesSelect" value="{{element}}" >
-                                        {{element.nombre}}</option>
-                                </select>
+                                        [(ngModel)]="paquete.sucursal_destino_id" required>
+                                        <option *ngFor="let element of sucursalesSelect" [value]="element.id">
+                                            {{element.nombre}}</option>
+                                    </select>
                                 </div>
-                               <!-- <div>
+                                <!-- <div>
                                     <label for="address" class="formbold-form-label"> Referencia</label>
                                     <input type="text" name="desc" id="desc" placeholder="Referencia para la entrega"
                                         class="formbold-form-input" #descripcion />
@@ -91,25 +91,38 @@
                                 <h4>Resumen:</h4>
                                 <div class="formbold-input-flex">
                                     <label style="font-weight: bold;">Origen:</label>
-                                    <label #origenLbl>{{ paquete.ciudadInicio }}</label>
+                                    <label #origenLbl>{{ paquete.sucursalOrigen }}</label>
                                 </div>
 
                                 <div class="formbold-input-flex">
                                     <label style="font-weight: bold;">Entrega:</label>
-                                    <label #destinoLbl>{{ paquete.ciudadDestino }}</label>
+                                    <label #destinoLbl>{{ paquete.sucursalDestino }}</label>
                                 </div>
                                 <div class="formbold-input-flex">
                                     <label style="font-weight: bold;">Volumen:</label>
-                                    <label #destinoLbl>{{ paquete.alto*paquete.ancho*paquete.largo }} m3</label>
+                                    <label #destinoLbl>{{ paquete.alto*paquete.ancho*paquete.largo }} cm3</label>
                                 </div>
-                                <div class="formbold-input-flex" style="display: none;" #divTiempoEst>
-                                    <label style="font-weight: bold;">Tiempo Estimado en dias:</label>
-                                    <label>5 dias</label>
+                                 <div class="formbold-input-flex" style="display: none;" #divTiempoEst>
+                                    <label style="font-weight: bold;">Peso:</label>
+                                    <label>{{ paquete.peso }} lb</label>
+                                </div>
+                                <div class="formbold-input-flex" #divTipoCotizacion>
+                                    <label style="font-weight: bold;">Tipo Cotizacion:</label>
+                                    <select class="formbold-form-input" name="tipoCotizacion"
+                                    [(ngModel)]="tipoCotizacion" required>
+                                        <option  [value]="0">Menor Distancia</option>
+                                        <option  [value]="1">Menor Precio</option>
+                                    </select>
+                                </div>
+                                <div class="formbold-input-flex" style="display: none;" #divDistancia>
+                                    <label style="font-weight: bold;">Distancia:</label>
+                                    <label>{{ paquete.distanciaRecorrida }} km</label>
                                 </div>
                                 <div class="formbold-input-flex" style="display: none;" #divPrecioEst>
                                     <label style="font-weight: bold;">Precio Estimado:</label>
-                                    <label class="precioLbl">Q.90.00</label>
+                                    <label class="precioLbl">Q.{{paquete.precio}}</label>
                                 </div>
+                               
                             </div>
                             <button class="formbold-calcule-btn" (click)="calularPrecio()" #calcular>
                                 CALCULAR

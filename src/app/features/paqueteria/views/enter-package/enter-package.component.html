@@ -1,51 +1,49 @@
-
 <div class="formbold-main-wrapper">
     <div class="formbold-form-wrapper">
         <img
             src="https://www.kroger.com/content/v2/binary/image/pr/daytona-500-grocery-delivery/imageset/2511103_22_p1w1_ocado_daytona_le_fl--2511103_22_p1w1_ocado_daytona_le_dsk_fl_1280x304.png">
-            
-            <div class="formbold-form-title">
-                <h2 class="">Registrar Paquete</h2>
-                <p>
-                    Ingresa nuevo paquete.
-                </p>
-            </div>
+
+        <div class="formbold-form-title">
+            <h2 class="">Registrar Paquete</h2>
+            <p>
+                Ingresa nuevo paquete.
+            </p>
+        </div>
+        <div>
+            <app-rastreo></app-rastreo>
+            <hr />
             <div>
                 <h3>Datos del Cliente</h3>
-                <div class="formbold-input-flex">
-
+                <div class="formbold-mb-3">
                     <div>
                         <label for="firstname" class="formbold-form-label">
                             Nombre:
                         </label>
-                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombre/>
-                    </div>
-                    <div>
-                        <label for="phone" class="formbold-form-label"> Telefono:</label>
-                        <input type="text" name="phone" id="phone" class="formbold-form-input" />
+                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombre [(ngModel)]="paquete.remitente" />
                     </div>
                 </div>
-        </div>
-        <hr/>
-        <div>
+            </div>
+            <hr />
             <h3>Datos del Destinatario</h3>
-            <div class="formbold-input-flex">
-
+            <div class="formbold-mb-3">
                 <div>
                     <label for="firstname" class="formbold-form-label">
                         Nombre Completo
                     </label>
-                    <input type="text" name="firstname" id="firstname" class="formbold-form-input" />
-                </div>
-                <div>
-                    <label for="phone" class="formbold-form-label"> Telefono</label>
-                    <input type="text" name="phone" id="phone" class="formbold-form-input" />
+                    <input type="text" name="firstname" id="firstname" class="formbold-form-input" [(ngModel)]="paquete.destinatario" />
                 </div>
             </div>
-        <hr/>
-        <app-rastreo [paquete]="paquete"></app-rastreo>
-    </div>
-<!--
+            <hr />
+            <h3>Observaciones</h3>
+            <div class="formbold-mb-3">
+                <div>
+                    <label for="firstname" class="formbold-form-label">
+                    </label>
+                    <input type="text" name="firstname" id="firstname" class="formbold-form-input" [(ngModel)]="paquete.descripcion" />
+                </div>
+            </div>
+        </div>
+        <!--
             <div class="formbold-input-flex">
                 <div>
                     <label for="post" class="formbold-form-label"> Post/Zip code </label>
@@ -75,7 +73,7 @@
                 </label>
             </div>
 -->
-            <button class="formbold-btn">Registrar Envio</button>
-      
+        <button class="formbold-btn" (click)="RegistrarEnvio()">Registrar Envio</button>
+
     </div>
 </div>

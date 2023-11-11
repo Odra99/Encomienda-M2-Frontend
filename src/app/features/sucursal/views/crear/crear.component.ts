@@ -47,8 +47,8 @@ export class CrearSucursalComponent {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes["puestoId"]) {
-      this.sucursalService.get(changes["puestoId"].currentValue).subscribe({
+    if (changes["sucursalId"]) {
+      this.sucursalService.get(changes["sucursalId"].currentValue).subscribe({
         next: (value) => {
           this.sucursal = value.result
         }, error: () => {

@@ -1,28 +1,25 @@
-import { HttpClient, HttpParams, HttpResponse ,} from '@angular/common/http';
-import { EventEmitter, Injectable, Output } from '@angular/core';
+import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Paquete } from 'src/app/data/model/general';
+import {  Salida } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
-const baseUrl = environment.encomiendaBackendUrl + 'paquete';
+const baseUrl = environment.encomiendaBackendUrl + 'salida';
 
 @Injectable({
   providedIn: 'root',
 })
-export class PaqueteService {
-
-  @Output()
-  paqueteEmitter = new EventEmitter<Paquete>();
-
-  paquete: Paquete;
+export class SalidaService {
   constructor(private http: HttpClient) {}
 
-  save(entity: Paquete): Observable<any> {
+
+  save(entity: Salida): Observable<any> {
     if (entity.id) {
       return this.http.patch<any>(`${baseUrl}/${entity.id}`, entity);
     }
     return this.http.post<any>(`${baseUrl}`, entity);
   }
+
   get(id: number): Observable<any> {
     return this.http.get<any>(`${baseUrl}/${id}`);
   }
@@ -30,33 +27,15 @@ export class PaqueteService {
   delete(id: number): Observable<HttpResponse<any>> {
     return this.http.delete<HttpResponse<any>>(`${baseUrl}/${id}`);
   }
-  
-  cotizar(entity: Paquete): Observable<any> {
-    return this.http.post<any>(`${baseUrl}/cotizar`, entity,);
-  }
 
   listAllHttp(queryParams: any): Observable<HttpResponse<any>> {
     const params = this.getQueryParams(queryParams);
+    console.log( queryParams);
     return this.http.get<HttpResponse<any>>(baseUrl, {
-      params: params,
+      params: queryParams,
       observe: 'response',
     });
   }
-
-    // Cambiamos el atributo this.persona y llamamos a cambioPersona().
-    setPaquete(nuevoPaquete: Paquete) {
-      
-      this.paquete = nuevoPaquete;
-      this.cambiosPaquete();
-      
-    }
-  
-    // Emitimos los cambio de this.persona.
-    cambiosPaquete() {
-      console.log(this.paquete)
-      console.log('cambiandoPaquet')
-      this.paqueteEmitter.emit(this.paquete);
-    }
 
   private getQueryParams(queryParams: any): HttpParams {
     let params = new HttpParams();
@@ -74,6 +53,4 @@ export class PaqueteService {
       params = params.append('status', queryParams['status']);
     return params;
   }
-
- 
 }

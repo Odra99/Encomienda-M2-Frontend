@@ -116,23 +116,61 @@ export class Rol{
   
 }
 
+
+
 export class Paquete{
-  id!:number;
-  segmento_id: number;
-  estado_paquete_id: number;
-  no_guia: string;
+  sucursal_origen_id: number;
+  sucursal_destino_id: number;
   descripcion: string;
   peso: number;
   volumen: number;
   remitente: string;
   destinatario: string;
-  idCiudadInicio: number;
-  idCiudadDestino: number;
+  campo:string;
+
+  id!:number;
+  segmento_id: number;
+  estado_paquete_id: number;
+  no_guia: string;
   alto:number;
   ancho:number;
   largo: number;
-  ciudadInicio: string;
-  ciudadDestino: string;
-  ciudadInicioObject: Ciudad;
-  ciudadDestinoObject: Ciudad;
+  sucursalOrigen: string;
+  sucursalDestino: string;
+  sucursalInicioObject: Sucursal;
+  sucursalDestinoObject: Sucursal;
+  //ayuda para el tarificador
+  precio:number;
+  distanciaRecorrida:number;
+ 
+}
+
+
+export class Salida{
+  id!:number;
+  tipo_salida_id: number;
+  vehiculo_id: number;
+  segmento_id: number;
+  fecha_salida: string;
+  fecha_llegada: string;
+  fecha_programada: string;
+  comentario: string;
+  costo_lb: number;
+  capacidad_lb: number;
+  capacidad_reservada: number;
+  capacidad_ocupada: number;
+}
+
+export class Cotizacion{
+  criterio: string;
+  descripcion:string;
+  costo_total: number;
+  distancia_total: number;
+}
+
+
+export class PaqueteCotizar{
+  sucursal_origen_id: number;
+  sucursal_destino_id: number;
+  peso:number;
 }
