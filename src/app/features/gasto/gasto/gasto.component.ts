@@ -1,14 +1,20 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatDatepicker } from '@angular/material/datepicker';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute } from '@angular/router';
 import * as moment from 'moment';
-import { Gasto } from 'src/app/data/model/general';
+import { Gasto, Sucursal, TipoGasto } from 'src/app/data/model/general';
 import { needConfirmation } from 'src/app/decorators/confirm-dialog.decorator';
 import { CiudadService } from 'src/app/services/backend/ciudad.service';
 import { GastoService } from 'src/app/services/backend/gastos.service';
+import { SucursalService } from 'src/app/services/backend/sucursal.service';
+import { TipoService } from 'src/app/services/backend/tipos.service';
 import { DialogService } from 'src/app/services/others/dialog.service';
 import { ToasterService } from 'src/app/services/others/toaster.service';
 import { PermissionTypeEnum } from 'src/global/permissions';
+import { TipoEnum } from 'src/global/tipo-enum';
 import { ToasterEnum } from 'src/global/toaster-enum';
 
 @Component({
@@ -37,11 +43,29 @@ export class GastoComponent implements OnInit, AfterViewInit {
   selectedId: number;
   permissionTypes= PermissionTypeEnum;
 
+  filtersGasto={
+    sucursal_id:'',
+    tipo_gasto_id:'',
+    fecha:''
+  }
+
+
+  sucursales: Sucursal[] = [];
+  tipoGastos: TipoGasto[] = [];
+
   constructor(
     private gastoService: GastoService,
     private toasterService: ToasterService,
-    private confirmationDialogService: DialogService
-  ) {}
+    private confirmationDialogService: DialogService,
+    private route: ActivatedRoute,
+    private sucursalService: SucursalService,
+    private tiposService: TipoService
+  ) {
+    let fecha = this.route.snapshot.paramMap.get('fecha')
+    if(fecha){
+      this.filtersGasto.fecha = fecha
+    }
+  }
 
   changeTab(num: number) {
     this.tabs = num;
@@ -54,14 +78,39 @@ export class GastoComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getAll();
+    this.getSucursales();
+    this.getTipoGasto();
   }
 
   getAll() {
-    this.gastoService.listAllHttp({}).subscribe({
+    this.gastoService.listAllHttp(this.filtersGasto).subscribe({
       next: (value) => {
         this.datos = value.body.result;
         this.dataSource = new MatTableDataSource<Gasto>(this.datos);
         this.dataSource.paginator = this.paginator;
+      },
+      error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+
+
+  getSucursales() {
+    this.sucursalService.listAllHttp({}).subscribe({
+      next: (value) => {
+        this.sucursales = value.body.result;
+      },
+      error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+
+  getTipoGasto() {
+    this.tiposService.listAllHttp(TipoEnum.T_GASTO, {}).subscribe({
+      next: (value) => {
+        this.tipoGastos = value.body.result;
       },
       error: () => {
         this.toasterService.showGenericErrorToast();
@@ -101,5 +150,22 @@ export class GastoComponent implements OnInit, AfterViewInit {
 
   formatDate(date: string) {
     return moment(date).format('MM/YYYY');
+  }
+
+  date = new FormControl(moment());
+
+  setMonthAndYear(
+    normalizedMonthAndYear: moment.Moment,
+    datepicker: MatDatepicker<moment.Moment>
+  ) {
+    const ctrlValue = this.date.value!;
+    if (ctrlValue) {
+      ctrlValue.month(normalizedMonthAndYear.month());
+      ctrlValue.year(normalizedMonthAndYear.year());
+      this.filtersGasto.fecha = normalizedMonthAndYear.format();
+      this.getAll()
+      this.date.setValue(ctrlValue);
+      datepicker.close();
+    }
   }
 }

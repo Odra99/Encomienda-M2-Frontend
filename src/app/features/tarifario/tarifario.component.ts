@@ -128,10 +128,15 @@ export class TarifarioComponent implements OnInit, AfterViewInit {
     this.tarifarioService.save(this.tarifario).subscribe({
       next: () => {
         this.toasterService.show({message:"Tarifario calculado con exito",type:ToasterEnum.SUCCESS})
+        this.getAll();
       },
       error: () => {
         this.toasterService.showGenericErrorToast();
       },
     });
+  }
+
+  format(fecha:string){
+    return moment(fecha).format('MM/YYYY');;
   }
 }
