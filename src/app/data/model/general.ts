@@ -191,3 +191,14 @@ export class PaqueteCotizar{
   sucursal_destino_id: number;
   peso:number;
 }
+
+export class Tracking{
+  id!:string;
+  paquete_id!:string;
+  sucursal_id!:string;
+  estado_tracking_id!:string;
+  salida_id!:string;
+  actualizacion!:string;
+  comentario!:string;
+  paquete!:Paquete;
+}

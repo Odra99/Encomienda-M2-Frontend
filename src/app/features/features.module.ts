@@ -53,6 +53,8 @@ import { SegmentoComponent } from './segmento/segmento.component';
 import { SegmentoFormComponent } from './segmento/views/segmento-form/segmento-form.component';
 import { CheckPermissionDirective } from '../directives/check-permission.directive';
 import { TarifarioComponent } from './tarifario/tarifario.component';
+import { SalidaViewsComponent } from './salida/salida-views/salida-views.component';
+import { SalidaViewsAllComponent } from './salida/salida-views-all/salida-views-all.component';
 
 
 export const MY_FORMATS = {
@@ -104,7 +106,9 @@ export const MY_FORMATS = {
     SegmentoComponent,
     SegmentoFormComponent,
     CheckPermissionDirective,
-    TarifarioComponent
+    TarifarioComponent,
+    SalidaViewsComponent,
+    SalidaViewsAllComponent
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),

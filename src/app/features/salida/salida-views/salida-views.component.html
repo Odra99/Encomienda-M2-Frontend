@@ -1,0 +1,148 @@
+<mat-card class="cardWithShadow theme-card">
+    <mat-card-header class="d-flex justify-content-between">
+        <form #tarifarioForm class="w-100 d-flex justify-content-between" *ngIf="salidaId">
+            <mat-card-title class="m-b-0">Salida: {{salidaId}} - Carga</mat-card-title>
+
+        </form>
+
+    </mat-card-header>
+    <mat-card-content class="b-t-1">
+
+        <div class="profile-body">
+            <div class="profile-posts tab  row" #astxt1>
+                <div class="col-lg-6">
+                    <mat-card class="cardWithShadow">
+                        <mat-card-content class="p-24">
+                            <mat-card-title>Paquetes no cargados</mat-card-title>
+                            <div class="table-responsive m-t-16">
+                                <table mat-table [dataSource]="dataSource" class="w-100">
+                                    <ng-container matColumnDef="index">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                            No.
+                                        </th>
+                                        <td mat-cell *matCellDef="let element; let i = index">
+                                            <div class="d-flex align-items-center">
+
+                                                <div class="m-l-16">
+                                                    <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                                                        {{i+1}}
+                                                    </h6>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="guia">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                            No. guia
+                                        </th>
+                                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+                                            {{element.no_guia}}
+                                        </td>
+                                    </ng-container>
+
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="actions">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 ">
+                                            Acciones
+                                        </th>
+                                        <td mat-cell *matCellDef="let element" class="mat-body-1 ">
+                                            <button mat-mini-fab class="bg-light-primary text-primary m-1"
+                                                [appCheckPermission]="permissionTypes.UPDATE" matTooltip="Cargar"
+                                                (click)="loadPackage(element.id)">
+                                                <i-tabler name="package-export" class="icon-16"></i-tabler>
+                                            </button>
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+                                </table>
+                                <mat-paginator #paginatorPaquetes [pageSizeOptions]="[5,10,15,20]"
+                                    showFirstLastButtons></mat-paginator>
+
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+                <div class="col-lg-6">
+                    <mat-card class="cardWithShadow">
+                        <mat-card-content class="p-24">
+                            <mat-card-title>Paquetes Cargados</mat-card-title>
+                            <div class="table-responsive m-t-16">
+                                <table mat-table [dataSource]="dataSourceCargados" class="w-100">
+                                    <ng-container matColumnDef="index">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                            No.
+                                        </th>
+                                        <td mat-cell *matCellDef="let element; let i = index">
+                                            <div class="d-flex align-items-center">
+
+                                                <div class="m-l-16">
+                                                    <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                                                        {{i+1}}
+                                                    </h6>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </ng-container>
+
+                                    <!-- Name Column -->
+                                    <ng-container matColumnDef="guia">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                            No. de guia
+                                        </th>
+                                        <td mat-cell *matCellDef="let element" class="mat-body-1">
+
+                                        </td>
+                                    </ng-container>
+
+
+
+
+                                    <!-- Symbol Column -->
+                                    <ng-container matColumnDef="actions">
+                                        <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14 ">
+                                            Acciones
+                                        </th>
+                                        <td mat-cell *matCellDef="let element" class="mat-body-1 ">
+                                            <button mat-icon-button [matMenuTriggerFor]="menu"
+                                                aria-label="Example icon-button with a menu">
+                                                <mat-icon>more_vert</mat-icon>
+                                            </button>
+                                            <mat-menu #menu="matMenu">
+                                                <button mat-menu-item
+                                                    [routerLink]="['/features/gastos',element.fecha   ]">
+                                                    <i-tabler name="receipt-2" class="icon-16"></i-tabler>
+                                                    <span>Ver Gastos</span>
+                                                </button>
+                                                <button mat-menu-item>
+                                                    <i-tabler name="tir" class="icon-16"></i-tabler>
+                                                    <span>Ver Salidas</span>
+                                                </button>
+                                            </mat-menu>
+
+
+                                        </td>
+                                    </ng-container>
+
+                                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                                    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+                                </table>
+                                <mat-paginator #paginatorPaquetesCargados [pageSizeOptions]="[5,10,15,20]"
+                                    showFirstLastButtons></mat-paginator>
+
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
