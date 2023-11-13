@@ -6,17 +6,47 @@
 
         <div class="navBarP">
             <ul>
-                <li (click)="changeTab(0);" [appCheckPermission]="permissionTypes.READ"  class="user-post active" [ngClass]="{'active':tabs==0}">Ver Gastos
+                <li (click)="changeTab(0);" [appCheckPermission]="permissionTypes.READ" class="user-post active"
+                    [ngClass]="{'active':tabs==0}">Ver Gastos
                 </li>
-                <li (click)="changeTab(1);" [appCheckPermission]="permissionTypes.CREATE"  class="user-review" [ngClass]="{'active':tabs==1}">Ingresar Gastos</li>
+                <li (click)="changeTab(1);" [appCheckPermission]="permissionTypes.CREATE" class="user-review"
+                    [ngClass]="{'active':tabs==1}">Ingresar Gastos</li>
             </ul>
         </div>
         <div class="profile-body">
             <div [hidden]="tabs!=0" class="profile-posts tab">
-                <div class="col-lg-12" [hidden]="!list" [appCheckPermission]="permissionTypes.READ" >
+                <div class="col-lg-12" [hidden]="!list" [appCheckPermission]="permissionTypes.READ">
                     <mat-card class="cardWithShadow">
                         <mat-card-content class="p-24">
                             <mat-card-title>Gastos</mat-card-title>
+                            <div class="m-t-16 d-flex justify-content-evenly">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Mes y Año</mat-label>
+                                    <input matInput [matDatepicker]="dp" name="fecha" id="fecha" [formControl]="date"
+                                        >
+                                    <mat-hint>MM/YYYY</mat-hint>
+                                    <mat-datepicker-toggle matIconSuffix [for]="dp"></mat-datepicker-toggle>
+                                    <mat-datepicker #dp startView="multi-year"
+                                        (monthSelected)="setMonthAndYear($event, dp)" panelClass="example-month-picker">
+                                    </mat-datepicker>
+                                </mat-form-field>
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Sucursal</mat-label>
+                                    <mat-select [(value)]="filtersGasto.sucursal_id" (selectionChange)="getAll()" >
+                                        <mat-option></mat-option>
+                                        <mat-option *ngFor="let sucursa of sucursales"
+                                            [value]="sucursa.id">{{sucursa.nombre}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field  appearance="outline">
+                                    <mat-label>Tipo de Gasto</mat-label>
+                                    <mat-select  [(value)]="filtersGasto.tipo_gasto_id" (selectionChange)="getAll()">
+                                        <mat-option></mat-option>
+                                        <mat-option *ngFor="let tipo_gasto of tipoGastos"
+                                            [value]="tipo_gasto.id">{{tipo_gasto.nombre}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
                             <div class="table-responsive m-t-16">
                                 <table mat-table [dataSource]="dataSource" class="w-100">
                                     <ng-container matColumnDef="index">
@@ -42,7 +72,7 @@
                                             Sucursal
                                         </th>
                                         <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                           
+
                                             {{ element.sucursal.nombre }}
                                         </td>
                                     </ng-container>
@@ -72,21 +102,22 @@
                                     </ng-container>
                                     <ng-container matColumnDef="monto">
                                         <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                             Monto
+                                            Monto
                                         </th>
                                         <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                           
+
                                             {{ element.monto }}
                                         </td>
                                     </ng-container>
 
                                     <ng-container matColumnDef="fecha">
                                         <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                             Fecha
+                                            Fecha
                                         </th>
                                         <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                            <span class="bg-light-success text-success rounded f-w-600 p-6 p-y-4 f-s-12">
-                                            {{ formatDate(element.fecha) }}
+                                            <span
+                                                class="bg-light-success text-success rounded f-w-600 p-6 p-y-4 f-s-12">
+                                                {{ formatDate(element.fecha) }}
                                             </span>
                                         </td>
                                     </ng-container>
@@ -97,12 +128,14 @@
                                             Acciones
                                         </th>
                                         <td mat-cell *matCellDef="let element" class="mat-body-1 ">
-                                            <button mat-mini-fab class="bg-light-primary text-primary m-1" [appCheckPermission]="permissionTypes.UPDATE" 
-                                                matTooltip="Editar" (click)="edit(element.id)">
+                                            <button mat-mini-fab class="bg-light-primary text-primary m-1"
+                                                [appCheckPermission]="permissionTypes.UPDATE" matTooltip="Editar"
+                                                (click)="edit(element.id)">
                                                 <i-tabler name="edit-circle" class="icon-16"></i-tabler>
                                             </button>
-                                            <button mat-mini-fab class="bg-light-error text-error m-1" [appCheckPermission]="permissionTypes.DELETE" 
-                                                matTooltip="Eliminar" (click)="deleteCiudad(element.id)">
+                                            <button mat-mini-fab class="bg-light-error text-error m-1"
+                                                [appCheckPermission]="permissionTypes.DELETE" matTooltip="Eliminar"
+                                                (click)="deleteCiudad(element.id)">
                                                 <i-tabler name="trash-filled" class="icon-16"></i-tabler>
                                             </button>
                                         </td>
@@ -119,12 +152,14 @@
                         </mat-card-content>
                     </mat-card>
                 </div>
-                <app-gasto-form [appCheckPermission]="permissionTypes.UPDATE"  *ngIf="!list" [gastoId]="selectedId" (finishEvent)="setListView()"></app-gasto-form>
+                <app-gasto-form [appCheckPermission]="permissionTypes.UPDATE" *ngIf="!list" [gastoId]="selectedId"
+                    (finishEvent)="setListView()"></app-gasto-form>
             </div>
             <div *ngIf="tabs==1" class="profile-reviews tab">
-                <app-gasto-form (finishEvent)="setListView()" [appCheckPermission]="permissionTypes.CREATE" ></app-gasto-form>
+                <app-gasto-form (finishEvent)="setListView()"
+                    [appCheckPermission]="permissionTypes.CREATE"></app-gasto-form>
             </div>
-            
+
 
         </div>
     </mat-card-content>

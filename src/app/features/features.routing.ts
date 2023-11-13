@@ -52,6 +52,10 @@ export const FeaturesRouter: Routes = [
         
         canActivate: [AllowNavigationGuard],
       },{
+        path: 'gastos/:fecha', component: GastoComponent,
+        
+        canActivate: [AllowNavigationGuard],
+      },{
         path: 'segmentos', component: SegmentoComponent,
         
         canActivate: [AllowNavigationGuard],

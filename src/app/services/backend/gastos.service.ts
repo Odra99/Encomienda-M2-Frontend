@@ -37,10 +37,12 @@ export class GastoService {
 
   private getQueryParams(queryParams: any): HttpParams {
     let params = new HttpParams();
-    if (queryParams['sucursal_id'] !== undefined)
+    if (queryParams['sucursal_id'] !== undefined && queryParams['sucursal_id']!='')
       params = params.append('sucursal_id', queryParams['sucursal_id']);
-    if (queryParams['tipo_gasto_id'] !== undefined)
+    if (queryParams['tipo_gasto_id'] !== undefined && queryParams['tipo_gasto_id']!='')
       params = params.append('tipo_gasto_id', queryParams['tipo_gasto_id']);
+    if (queryParams['fecha'] !== undefined && queryParams['fecha']!='') 
+      params = params.append('fecha', queryParams['fecha']);
     return params;
   }
 }
