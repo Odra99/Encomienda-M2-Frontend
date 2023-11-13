@@ -36,6 +36,7 @@ import { SucursalesComponent } from './sucursal/sucursal.component';
 import {CrearSucursalComponent} from './sucursal/views/crear/crear.component';
 import {ListarSucursalComponent} from './sucursal/views/listar/listar.component';
 import {EditarSucursalComponent} from './sucursal/views/editar/editar.component';
+import { SalidaComponent } from './salida/salida.component';
 
 //usuarios
 import { UsuariosComponent } from './usuarios/usuarios.component';
@@ -86,7 +87,7 @@ export const MY_FORMATS = {
     ListarSucursalComponent,
     EditarSucursalComponent,
     CrearSucursalComponent,
-    
+    SalidaComponent,
     UsuariosComponent,
     CrearUsuarioComponent,
     ListarUsuariosComponent,

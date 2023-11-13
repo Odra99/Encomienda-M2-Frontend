@@ -1,7 +1,7 @@
 import { HttpClient, HttpParams, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Salida } from 'src/app/data/model/general';
+import {  Salida } from 'src/app/data/model/general';
 import { environment } from 'src/environment/environment';
 
 const baseUrl = environment.encomiendaBackendUrl + 'salida';
