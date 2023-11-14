@@ -1,6 +1,9 @@
 <mat-card class="cardWithShadow theme-card">
     <mat-card-header class="d-flex justify-content-between">
-            <mat-card-title class="m-b-0">Salida</mat-card-title>
+            <mat-card-title class="m-b-0">Salida: {{salidaId}} - Visualizacion</mat-card-title>
+            <button [routerLink]="['/features/salidas']"  mat-flat-button color="primary" class=" mb-3">
+              Regresar
+          </button>
     </mat-card-header>
     <mat-card-content class="b-t-1">
         <div class="profile-body">

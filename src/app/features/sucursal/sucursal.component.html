@@ -1,6 +1,10 @@
 <mat-card class="cardWithShadow theme-card">
-    <mat-card-header>
+    <mat-card-header class="d-flex justify-content-between">  
         <mat-card-title class="m-b-0">Sucursales</mat-card-title>
+
+        <button [routerLink]="['/features/sucursales/map']"  mat-flat-button color="primary" class=" mb-3">
+            Mapa
+        </button>
     </mat-card-header>
     <mat-card-content class="b-t-1">
 

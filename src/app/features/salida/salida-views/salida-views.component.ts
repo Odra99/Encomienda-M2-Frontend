@@ -41,6 +41,10 @@ export class SalidaViewsComponent implements OnInit{
     'actions',
   ];
 
+  displayedColumnsCargados: string[] = [
+    'index',
+    'guia'
+  ];
   datos: Paquete[] = [];
   datosCargados: Paquete[] = [];
   @ViewChild('paginatorPaquetes') paginator: MatPaginator;
@@ -77,7 +81,7 @@ export class SalidaViewsComponent implements OnInit{
     })
     this.paquetesService.listAllHttp(this.filtersPackageCargados).subscribe({
       next: (value) => {
-        this.datos = value.body.result;
+        this.datosCargados = value.body.result;
         this.dataSourceCargados = new MatTableDataSource<Paquete>(this.datosCargados);
         this.dataSourceCargados.paginator = this.paginatorCargados;
       },

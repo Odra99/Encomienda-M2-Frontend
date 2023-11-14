@@ -1,0 +1,19 @@
+<mat-card class="cardWithShadow theme-card">
+  <mat-card-header class="d-flex justify-content-between">  
+      <mat-card-title class="m-b-0">Sucursales Mapa</mat-card-title>
+
+      <button [routerLink]="['/features/sucursales']"  mat-flat-button color="primary" class=" mb-3">
+          Listado
+      </button>
+  </mat-card-header>
+  <mat-card-content class="b-t-1">
+<div class="map">
+  <google-map height="100vh"
+              width="100%"
+              [options]="mapOptions">
+    <map-marker *ngFor="let marker of markers"
+                [position]="marker.position" [options]="marker.options"></map-marker>
+  </google-map>
+</div>
+  </mat-card-content>
+  </mat-card>

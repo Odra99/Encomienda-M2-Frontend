@@ -86,19 +86,6 @@ export const navItems: NavItem[] = [
     route: '/features/salidas',
   },
   {
-    navCap: 'AUTENTIFICACION',
-  },
-  {
-    displayName: 'Login',
-    iconName: 'lock',
-    route: '/authentication/login',
-  },
-  {
-    displayName: 'Register',
-    iconName: 'user-plus',
-    route: '/authentication/register',
-  },
-  {
     navCap: 'Menu de Administracion',
   },
   {

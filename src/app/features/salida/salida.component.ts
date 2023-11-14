@@ -11,6 +11,7 @@ import { ToasterService } from 'src/app/services/others/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { MatDatepicker } from '@angular/material/datepicker';
 import { SucursalService } from 'src/app/services/backend/sucursal.service';
+import { TipoSalidaEnum } from 'src/global/backend-enum';
 @Component({
   selector: 'app-segmento',
   templateUrl: './salida.component.html',
@@ -39,6 +40,9 @@ export class SalidaComponent implements OnInit, AfterViewInit {
   list = true;
   selectedId:number
   sucursalesSelect:Sucursal[]= [];
+
+  tipoSalidaEnum=TipoSalidaEnum
+
   constructor(
     private salidaService: SalidaService,
     private toasterService: ToasterService,

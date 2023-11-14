@@ -14,6 +14,7 @@ import { TarifarioComponent } from "./tarifario/tarifario.component";
 import { SalidaComponent } from "./salida/salida.component";
 import { SalidaViewsComponent } from "./salida/salida-views/salida-views.component";
 import { SalidaViewsAllComponent } from "./salida/salida-views-all/salida-views-all.component";
+import { MapComponent } from "./sucursal/views/map/map.component";
 
 export const FeaturesRouter: Routes = [
   {
@@ -36,6 +37,11 @@ export const FeaturesRouter: Routes = [
       },
       {
         path: 'sucursales', component: SucursalesComponent,
+        
+        canActivate: [AllowNavigationGuard],
+      },
+      {
+        path: 'sucursales/map', component: MapComponent,
         
         canActivate: [AllowNavigationGuard],
       },

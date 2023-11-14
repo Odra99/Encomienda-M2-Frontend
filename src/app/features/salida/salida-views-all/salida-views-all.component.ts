@@ -26,6 +26,7 @@ export class SalidaViewsAllComponent implements OnInit{
     let salida = this.route.snapshot.paramMap.get('salida')
     if(salida){
       this.filters.salida_id = salida
+      this.salidaId = Number(salida)
     }
   }
 

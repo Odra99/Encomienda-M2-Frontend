@@ -55,6 +55,8 @@ import { CheckPermissionDirective } from '../directives/check-permission.directi
 import { TarifarioComponent } from './tarifario/tarifario.component';
 import { SalidaViewsComponent } from './salida/salida-views/salida-views.component';
 import { SalidaViewsAllComponent } from './salida/salida-views-all/salida-views-all.component';
+import { MapComponent } from './sucursal/views/map/map.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 
 export const MY_FORMATS = {
@@ -108,7 +110,8 @@ export const MY_FORMATS = {
     CheckPermissionDirective,
     TarifarioComponent,
     SalidaViewsComponent,
-    SalidaViewsAllComponent
+    SalidaViewsAllComponent,
+    MapComponent
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),
@@ -119,6 +122,7 @@ export const MY_FORMATS = {
     FormsModule,
     TablerIconsModule.pick(TablerIcons),
     AutocompleteLibModule,
+    GoogleMapsModule
   ],
   exports:[
 
