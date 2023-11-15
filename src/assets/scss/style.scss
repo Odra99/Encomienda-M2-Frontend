@@ -1,6 +1,7 @@
 @use "@angular/material" as mat;
 @include mat.core();
 
+
 @import "variables";
 @import "layouts/transitions";
 @import "helpers/color";
@@ -9,7 +10,15 @@
 //Theme colors
 
 @import "themecolors/default_theme";
+@import "themecolors/predictable_theme";
+
 @include mat.all-component-themes($bluetheme);
+
+.predectible-theme {
+    // This mixin only generates the color styles now.
+@include mat.all-component-themes($predictabletheme);
+  }
+
 
 //container layout
 @import "overrides/materialoverrides";

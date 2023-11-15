@@ -10,8 +10,8 @@
             </button>
             <br>
         </div>
-        <div class="formbold-input-flex" >
-            <div style="width: 45%;">
+        <div class="d-flex align-items-center justify-content-center my-1" >
+            <div class="col-lg-5">
                 <label for="phone" class="formbold-form-label">Sucursal</label>
                 <select class="formbold-form-input" name="sucursal" [(ngModel)]="idSucursal"r equired>
                     <option value="0">todas
@@ -20,17 +20,14 @@
                     </option>
                 </select>
             </div>
-            <div style="width: 45%;">
-                <label for="phone" class="formbold-form-label">fecha</label>
+            <div class="col-lg-5">
+                <label for="phone" class="formbold-form-label">Fecha</label>
                 <div class="formbold-form-input3">
                     <input type="date"  [(ngModel)]="fecha"  class="formbold-form-input2" style="display: inline-flex;">
                     </div>
             </div>
-            <button mat-flat-button class="form-btn search" (click)="getAll()">Buscar </button>
-            <!-- <div>
-                <label for="phone" class="formbold-form-label"> Telefono</label>
-                <input type="text" name="phone" id="phone" class="formbold-form-input" />
-            </div>-->
+            <button class="col-lg-2" mat-flat-button color="accent" (click)="getAll()">Buscar </button>
+           
         </div>
         <div class="profile-body">
             <div class="col-lg-12" *ngIf="list">

@@ -1,0 +1,51 @@
+$mat-primary2: (
+  100: white,
+  500: #fa896b,
+  700: #434344,
+  contrast: (
+    100: white,
+    500: white,
+    700: white,
+  ),
+);
+$mat-secondary2: (
+  100: white,
+  500: #0074ba,
+  700: #5d87ff,
+  contrast: (
+    100: white,
+    500: white,
+    700: white,
+  ),
+);
+
+$mat-warn2: (
+  100: #FDEDE8,
+  500: #fa896b,
+  700: #f3704d,
+  contrast: (
+    100: white,
+    500: white,
+    700: white,
+  ),
+);
+
+$theme-primary2: mat.define-palette($mat-primary2, 500);
+$theme-accent2: mat.define-palette($mat-secondary2, 500);
+$theme-warn2: mat.define-palette($mat-warn2, 500);
+
+$predictabletheme: mat.define-light-theme(
+  (
+    color: (
+      primary: $theme-primary2,
+      accent: $theme-accent2,
+      warn: $theme-warn2,
+    )
+  )
+);
+
+
+
+.bg-primary {
+  background: mat.get-color-from-palette($theme-primary2, 500) !important;
+}

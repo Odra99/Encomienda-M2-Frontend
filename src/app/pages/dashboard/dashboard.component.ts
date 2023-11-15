@@ -368,7 +368,7 @@ export class AppDashboardComponent {
       series: [
         {
           name: '',
-          color: '#49BEFF',
+          color: '#fa896b',
           data: [25, 66, 20, 40, 12, 58, 20],
         },
       ],

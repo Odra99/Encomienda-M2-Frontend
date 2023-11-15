@@ -1,34 +1,52 @@
-import { Injectable, Renderer2, RendererFactory2 } from "@angular/core";
+import { Injectable } from '@angular/core';
 
-// Usamos el decorator que le indica a Angular que esta clase podrá ser injectada en cualquier parte del proyecto
-@Injectable()
-// Creamos la clase para nuestro servicio
+@Injectable({
+  providedIn: 'root',
+})
 export class PredectiveModuleService {
 
+  constructor(){
+    let predective =  localStorage.getItem('predective')
+    if(predective==null || predective ==undefined){
 
-    private renderer:Renderer2;
 
-    constructor(rendererFactory:RendererFactory2){
-        this.renderer = rendererFactory.createRenderer(null,null)
+    localStorage.setItem('predective','false')
     }
-  
-    private url = 'http://localhost:8000/api/v1/'
-    private colorTheme:string;
+  }
 
-    public enterPredectiveModule(){
-        this.url = 'http://localhost:8000/api/v1/test'
+  private enterPredectiveModule() {
+    
+    localStorage.setItem('predective','true')
+  }
+
+  private exitPredectiveModule() {
+
+    localStorage.setItem('predective','false')
+  }
+
+  public changeModule() {
+    let predective = localStorage.getItem('predective')
+    if (predective=='true') {
+      this.exitPredectiveModule();
+    } else {
+      this.enterPredectiveModule();
     }
+  }
 
-    public exitPredectiveModule(){
-        this.url = 'http://localhost:8000/api/v1/'
+  public getUlr() {
+    let predective = localStorage.getItem('predective')
+    if(predective=='true'){
+      return 'http://localhost:8000/api/v1/test'
     }
+    return 'http://localhost:8000/api/v1/'
+  }
 
-    public getUlr(){
-        return this.url
+  public getColorTheme() {
+    let predective = localStorage.getItem('predective')
+    if(predective=='true'){
+
+      return 'predectible-theme'
     }
-
-    private setColorTheme(theme:string){
-        this.colorTheme = theme
-    }
-
+    return ''
+  }
 }
