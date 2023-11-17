@@ -5,32 +5,19 @@ export const navItems: NavItem[] = [
     navCap: 'INICIO',
   },
   {
-    displayName: 'inicio',
+    displayName: 'Dashboard',
     iconName: 'layout-dashboard',
     route: '/dashboard',
+    predictable:true,
   },
   {
     displayName: 'Tarifario',
     iconName: 'calculator',
     route: '/features/tarifario',
+    predictable:true
   },
   {
     navCap: 'Menu Principal',
-  },
-  {
-    displayName: 'Agencias',
-    iconName: 'home-search',
-    route: '/ui-components/badge',
-  },
-  {
-    displayName: 'Quienes Somos?',
-    iconName: 'help-octagon',
-    route: '/ui-components/chips',
-  },
-  {
-    displayName: 'Rastreo',
-    iconName: 'map-search',
-    route: '/ui-components/lists',
   },
   {
     displayName: 'Manejo de Paquetes',
@@ -46,11 +33,13 @@ export const navItems: NavItem[] = [
     displayName: 'Manejo de Vehiculos',
     iconName: 'truck',
     route: '/features/vehiculos',
+    predictable:true
   },
   {
     displayName: 'Manejo de Ciudades',
     iconName: 'building',
     route: '/features/ciudades',
+    predictable:true
   },{
     displayName: 'Manejo de Puestos',
     iconName: 'users-group',
@@ -60,11 +49,13 @@ export const navItems: NavItem[] = [
     displayName: 'Manejo de Sucursales',
     iconName: 'home-cog',
     route: '/features/sucursales',
+    predictable:true
   },
   {
     displayName: 'Manejo de Usuarios',
     iconName: 'user-cog',
     route: '/features/usuarios',
+    predictable:true
   },
   {
     displayName: 'Manejo de Concepto de Gastos',
@@ -75,15 +66,18 @@ export const navItems: NavItem[] = [
     displayName: 'Manejo de Gastos',
     iconName: 'receipt-2',
     route: '/features/gastos',
+    predictable:true
   },
   {
     displayName: 'Manejo de Segmentos',
     iconName: 'road',
     route: '/features/segmentos',
+    predictable:true
   },{
     displayName: 'Manejo de Salidas',
     iconName: 'truck-return',
     route: '/features/salidas',
+    predictable:true
   },
   {
     navCap: 'Menu de Administracion',
