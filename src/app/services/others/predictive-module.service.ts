@@ -14,6 +14,16 @@ export class PredectiveModuleService {
     }
   }
 
+  public isPredective(){
+    let predective =  localStorage.getItem('predective')
+    if(predective==null || predective ==undefined){
+
+
+    return false;
+    }
+    return predective=='true';
+  }
+
   private enterPredectiveModule() {
     
     localStorage.setItem('predective','true')
