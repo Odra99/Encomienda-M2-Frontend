@@ -46,7 +46,7 @@ export class PredectiveModuleService {
   public getUrl() {
     let predective = localStorage.getItem('predective')
     if(predective=='true'){
-      return 'http://localhost:8000/api/v1/test'
+      return 'http://localhost:8000/api/v1/test/'
     }
     return 'http://localhost:8000/api/v1/'
   }
