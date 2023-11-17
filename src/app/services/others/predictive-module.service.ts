@@ -33,7 +33,7 @@ export class PredectiveModuleService {
     }
   }
 
-  public getUlr() {
+  public getUrl() {
     let predective = localStorage.getItem('predective')
     if(predective=='true'){
       return 'http://localhost:8000/api/v1/test'
