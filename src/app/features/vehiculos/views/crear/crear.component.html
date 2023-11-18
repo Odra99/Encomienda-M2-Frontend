@@ -28,16 +28,16 @@
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"> Tipo de vehiculo</label>
-                        <select class="formbold-form-input"  name="tipo"  [(ngModel)]="vehiculo.tipovehiculo_id" required [formControl]="tipo">
-                            <option *ngFor="let element of tipoVehiculoSelect" value="{{element.id}}">{{element.nombre}}
+                        <select class="formbold-form-input"  name="tipo"  [(ngModel)]="vehiculo.tipo_vehiculo_id" required [formControl]="tipo">
+                            <option *ngFor="let element of tipoVehiculoSelect" [ngValue]="element.id">{{element.nombre}}
                             </option>
                         </select>
                     </div>
                     <div>
                         <label for="phone" class="formbold-form-label">Sucursal</label>
-                        <select class="formbold-form-input" name="sucursal" idSucursal="ngModel"
+                        <select class="formbold-form-input" name="sucursal" 
                             [(ngModel)]="vehiculo.sucursal_id" required>
-                            <option *ngFor="let element of sucursalesSelect" [value]="element.id">{{element.nombre}}
+                            <option *ngFor="let element of sucursalesSelect" [ngValue]="element.id">{{element.nombre}}
                             </option>
                         </select>
                     </div>
@@ -47,7 +47,7 @@
                     <div>
                         <label for="email" class="formbold-form-label">Costo/km en Q.</label>
                         <input type="number" id="mts2" class="formbold-form-input" name="costokm" [formControl]="costokm" 
-                            [(ngModel)]="vehiculo.costokm" required /> 
+                            [(ngModel)]="vehiculo.costo_km" required /> 
                     </div>
                 </div>
             </div>

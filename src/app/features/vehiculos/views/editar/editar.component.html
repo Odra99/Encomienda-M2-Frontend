@@ -38,7 +38,7 @@
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"> Tipo de vehiculo</label>
-                        <select class="formbold-form-input"name="tipo" #tipoInput="ngModel" [(ngModel)]="vehiculo.tipovehiculo_id" required>
+                        <select class="formbold-form-input"name="tipo" #tipoInput="ngModel" [(ngModel)]="vehiculo.tipo_vehiculo_id" required>
                             <option>camion</option>
                             <option>vehiculo liviano</option>
                         </select>
@@ -57,7 +57,7 @@
                     <div>
                         <label for="email" class="formbold-form-label">Costo/km</label>
                         <input type="numer" name="costokm" id="mts2"  class="formbold-form-input" #volumenInput="ngModel"
-                            [(ngModel)]="vehiculo.costokm" required /> 
+                            [(ngModel)]="vehiculo.costo_km" required /> 
                     </div>
                 </div>
             </div>

@@ -48,7 +48,7 @@ export class EditarSucursalComponent {
     this.sucursal.ciudad_id =this.ciudad.value!;
     this.sucursal.latitud =this.latitud.value!;
     this.sucursal.longitud =this.longitud.value!;
-    this.sucursal.tiposucursal_id =this.tipoSucursal.value!;
+    this.sucursal.tipo_sucursal_id =this.tipoSucursal.value!;
 
     this.form.form.markAllAsTouched();
     if (!this.form.form.valid) {

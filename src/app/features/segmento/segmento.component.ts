@@ -31,7 +31,9 @@ export class SegmentoComponent implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<Segmento>(this.datos);
 
   list = true;
+  listT = true;
   selectedId:number
+  image:string
 
   permissionTypes=PermissionTypeEnum
 
@@ -65,6 +67,11 @@ export class SegmentoComponent implements OnInit, AfterViewInit {
         this.toasterService.showGenericErrorToast();
       },
     });
+    this.segmentoService.getGraph().subscribe({
+      next:(value)=>{
+        this.image = value.result;
+      }
+    })
   }
 
   edit(id:number){

@@ -1,23 +1,31 @@
 <mat-card class="cardWithShadow theme-card">
-    <mat-card-header>
-        <mat-card-title class="m-b-0">Segmentos</mat-card-title>
+    <mat-card-header class="d-flex justify-content-between">
+        <mat-card-title class="m-b-0">Segmento</mat-card-title>
     </mat-card-header>
     <mat-card-content class="b-t-1">
 
         <div class="navBarP">
             <ul>
-                <li (click)="changeTab(0);" [appCheckPermission]="permissionTypes.READ"  class="user-post active" [ngClass]="{'active':tabs==0}">Ver Segmentos
+                <li (click)="changeTab(0);" [appCheckPermission]="permissionTypes.READ" class="user-post active"
+                    [ngClass]="{'active':tabs==0}">Ver Segmentos
                 </li>
-                <li (click)="changeTab(1);" [appCheckPermission]="permissionTypes.CREATE"  class="user-review" [ngClass]="{'active':tabs==1}">Ingresar Segmento</li>
+                <li (click)="changeTab(1);" [appCheckPermission]="permissionTypes.CREATE" class="user-review"
+                    [ngClass]="{'active':tabs==1}">Ingresar Segmento</li>
             </ul>
         </div>
         <div class="profile-body">
             <div [hidden]="tabs!=0" class="profile-posts tab">
-                <div class="col-lg-12" [hidden]="!list" [appCheckPermission]="permissionTypes.READ" >
+                <div class="col-lg-12" [hidden]="!list" [appCheckPermission]="permissionTypes.READ">
                     <mat-card class="cardWithShadow">
                         <mat-card-content class="p-24">
-                            <mat-card-title>Segmentos</mat-card-title>
-                            <div class="table-responsive m-t-16">
+                            <div class="d-flex justify-content-between w-100">
+                                <mat-card-title>Segmentos</mat-card-title>
+                                <button (click)="listT=!listT"  mat-flat-button color="primary"
+                                    class="mb-3">
+                                    Visualizar
+                                </button>
+                            </div>
+                            <div *ngIf="listT" class="table-responsive m-t-16">
                                 <table mat-table [dataSource]="dataSource" class="w-100">
                                     <ng-container matColumnDef="index">
                                         <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
@@ -53,7 +61,7 @@
                                         </th>
                                         <td mat-cell *matCellDef="let element" class="mat-body-1">
 
-                                                {{ element.sucursal_destino.nombre }}
+                                            {{ element.sucursal_destino.nombre }}
 
                                         </td>
                                     </ng-container>
@@ -107,15 +115,23 @@
                                     showFirstLastButtons></mat-paginator>
 
                             </div>
+                            <div *ngIf="!listT">
+
+                                <img src="data:image/png;base64, {{image}}" alt="Segmentos" />
+
+                            </div>
                         </mat-card-content>
                     </mat-card>
                 </div>
-                <app-segmento-form *ngIf="!list" [segmentoId]="selectedId" (finishEvent)="setListView()" [appCheckPermission]="permissionTypes.UPDATE" ></app-segmento-form>
+                <app-segmento-form *ngIf="!list" [segmentoId]="selectedId" (finishEvent)="setListView()"
+                    [appCheckPermission]="permissionTypes.UPDATE"></app-segmento-form>
+
             </div>
             <div *ngIf="tabs==1" class="profile-reviews tab">
-                <app-segmento-form (finishEvent)="setListView()" [appCheckPermission]="permissionTypes.CREATE" ></app-segmento-form>
+                <app-segmento-form (finishEvent)="setListView()"
+                    [appCheckPermission]="permissionTypes.CREATE"></app-segmento-form>
             </div>
-            
+
 
         </div>
     </mat-card-content>

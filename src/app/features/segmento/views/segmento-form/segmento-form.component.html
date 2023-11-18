@@ -6,13 +6,14 @@
                     <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Sucursal Origen</mat-label>
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Selecciona una opcion</mat-label>
-                        <mat-select [formControl]="sucursalOrigen" [(value)]="segmento.sucursal_origen_id" required>
+                        <mat-select [formControl]="sucursalOrigen" 
+                        [compareWith]="compareObjects" [(ngModel)]="segmento.sucursal_origen" required>
                             <mat-option></mat-option>
                             <mat-option *ngFor="let sucursa of sucursales"
-                                [value]="sucursa.id">{{sucursa.nombre}}</mat-option>
+                                [value]="sucursa"  >{{sucursa.nombre}}</mat-option>
                         </mat-select>
                         <mat-error
-                            *ngIf="!segmento.sucursal_origen_id && sucursalOrigen.hasError('required')">Selecciona la
+                            *ngIf="!segmento.sucursal_origen && sucursalOrigen.hasError('required')">Selecciona la
                             sucursal</mat-error>
                         <mat-error *ngIf="sucursalOrigen.hasError('sameSucursal')">La sucursal origen y destino no puden
                             ser iguales</mat-error>
@@ -20,19 +21,25 @@
                     <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Sucursal Destino</mat-label>
                     <mat-form-field class="w-100" appearance="outline">
                         <mat-label>Selecciona una opcion</mat-label>
-                        <mat-select [formControl]="sucursalDestino" [(value)]="segmento.sucursal_destino_id" required>
+                        <mat-select [formControl]="sucursalDestino" [compareWith]="compareObjects" [(value)]="segmento.sucursal_destino" required>
                             <mat-option></mat-option>
                             <mat-option *ngFor="let sucursa of sucursales"
-                                [value]="sucursa.id">{{sucursa.nombre}}</mat-option>
+                                [value]="sucursa">{{sucursa.nombre}}</mat-option>
                         </mat-select>
                         <mat-error
-                            *ngIf="!segmento.sucursal_destino_id && sucursalDestino.hasError('required')">Selecciona la
+                            *ngIf="!segmento.sucursal_destino && sucursalDestino.hasError('required')">Selecciona la
                             sucursal</mat-error>
                         <mat-error *ngIf="sucursalDestino.hasError('sameSucursal')">La sucursal origen y destino no
                             puden ser iguales</mat-error>
                     </mat-form-field>
 
+                   <div class="d-flex justify-content-between align-items-center">
                     <mat-label class="mat-subtitle-2 f-s-14 f-w-600 m-b-12 d-block">Distancia</mat-label>
+                    <button mat-mini-fab class="bg-light-primary text-primary m-1"
+                                                matTooltip="Calcular distancia" (click)="getDistance()">
+                                                <i-tabler name="calculator" class="icon-16"></i-tabler>
+                                            </button>
+                   </div>
                     <mat-form-field appearance="outline" class="w-100" color="primary">
                         <input #nombreInput="ngModel" type="number" min="0" matInput name="monto" id="monto"
                             [(ngModel)]="segmento.distancia" required maxlength="100" />

@@ -1,4 +1,13 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  OnChanges,
+  OnInit,
+  Output,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import * as moment from 'moment';
 import { Segmento, Sucursal } from 'src/app/data/model/general';
@@ -10,7 +19,7 @@ import { ToasterEnum } from 'src/global/toaster-enum';
 @Component({
   selector: 'app-segmento-form',
   templateUrl: './segmento-form.component.html',
-  styleUrls: ['./segmento-form.component.scss']
+  styleUrls: ['./segmento-form.component.scss'],
 })
 export class SegmentoFormComponent implements OnInit, OnChanges {
   constructor(
@@ -25,12 +34,11 @@ export class SegmentoFormComponent implements OnInit, OnChanges {
 
   sucursalDestino = new FormControl<string | null>(null, Validators.required);
   sucursalOrigen = new FormControl<string | null>(null, Validators.required);
+  
 
   @ViewChild('segmentoForm', { read: NgForm }) form!: NgForm;
 
   sucursales: Sucursal[] = [];
-
-  
 
   ngOnInit(): void {
     if (this.segmentoId) {
@@ -61,16 +69,24 @@ export class SegmentoFormComponent implements OnInit, OnChanges {
 
   save() {
     this.form.form.markAllAsTouched();
-   
+
+    this.segmento.sucursal_destino_id = this.segmento.sucursal_destino.id
+    this.segmento.sucursal_origen_id = this.segmento.sucursal_origen.id
+
+    
 
     if (!this.form.form.valid) {
-      if((this.segmento.sucursal_destino_id) && (this.segmento.sucursal_origen_id) && this.segmento.sucursal_destino_id==this.segmento.sucursal_origen_id){
-        this.sucursalOrigen.setErrors({sameSucursal:true})
-        this.sucursalDestino.setErrors({sameSucursal:true})
+      if (
+        this.segmento.sucursal_destino_id &&
+        this.segmento.sucursal_origen_id &&
+        this.segmento.sucursal_destino_id == this.segmento.sucursal_origen_id
+      ) {
+        this.sucursalOrigen.setErrors({ sameSucursal: true });
+        this.sucursalDestino.setErrors({ sameSucursal: true });
       }
       return;
     }
-    
+
     this.segmentoService.save(this.segmento).subscribe({
       next: () => {
         if (!this.segmentoId) {
@@ -107,5 +123,34 @@ export class SegmentoFormComponent implements OnInit, OnChanges {
     });
   }
 
- 
+  getDistance() {
+    const directionService = new google.maps.DirectionsService();
+
+    if(this.segmento.sucursal_destino && this.segmento.sucursal_origen){
+      directionService.route({
+        origin: {
+          lat: this.segmento.sucursal_origen.latitud,
+          lng: this.segmento.sucursal_origen.longitud,
+        },
+        destination:{
+          lat: this.segmento.sucursal_destino.latitud,
+          lng:this.segmento.sucursal_destino.longitud
+        },
+        travelMode:google.maps.TravelMode.DRIVING
+      },resultado=>{
+        let distance = resultado?.routes[0].legs[0].distance?.value;
+        if(distance) {
+          this.segmento.distancia = distance/1000;
+        }else{
+          this.toasterService.show({message:'No se pudo calcular la distancia',type:ToasterEnum.WARNING})
+        }
+      });
+    }  else{
+      this.toasterService.show({message:'No se pudo calcular la distancia, seleccione un origen y destino',type:ToasterEnum.ERROR})
+    }
+  }
+
+  compareObjects(o1: any, o2: any): boolean {
+    return o1.id === o2.id;
+  }
 }

@@ -22,8 +22,8 @@ export class Sucursal {
   longitud!: number;
   ciudad_id!: number;
   ciudad!: Ciudad;
-  tiposucursal_id: number;
-  tipoSucursal!: TipoSucursal;
+  tipo_sucursal_id: number;
+  tipo_Sucursal!: TipoSucursal;
   estatico:boolean = false;
 }
 
@@ -47,8 +47,8 @@ export class Vehiculo {
   id!: number;
   placa!: string;
   capacidad_lb!: number;
-  costokm!: number;
-  tipovehiculo_id!: number;
+  costo_km!: number;
+  tipo_vehiculo_id!: number;
   sucursal_id!: number;
   sucursal!: Sucursal;
   tipoVehiculo!: TipoVehiculo;

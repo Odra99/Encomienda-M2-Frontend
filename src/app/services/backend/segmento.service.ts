@@ -54,4 +54,9 @@ export class SegmentoService {
   getUrl(){
     this.baseUrl = this.predectibleModule.getUrl() + 'segmento';
   }
+
+  getGraph(){
+    this.getUrl();
+    return this.http.get<any>(`${this.baseUrl}/graficar`);
+  }
 }

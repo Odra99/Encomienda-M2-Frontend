@@ -51,8 +51,8 @@
                         Tipo Sucursal
                     </label>
                     <select  class="formbold-form-input" name="ciudad"  #tipoSucursalInput="ngModel" 
-                    [(ngModel)]="sucursal.tiposucursal_id" required >
-                        <option *ngFor="let element of tipoSucursal" value="{{element.id}}">{{element.nombre}}</option>
+                    [(ngModel)]="sucursal.tipo_sucursal_id" required >
+                        <option *ngFor="let element of tipoSucursal" [ngValue]="element.id">{{element.nombre}}</option>
                     </select>
                 </div>
             </div>
@@ -61,3 +61,9 @@
         </form>
     </div>
 </div>
+
+<google-map *ngIf="!loadMarker" height="100vh"
+              width="100%"
+              [options]="mapOptions" (mapClick)="setMarker($event)">
+    <map-marker  [position]="marker.position" [options]="marker.options"></map-marker>
+  </google-map>

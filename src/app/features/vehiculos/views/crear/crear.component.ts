@@ -31,9 +31,9 @@ export class CrearVehiculoComponent {
 
   placa = new FormControl<string | null>('', Validators.required);
   capacidad = new FormControl<string | null>(null, Validators.required);
-  tipo = new FormControl<string | null>(null, Validators.required);
+  tipo = new FormControl<number | null>(null, Validators.required);
   peso = new FormControl<string | null>(null, Validators.required);
-  sucursal = new FormControl<string | null>(null, Validators.required);
+  sucursal = new FormControl<number | null>(null, Validators.required);
   costokm = new FormControl<string | null>(null, Validators.required);
 
   ngOnInit(): void {
@@ -68,6 +68,7 @@ export class CrearVehiculoComponent {
     if (!this.form.form.valid) {
       return;
     }
+    
     this.vehiculoService.save(this.vehiculo).subscribe({
       next: () => {
         if(!this.vehiculo){

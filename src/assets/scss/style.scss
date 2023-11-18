@@ -1,7 +1,6 @@
 @use "@angular/material" as mat;
 @include mat.core();
 
-
 @import "variables";
 @import "layouts/transitions";
 @import "helpers/color";
@@ -14,11 +13,42 @@
 
 @include mat.all-component-themes($bluetheme);
 
-.predectible-theme {
-    // This mixin only generates the color styles now.
-@include mat.all-component-themes($predictabletheme);
-  }
+.navBarP {
+  width: 100%;
+  z-index: -1;
+}
 
+.navBarP ul {
+  display: flex;
+  justify-content: space-around;
+  list-style-type: none;
+  height: 40px;
+  background: #fff;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.navBarP ul li {
+  padding: 10px;
+  width: 100%;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.navBarP ul li:hover,
+.navBarP ul li.active {
+  box-shadow: 0px -3px 0px rgba(59, 183, 255, 0.9) inset;
+}
+
+.predectible-theme {
+  // This mixin only generates the color styles now.
+  @include mat.all-component-themes($predictabletheme);
+
+  .navBarP ul li:hover,
+  .navBarP ul li.active {
+    box-shadow: 0px -3px 0px #fa896b inset;
+  }
+}
 
 //container layout
 @import "overrides/materialoverrides";
@@ -28,8 +58,6 @@
 @import "helpers/custom-flex";
 @import "helpers/index";
 
-
 // pages
 @import "pages/dashboards";
 @import "pages/auth";
-

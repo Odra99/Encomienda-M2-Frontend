@@ -1,5 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { GoogleMap } from '@angular/google-maps';
+import { Component, OnInit } from '@angular/core';
 import { Sucursal } from 'src/app/data/model/general';
 import { SucursalService } from 'src/app/services/backend/sucursal.service';
 
