@@ -1,0 +1,117 @@
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <div>
+            <h3>Datos del Paquete</h3>
+            <div class="formbold-input-flex">
+
+                <div>
+                    <label for="firstname" class="formbold-form-label">
+                        Nombre Del Remitente
+                    </label>
+                    <input type="text" name="firstname" id="firstname" class="formbold-form-input"
+                    value="{{paquete.remitente}}" disabled/>
+                </div>
+                <div>
+                    <label for="lastname" class="formbold-form-label"> Nombre del Destinatario </label>
+                    <input type="text" name="lastname" id="lastname" class="formbold-form-input"  
+                    value="{{paquete.destinatario}}" disabled/>
+                </div>
+            </div>
+            <div class="formbold-input-flex">
+
+                <div>
+                    <label for="firstname" class="formbold-form-label">
+                        Sucursal de Origen
+                    </label>
+                    <input type="text" name="firstname" id="firstname" class="formbold-form-input"
+                    value="{{paquete.origen}}" disabled/>
+                </div>
+                <div>
+                    <label for="lastname" class="formbold-form-label"> Sucursal de Destino </label>
+                    <input type="text" name="lastname" id="lastname" class="formbold-form-input"  
+                    value="{{paquete.destino}}" disabled/>
+                </div>
+            </div>
+
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="peso" class="formbold-form-label"> Peso </label>
+                    <input type="text" name="peso" id="peso" class="formbold-form-input" 
+                    value="{{paquete.peso}} Lb" disabled/>
+                </div>
+                <div>
+                    <label for="phone" class="formbold-form-label"> Volumen</label>
+                    <input type="text" name="volumen" id="volumen" class="formbold-form-input" 
+                    value="{{paquete.volumen}} cm3" disabled/>
+                </div>
+            </div>
+
+            <hr />
+            <div class="formbold-input-flex">
+                <div>
+                    <label for="guia" class="formbold-form-label"> Numero De guia </label>
+                    <input type="email" name="email" id="email" class="formbold-form-input" 
+                    value="{{paquete.no_guia}}" disabled/>
+                </div>
+                <div>
+                    <label for="guia" class="formbold-form-label"> Costo de envio </label>
+                    <input type="email" name="email" id="email" class="formbold-form-input" 
+                    value="Q.{{paquete.costo}}" disabled/>
+                </div> 
+                <div>
+                    <label for="guia" class="formbold-form-label"> Estado del paquete </label>
+
+                    <input type="estado" name="estado" id="estado" class="formbold-form-input" 
+                    value="Recepcion" *ngIf="paquete.estado_paquete_id ==1" disabled/>
+                    <input type="estado" name="estado" id="estado" class="formbold-form-input" 
+                    value="Transito" *ngIf="paquete.estado_paquete_id ==2"  disabled/>
+                    <input type="estado" name="estado" id="estado" class="formbold-form-input" 
+                    value="Ruta Final" *ngIf="paquete.estado_paquete_id ==3" disabled/>
+                    <input type="estado" name="estado" id="estado" class="formbold-form-input" 
+                    value="Entregado" *ngIf="paquete.estado_paquete_id ==4" disabled/>
+                    
+                </div>
+                <!-- <div>
+                    <label for="phone" class="formbold-form-label"> Telefono</label>
+                    <input type="text" name="phone" id="phone" class="formbold-form-input" />
+                </div>-->
+            </div>
+           
+        </div>
+        <div>
+            <h3>Traking del Paquete</h3>
+            
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Actualizacion</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Sucursal</th>
+                    <th scope="col">Salida</th>
+                    <th scope="col">comentario</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <ng-container *ngFor="let reporte of tracking; " >
+                    <tr>
+                      <td>{{reporte.actualizacion| date:'dd-MM-yyyy _ HH:mm'}}</td>
+                     
+                      <td *ngIf="reporte.estado_tracking_id ==1" >En Espera</td>
+                      <td *ngIf="reporte.estado_tracking_id ==2" >En Bodega</td>
+                      <td *ngIf="reporte.estado_tracking_id ==3" >Cargando</td>
+                      <td *ngIf="reporte.estado_tracking_id ==4" >Cargado</td>
+                      <td *ngIf="reporte.estado_tracking_id ==5" >En Ruta</td>
+                      <td *ngIf="reporte.estado_tracking_id ==6" >Completado</td>
+
+                      
+                      <td>{{reporte.sucursal.nombre}}</td>
+        
+                      <td > {{reporte.salida_id}}</td>
+                      <td > {{reporte.comentario}}</td>
+                    </tr>
+                  </ng-container>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

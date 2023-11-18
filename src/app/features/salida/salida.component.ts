@@ -22,14 +22,15 @@ export class SalidaComponent implements OnInit, AfterViewInit {
   date = new FormControl(moment());
   idSucursal = '';
   tipoSalida='';
+  idEstadoSalida='';
   fecha="";
   displayedColumns: string[] = [
     'index',
+     'sucursalOrigen',
+    'segmento',
     'tipoSalida',
     'vehiculo',
     'fecha programada',
-    'fecha llegada',
-    'segmento',
     'actions'
   ];
   datos: Salida[] = [];
@@ -69,26 +70,21 @@ export class SalidaComponent implements OnInit, AfterViewInit {
   }
 
   getAll() {
-    let newDate = new Date(this.fecha);
-    console.log('filtrando'+" "+this.idSucursal+" "+newDate+" ");
-    var param ={};
-    if(this.idSucursal.length>0){
-      param ={sucursal_id:Number(this.idSucursal)};
-    }else if(this.fecha.length>0){
-      param ={fecha: newDate.toISOString()};
-    }else if(this.tipoSalida.length>0){
-      param ={tipo_salida_id:Number(this.tipoSalida)};
-    }
-    if(this.idSucursal.length>0&&this.tipoSalida.length>0&&this.fecha.length>0){
-      param ={sucursal_id: Number(this.idSucursal),tipo_salida_id:Number(this.tipoSalida),fecha: newDate.toISOString()};
-    }else if(this.idSucursal.length>0&&this.tipoSalida.length>0){
-      param ={sucursal_id: Number(this.idSucursal),tipo_salida_id:Number(this.tipoSalida)};
-    }else if(this.idSucursal.length>0&&this.fecha.length>0){
-      param ={sucursal_id: Number(this.idSucursal),fecha: newDate.toISOString()};
-    }else if(this.tipoSalida.length>0&&this.fecha.length>0){
-      param ={tipo_salida_id:Number(this.tipoSalida),fecha: newDate.toISOString()};
-    }
+    let newDate =""; 
     
+    if(this.fecha.length>0){
+      newDate=new Date(this.fecha).toISOString()
+    }
+    if(this.idSucursal!=""){
+      Number(this.idSucursal)
+    }
+    var param = {
+      sucursal_id: this.idSucursal,
+      tipo_salida_id: this.tipoSalida,
+      fecha:  newDate
+      
+    };
+    console.log(param)
     this.salidaService.listAllHttp(param).subscribe({
       next: (value) => {
         this.datos = value.body.result;
@@ -127,6 +123,55 @@ export class SalidaComponent implements OnInit, AfterViewInit {
       })
     }
   }
+
+  @needConfirmation()
+  darSalida(salida:number){
+    if(salida){
+      this.salidaService.darSalida(salida).subscribe({
+        next: () => {
+          this.toasterService.show({message:'Salida Iniciada',type:ToasterEnum.SUCCESS})
+          this.getAll();
+        },
+        error: () => {
+          this.toasterService.showGenericErrorToast();
+        },
+      })
+    }
+  }
+  @needConfirmation()
+  recepcionarSalida(id:any){
+    if(id){
+      this.salidaService.recapcionarSalida(id).subscribe({
+        next: () => {
+          this.toasterService.show({message:'Ruta recibida con exito',type:ToasterEnum.SUCCESS})
+          this.getAll();
+        },
+        error: () => {
+          this.toasterService.showGenericErrorToast();
+        },
+      })
+    }
+  }
+
+
+  @needConfirmation()
+  prepararParaCargar(salida:Salida){
+    let salidaAuxiliar:Salida= new Salida();
+    salidaAuxiliar.tipo_salida_id=3;
+    salida.tipo_salida_id=3;
+    if(salida){
+      this.salidaService.update(salida.id,salidaAuxiliar).subscribe({
+        next: () => {
+          this.toasterService.show({message:'Salida Preparada',type:ToasterEnum.SUCCESS})
+          this.getAll();
+        },
+        error: () => {
+          this.toasterService.showGenericErrorToast();
+        },
+      })
+    }
+  }
+
   llenarSucursal():void {
     this.sucursalService.listAllHttp({}).subscribe({
       next: (value) => {
