@@ -122,6 +122,7 @@ export class SegmentoFormComponent implements OnInit, OnChanges {
       },
     });
   }
+  
 
   getDistance() {
     const directionService = new google.maps.DirectionsService();

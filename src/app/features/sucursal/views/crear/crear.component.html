@@ -1,8 +1,8 @@
-<div class="formbold-main-wrapper"  [hidden]="!list">
+<div class="formbold-main-wrapper" [hidden]="!list">
     <div class="formbold-form-wrapper">
         <form #sucursalForm>
             <div class="formbold-form-title">
-                <h2 class="">Crear Nueva Sucursal</h2>
+                <h2 class="">Sucursal</h2>
                 <p>
 
                 </p>
@@ -15,55 +15,60 @@
                         <label for="firstname" class="formbold-form-label">
                             Nombre:
                         </label>
-                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel" 
-                        [(ngModel)]="sucursal.nombre" required />
+                        <input type="text" name="nombre" id="nombre" class="formbold-form-input" #nombreInput="ngModel"
+                            [(ngModel)]="sucursal.nombre" required />
                     </div>
                     <div>
                         <label for="lastname" class="formbold-form-label"> Direccion </label>
-                        <input type="text" name="direccion" id="direccion" class="formbold-form-input"#direccionInput="ngModel" 
-                        [(ngModel)]="sucursal.direccion" required />
+                        <input type="text" name="direccion" id="direccion" class="formbold-form-input"
+                            #direccionInput="ngModel" [(ngModel)]="sucursal.direccion" required />
                     </div>
                 </div>
 
-                <div class="formbold-input-flex">
+                <div class="formbold-input-flex align-items-center">
                     <div>
                         <label for="email" class="formbold-form-label"> Ciudad</label>
-                        <select class="formbold-form-input" name="ciudad"  #ciudadInput="ngModel" 
-                        [(ngModel)]="sucursal.ciudad_id" required >
-                            <option *ngFor="let element of ciudadesSelect" value="{{element.id}}">{{element.departamento}}</option>
+                        <select class="formbold-form-input" name="ciudad" #ciudadInput="ngModel"
+                            [(ngModel)]="sucursal.ciudad_id" required>
+                            <option *ngFor="let element of ciudadesSelect" value="{{element.id}}">
+                                {{element.departamento}}</option>
                         </select>
                     </div>
+                    <button mat-mini-fab (click)="map=!map" class="bg-light-primary text-primary m-1" matTooltip="Ver mapa">
+                        <i-tabler name="map-2" class="icon-16"></i-tabler>
+                    </button>
                 </div>
                 <div class="formbold-input-flex">
                     <div>
                         <label for="email" class="formbold-form-label"> Latitud</label>
-                        <input type="number" name="latitud" id="latitud" class="formbold-form-input" #latitudInput="ngModel" 
-                        [(ngModel)]="sucursal.latitud" required />
+                        <input type="number" name="latitud" id="latitud" class="formbold-form-input"
+                            #latitudInput="ngModel" [(ngModel)]="sucursal.latitud" required />
                     </div>
                     <div>
                         <label for="longitud" class="formbold-form-label"> Longitud</label>
-                        <input type="number" name="longitud" id="longitud" class="formbold-form-input" #longitudInput="ngModel" 
-                        [(ngModel)]="sucursal.longitud" required />
+                        <input type="number" name="longitud" id="longitud" class="formbold-form-input"
+                            #longitudInput="ngModel" [(ngModel)]="sucursal.longitud" required />
                     </div>
                 </div>
+
+
+                <google-map *ngIf="map" height="300px" width="300px" [options]="mapOptions"
+                    (mapClick)="SetLocation($event)">
+                    <map-marker *ngFor="let marker of markers" [position]="marker.position"
+                        [options]="marker.options"></map-marker>
+                </google-map>
                 <div class="formbold-mb-3">
                     <label for="address" class="formbold-form-label">
                         Tipo Sucursal
                     </label>
-                    <select  class="formbold-form-input" name="ciudad"  #tipoSucursalInput="ngModel" 
-                    [(ngModel)]="sucursal.tipo_sucursal_id" required >
+                    <select class="formbold-form-input" name="ciudad" #tipoSucursalInput="ngModel"
+                        [(ngModel)]="sucursal.tipo_sucursal_id" required>
                         <option *ngFor="let element of tipoSucursal" [ngValue]="element.id">{{element.nombre}}</option>
                     </select>
                 </div>
             </div>
             <hr />
-            <button mat-flat-button color="primary"   type="submit" (click)="save()">Crear Nueva Sucursal</button>
+            <button mat-flat-button color="primary" type="submit" (click)="save()">Crear Nueva Sucursal</button>
         </form>
     </div>
 </div>
-
-<google-map *ngIf="!loadMarker" height="100vh"
-              width="100%"
-              [options]="mapOptions" (mapClick)="setMarker($event)">
-    <map-marker  [position]="marker.position" [options]="marker.options"></map-marker>
-  </google-map>
