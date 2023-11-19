@@ -23,12 +23,11 @@ export const navItems: NavItem[] = [
     displayName: 'Manejo de Paquetes',
     iconName: 'box-seam',
     route: '/features/paqueteria',
-  },/*
-  {
-    displayName: 'Manejo de Usuarios',
-    iconName: 'user-cog',
-    route: '/ui-components/tooltips',
-  },*/
+  },{
+    displayName: 'Ver Paquetes',
+    iconName: 'box',
+    route: '/features/paqueteria/listado',
+  },
   {
     displayName: 'Manejo de Vehiculos',
     iconName: 'truck',

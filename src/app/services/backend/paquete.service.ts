@@ -39,20 +39,29 @@ export class PaqueteService {
     return this.http.patch<any>(`${baseUrl}/cargar/${id}`, {});
   }
 
-  listAllHttp(queryParams: any): Observable<HttpResponse<any>> {
+  update(id:number, paquete:Paquete): Observable<any> {
+    return this.http.patch<any>(`${baseUrl}/${id}`, paquete);
+  }
+  entregar(id:number): Observable<any> {
+    return this.http.patch<any>(`${baseUrl}/entregar/${id}`, {});
+  }
+  
+  listAllHttp(queryParams: any): Observable<any> {
     const params = this.getQueryParams(queryParams);
     return this.http.get<HttpResponse<any>>(baseUrl, {
       params: params,
       observe: 'response',
     });
   }
+  
+  buscarPaqueteByGuia(guia: String): Observable<any>  {
+    return this.http.get<any>(`${baseUrl}/buscar/${guia}`);
+  }
 
     // Cambiamos el atributo this.persona y llamamos a cambioPersona().
     setPaquete(nuevoPaquete: Paquete) {
-      
       this.paquete = nuevoPaquete;
       this.cambiosPaquete();
-      
     }
   
     // Emitimos los cambio de this.persona.

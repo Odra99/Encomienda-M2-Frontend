@@ -16,6 +16,7 @@ import { SalidaViewsComponent } from "./salida/salida-views/salida-views.compone
 import { SalidaViewsAllComponent } from "./salida/salida-views-all/salida-views-all.component";
 import { MapComponent } from "./sucursal/views/map/map.component";
 import { GastosDashboardComponent } from "./dashboards/gastos-dashboard/gastos-dashboard.component";
+import { ListarPaquetesComponent } from "./paqueteria/views/listarPaquetes/listar.component";
 
 export const FeaturesRouter: Routes = [
   {
@@ -23,6 +24,10 @@ export const FeaturesRouter: Routes = [
     children: [
       {
         path: 'paqueteria', component: PaqueteriaComponent,
+        
+        canActivate: [AllowNavigationGuard],
+      },{
+        path: 'paqueteria/listado', component: ListarPaquetesComponent,
         
         canActivate: [AllowNavigationGuard],
       },

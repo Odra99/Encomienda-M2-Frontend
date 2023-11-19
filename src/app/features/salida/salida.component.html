@@ -10,24 +10,41 @@
             </button>
             <br>
         </div>
-        <div class="d-flex align-items-center justify-content-center my-1" >
-            <div class="col-lg-5">
+        <div class="formbold-input-flex" >
+            <div style="width: 30%;">
                 <label for="phone" class="formbold-form-label">Sucursal</label>
                 <select class="formbold-form-input" name="sucursal" [(ngModel)]="idSucursal"r equired>
-                    <option value="0">todas
+                    <option value="">todas
                     </option>
                     <option  *ngFor="let element of sucursalesSelect" value="{{element.id}}">{{element.nombre}}
                     </option>
                 </select>
             </div>
-            <div class="col-lg-5">
-                <label for="phone" class="formbold-form-label">Fecha</label>
+            <div style="width: 30%;">
+                <label for="phone" class="formbold-form-label">fecha</label>
                 <div class="formbold-form-input3">
                     <input type="date"  [(ngModel)]="fecha"  class="formbold-form-input2" style="display: inline-flex;">
                     </div>
             </div>
-            <button class="col-lg-2" mat-flat-button color="accent" (click)="getAll()">Buscar </button>
-           
+            <div style="width: 30%;">
+                <label for="phone" class="formbold-form-label">fecha</label>
+                <div class="formbold-form-input3">
+                    <select class="formbold-form-input" name="sucursal" [(ngModel)]="idEstadoSalida">
+                        <option value="">todos</option>
+                        <option  value="{{tipoSalidaEnum.PROYECCION}}">Proyeccion</option>
+                        <option  value="{{tipoSalidaEnum.LISTO_PARA_CARGAR}}">Listo para Cargar</option>
+                        <option  value="{{tipoSalidaEnum.CARGANDO}}">Cargando</option>
+                        <option  value="{{tipoSalidaEnum.CARGADO}}">Cargado</option>
+                        <option  value="{{tipoSalidaEnum.EN_RUTA}}">En ruta</option>
+                        <option  value="{{tipoSalidaEnum.FIN}}">Fin</option>
+                    </select>
+                </div>
+            </div>
+            <button mat-flat-button class="form-btn search" (click)="getAll()">Buscar </button>
+            <!-- <div>
+                <label for="phone" class="formbold-form-label"> Telefono</label>
+                <input type="text" name="phone" id="phone" class="formbold-form-input" />
+            </div>-->
         </div>
         <div class="profile-body">
             <div class="col-lg-12" *ngIf="list">
@@ -50,13 +67,35 @@
                                         </div>
                                     </td>
                                 </ng-container>
+                                <ng-container matColumnDef="sucursalOrigen">
+                                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                        Sucursal de Origen
+                                    </th>
+                                    <td mat-cell *matCellDef="let element" class="mat-body-1">
+                                        {{ element.segmento.sucursal_origen.nombre }}
+                                    </td>
+                                </ng-container>
+                                <!-- Symbol Column -->
+                                <ng-container matColumnDef="segmento">
+                                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                        Segmento Ruta
+                                    </th>
+                                    <td mat-cell *matCellDef="let element" class="mat-body-1">
+                                        {{ element.segmento.descripcion }}
+                                    </td>
+                                </ng-container>
                                 <!-- Name Column -->
                                 <ng-container matColumnDef="tipoSalida">
                                     <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                        tipoSalida
+                                        Estado
                                     </th>
                                     <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                        {{ element.tipo_salida_id }}
+                                        <p *ngIf="element.tipo_salida_id ==tipoSalidaEnum.PROYECCION">PROYECCION</p>
+                                        <p *ngIf="element.tipo_salida_id ==tipoSalidaEnum.LISTO_PARA_CARGAR">LISTO PARA CARGAR</p>
+                                        <p *ngIf="element.tipo_salida_id ==tipoSalidaEnum.CARGANDO">CARGANDO</p>
+                                        <p *ngIf="element.tipo_salida_id ==tipoSalidaEnum.CARGADO">CARGADO</p>
+                                        <p *ngIf="element.tipo_salida_id ==5">EN RUTA</p>
+                                        <p *ngIf="element.tipo_salida_id ==6">FIN</p>
                                     </td>
                                 </ng-container>
 
@@ -87,23 +126,7 @@
                                 </ng-container>
 
                                 <!-- Symbol Column -->
-                                <ng-container matColumnDef="fecha llegada">
-                                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                        Sucursal de Origen
-                                    </th>
-                                    <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                        {{ element.segmento.sucursal_origen_id }}
-                                    </td>
-                                </ng-container>
-                                <!-- Symbol Column -->
-                                <ng-container matColumnDef="segmento">
-                                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
-                                        Segmento Ruta
-                                    </th>
-                                    <td mat-cell *matCellDef="let element" class="mat-body-1">
-                                        {{ element.segmento.descripcion }}
-                                    </td>
-                                </ng-container>
+                               
 
                                 <!-- Symbol Column -->
                                 <ng-container matColumnDef="actions">
@@ -120,13 +143,17 @@
                                             <i-tabler name="package-import" class="icon-16"></i-tabler>
                                         </button>
                                         <button mat-mini-fab class="bg-light-primary text-primary m-1" *ngIf="element.tipo_salida_id==tipoSalidaEnum.CARGADO" matTooltip="Dar Salida"
-                                            (click)="delete(element.id)">
+                                            (click)="darSalida(element.id)">
                                             <i-tabler name="truck-return" class="icon-16"></i-tabler>
                                         </button>
                                         <button mat-mini-fab class="bg-light-primary text-primary m-1" *ngIf="element.tipo_salida_id==tipoSalidaEnum.EN_RUTA" matTooltip="Recepcionar"
-                                        (click)="delete(element.id)">
+                                        (click)="recepcionarSalida(element.id)">
                                         <i-tabler name="home-down" class="icon-16"></i-tabler>
-                                    </button>
+                                        </button>
+                                        <button mat-mini-fab class="bg-light-primary text-primary m-1" *ngIf="element.tipo_salida_id==tipoSalidaEnum.LISTO_PARA_CARGAR" matTooltip="Preparar para la Carga"
+                                        (click)="prepararParaCargar(element)">
+                                        <i-tabler name="home-down" class="icon-16"></i-tabler>
+                                        </button>
                                     </td>
                                 </ng-container>
 
