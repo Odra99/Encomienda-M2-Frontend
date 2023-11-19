@@ -26,7 +26,7 @@ export class SalidaComponent implements OnInit, AfterViewInit {
   fecha="";
   displayedColumns: string[] = [
     'index',
-     'sucursalOrigen',
+    'sucursalOrigen',
     'segmento',
     'tipoSalida',
     'vehiculo',
