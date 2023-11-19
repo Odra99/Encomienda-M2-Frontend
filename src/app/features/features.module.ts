@@ -57,6 +57,8 @@ import { SalidaViewsComponent } from './salida/salida-views/salida-views.compone
 import { SalidaViewsAllComponent } from './salida/salida-views-all/salida-views-all.component';
 import { MapComponent } from './sucursal/views/map/map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { GastosDashboardComponent } from './dashboards/gastos-dashboard/gastos-dashboard.component';
+import { IngresoDashboardComponent } from './dashboards/ingreso-dashboard/ingreso-dashboard.component';
 
 
 export const MY_FORMATS = {
@@ -111,7 +113,9 @@ export const MY_FORMATS = {
     TarifarioComponent,
     SalidaViewsComponent,
     SalidaViewsAllComponent,
-    MapComponent
+    MapComponent,
+    GastosDashboardComponent,
+    IngresoDashboardComponent
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),
