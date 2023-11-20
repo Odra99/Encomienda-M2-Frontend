@@ -5,9 +5,21 @@ export const navItems: NavItem[] = [
     navCap: 'INICIO',
   },
   {
-    displayName: 'Dashboard',
+    displayName: 'Dashboard Operativo',
     iconName: 'layout-dashboard',
-    route: '/dashboard',
+    route: '/dashboard/logistico',
+    predictable:true,
+  },
+  {
+    displayName: 'Dashboard Gasto',
+    iconName: 'layout-dashboard',
+    route: '/dashboard/gasto',
+    predictable:true,
+  },
+  {
+    displayName: 'Dashboard Ingreso',
+    iconName: 'layout-dashboard',
+    route: '/dashboard/ingreso',
     predictable:true,
   },
   {
@@ -77,23 +89,5 @@ export const navItems: NavItem[] = [
     iconName: 'truck-return',
     route: '/features/salidas',
     predictable:true
-  },
-  {
-    navCap: 'Menu de Administracion',
-  },
-  {
-    displayName: 'Proyecciones Mensuales',
-    iconName: 'chart-arrows-vertical',
-    route: '',
-  },
-  {
-    displayName: 'Reportes',
-    iconName: 'aperture',
-    route: '/extra/sample-page',
-  },
-  {
-    displayName: 'iconos',
-    iconName: 'aperture',
-    route: '/extra/icons',
-  },
+  }
 ];

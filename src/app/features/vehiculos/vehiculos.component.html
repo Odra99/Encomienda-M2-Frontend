@@ -116,7 +116,7 @@
                         </mat-card-content>
                     </mat-card>
                 </div>
-                <app-crear-vehiculo *ngIf="!list" [vehiculoId]="selectedId" (finishEvent)="setListView()"></app-crear-vehiculo>
+                <app-crear-vehiculo *ngIf="!list" [vehiculoId]="selectedId" (finishEvent)="setListView()" [appCheckPermission]="permissionTypes.UPDATE" ></app-crear-vehiculo>
             </div>
             <div class="profile-reviews tab" *ngIf="tabs==1" [appCheckPermission]="permissionTypes.CREATE">
                 <app-crear-vehiculo></app-crear-vehiculo>

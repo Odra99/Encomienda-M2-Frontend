@@ -7,7 +7,7 @@
         <div class="navBarP">
             <ul>
                 <li (click)="changeTab(0);" [appCheckPermission]="permissionTypes.READ"  class="user-post active" [ngClass]="{'active':tabs==0}">Ver Usuarios</li>
-                <li (click)="changeTab(1);" [appCheckPermission]="permissionTypes.CREATE"  class="user-review" [ngClass]="{'active':tabs==1}">Crear Usario</li>
+                <li (click)="changeTab(1);" [appCheckPermission]="permissionTypes.CREATE"  class="user-review" [ngClass]="{'active':tabs==1}">Crear Usuario</li>
             </ul>
         </div>
         <div class="profile-body">

@@ -13,7 +13,14 @@ import { TipoSucursalService } from 'src/app/services/backend/tipoSucursal.servi
 import { ToasterService } from 'src/app/services/others/toaster.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { CiudadService } from 'src/app/services/backend/ciudad.service';
-import { E } from '@angular/cdk/keycodes';
+
+interface MarkerProperties {
+  position: {
+    lat: number;
+    lng: number;
+  };
+  options: any;
+}
 @Component({
   selector: 'app-crear-sucursal',
   templateUrl: './crear.component.html',
@@ -35,11 +42,18 @@ export class CrearSucursalComponent {
   sucursal: Sucursal = new Sucursal();
   list = true;
 
+  map = false;
+
+  title = "Crear"
+
   ngOnInit(): void {
     if (this.sucursalId) {
       this.sucursalService.get(this.sucursalId).subscribe({
         next: (value) => {
           this.sucursal = value.result;
+          this.markers = [];
+          this.setMarker(this.sucursal.latitud, this.sucursal.longitud);
+          this.title = "Editar"
         },
         error: () => {
           this.toasterService.showGenericErrorToast();
@@ -48,6 +62,7 @@ export class CrearSucursalComponent {
     }
     this.llenarDatosCiudades();
     this.llenarTipoSucursal();
+    this.setMarker(14.634915, -90.506882);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -55,6 +70,9 @@ export class CrearSucursalComponent {
       this.sucursalService.get(changes['sucursalId'].currentValue).subscribe({
         next: (value) => {
           this.sucursal = value.result;
+          this.markers = [];
+          this.setMarker(this.sucursal.latitud, this.sucursal.longitud);
+          this.title = "Editar"
         },
         error: () => {
           this.toasterService.showGenericErrorToast();
@@ -115,35 +133,42 @@ export class CrearSucursalComponent {
     });
   }
 
-  Latlng = { lat: 14.634915, lng: -90.506882 };
-
   mapOptions: google.maps.MapOptions = {
     center: { lat: 14.634915, lng: -90.506882 },
-    zoom: 8,
+    zoom: 6,
   };
 
-  marker = {
-    position: { lat: this.Latlng.lat, lng: this.Latlng.lng },
-    options: {
-      icon: 'assets/icons/location.png',
-      label: {
-        text: ""+this.Latlng.lat+","+this.Latlng.lng,
-        className: 'mark-label',
-        color: '#3374AC',
-        fontSize: '12px',
-        fontWeight: '700',
+  markers: MarkerProperties[] = [];
+
+  SetLocation(event: any) {
+    this.sucursal.latitud = event.latLng.lat();
+    this.sucursal.longitud = event.latLng.lng();
+    this.markers = [];
+
+    const geocoder = new google.maps.Geocoder();
+    geocoder.geocode({ location: event.latLng }, (results, status) => {
+      if (status === 'OK' && results) {
+        if (results[0]) {
+          this.sucursal.direccion = results[0].formatted_address;
+        }
+      }
+    });
+    this.setMarker(this.sucursal.latitud, this.sucursal.longitud);
+  }
+
+  setMarker(lat: any, lng: any) {
+    this.markers.push({
+      position: { lat: lat, lng: lng },
+      options: {
+        icon: 'assets/icons/location.png',
+        label: {
+          text: lat + ',' + lng,
+          className: 'mark-label',
+          color: '#3374AC',
+          fontSize: '12px',
+          fontWeight: '700',
+        },
       },
-    },
-  };
-
-  loadMarker = false
-
-  setMarker(positionmap: any) {
-    this.loadMarker = true
-    let lat = positionmap.latLng.lat;
-    let lng  = positionmap.latLng.lng;
-    this.marker.position = {lat:lat,lng:lng}
-    this.marker.options.label.text = ""+lat+","+lng;
-    this.loadMarker = false
+    });
   }
 }

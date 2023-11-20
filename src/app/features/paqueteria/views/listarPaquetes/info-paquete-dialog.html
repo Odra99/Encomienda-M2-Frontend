@@ -79,7 +79,7 @@
            
         </div>
         <div>
-            <h3>Traking del Paquete</h3>
+            <h3>Ultimo estado del Paquete</h3>
             
             <table class="table">
                 <thead>
@@ -113,5 +113,35 @@
                 </tbody>
               </table>
         </div>
+    </div>
+    <div class="formbold-form-wrapper">
+        <div class="">
+            <mat-card class="cardWithShadow">
+              <mat-card-content class="p-24">
+                <mat-card-title>Recent Transactions</mat-card-title>
+        
+                <div class="timeline m-t-24">
+                  <div
+                    class="timeline-item d-flex overflow-hidden"
+                    *ngFor="let stat of trackings"
+                  >
+                    <div class="time text-right mat-subtitle-1 f-s-14">
+                      {{ stat.actualizacion }}
+                    </div>
+                    <div class="point d-flex align-items-center">
+                      <span class="timeline-badge border-primary m-y-8"></span>
+                      <span class="timline-border d-block"></span>
+                    </div>
+                    <div class="desc">
+                        <span class="mat-subtitle-1 f-s-14 lh-20">{{
+                          stat.estado_tracking_id
+                        }}</span>
+                      
+                    </div>
+                  </div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+          </div>
     </div>
 </div>

@@ -117,7 +117,7 @@ export const MY_FORMATS = {
     TarifarioComponent,
     SalidaViewsComponent,
     SalidaViewsAllComponent,
-    MapComponent
+    MapComponent,
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),

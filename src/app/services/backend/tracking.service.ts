@@ -52,5 +52,16 @@ export class TrackingService {
   }
 
 
+
+
+  listAllHttpTracking(queryParams: any): Observable<HttpResponse<any>> {
+    const params = this.getQueryParams(queryParams);
+    return this.http.get<HttpResponse<any>>(environment.encomiendaBackendUrl+'tracking_log', {
+      params: params,
+      observe: 'response',
+    });
+  }   
+
+
  
 }
