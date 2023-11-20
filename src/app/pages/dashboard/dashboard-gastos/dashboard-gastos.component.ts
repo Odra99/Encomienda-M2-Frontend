@@ -31,6 +31,7 @@ export interface pieChart {
   responsive: ApexResponsive;
   theme:ApexTheme;
   labels: any;
+  colors:any;
 }
 
 
@@ -89,7 +90,7 @@ export class DashboardGastosComponent implements OnInit {
     private predictableService: PredectiveModuleService
   ) {
 
-    this.color = predictableService.isPredective() ? ['#fa896b','#0074ba']:['#5d87ff','#44b7f7'];
+    this.color = predictableService.isPredective() ? ['#fa896b','#0074ba','#7B9E87','#775144','#2A0800']:['#5d87ff','#B4B8AB','#413C58','#419D78'];
     
   }
 

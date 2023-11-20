@@ -83,12 +83,10 @@ export class CrearUsuarioComponent {
             type: ToasterEnum.SUCCESS,
           });
         }
-        this.finish();
       },error:()=> {
         this.toasterService.showGenericErrorToast();
       },
     });
-    this.router.navigate(['/features/salidas']);
   }
   finish(){
     this.finishEvent.emit();

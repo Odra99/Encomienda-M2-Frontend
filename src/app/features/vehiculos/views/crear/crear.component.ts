@@ -83,12 +83,11 @@ export class CrearVehiculoComponent {
             type: ToasterEnum.SUCCESS,
           });
         }
-        this.finish();
+        window.location.reload()
       },error:()=> {
         this.toasterService.showGenericErrorToast();
       },
     });
-    this.router.navigate(['/features/vehiculos']);
   }
   finish(){
     this.finishEvent.emit();

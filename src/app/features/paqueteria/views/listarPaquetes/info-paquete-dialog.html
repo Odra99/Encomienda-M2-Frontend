@@ -115,30 +115,43 @@
         </div>
     </div>
     <div class="formbold-form-wrapper">
-        <div class="">
+        <div  >
             <mat-card class="cardWithShadow">
-              <mat-card-content class="p-24">
-                <mat-card-title>Recent Transactions</mat-card-title>
+              <mat-card-content class="p-24 ">
+                <mat-card-title>Tracking</mat-card-title>
         
-                <div class="timeline m-t-24">
+                <div class="timeline  overflow-auto" style="height: 28rem;" >
                   <div
-                    class="timeline-item d-flex overflow-hidden"
+                    class="timeline-item d-flex "
                     *ngFor="let stat of trackings"
                   >
                     <div class="time text-right mat-subtitle-1 f-s-14">
-                      {{ stat.actualizacion }}
+                      {{ formatDate(stat.actualizacion) }}
                     </div>
                     <div class="point d-flex align-items-center">
-                      <span class="timeline-badge border-primary m-y-8"></span>
+                      <span class="timeline-badge border-primary" *ngIf="stat.estado_tracking_id ==1" ></span>
+                       <span class="timeline-badge border-accent" *ngIf="stat.estado_tracking_id ==2" ></span>
+                       <span class="timeline-badge border-success" *ngIf="stat.estado_tracking_id ==3" ></span>
+                       <span class="timeline-badge border-warning" *ngIf="stat.estado_tracking_id ==4" ></span>
+                       <span class="timeline-badge border-error" *ngIf="stat.estado_tracking_id ==5" ></span>
+                       <span class="timeline-badge border-success" *ngIf="stat.estado_tracking_id ==6" ></span>
                       <span class="timline-border d-block"></span>
                     </div>
                     <div class="desc">
-                        <span class="mat-subtitle-1 f-s-14 lh-20">{{
-                          stat.estado_tracking_id
-                        }}</span>
-                      
+                       <span class="mat-subtitle-1 f-s-14 lh-20" *ngIf="stat.estado_tracking_id ==1" >En Espera</span>
+                       <span class="mat-subtitle-1 f-s-14 lh-20" *ngIf="stat.estado_tracking_id ==2" >En Bodega</span>
+                       <span class="mat-subtitle-1 f-s-14 lh-20" *ngIf="stat.estado_tracking_id ==3" >Cargando</span>
+                       <span class="mat-subtitle-1 f-s-14 lh-20" *ngIf="stat.estado_tracking_id ==4" >Cargado</span>
+                       <span class="mat-subtitle-1 f-s-14 lh-20" *ngIf="stat.estado_tracking_id ==5" >En Ruta</span>
+                       <span class="mat-subtitle-1 f-s-14 lh-20" *ngIf="stat.estado_tracking_id ==6" >Completado</span>
+                       <span class="mat-subtitle-1 f-s-14 lh-20 f-w-600 d-block">{{
+                        stat.sucursal.nombre
+                      }}</span> 
                     </div>
+                   
+                      
                   </div>
+                  
                 </div>
               </mat-card-content>
             </mat-card>

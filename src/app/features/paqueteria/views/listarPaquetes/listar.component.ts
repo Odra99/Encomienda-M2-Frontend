@@ -15,6 +15,8 @@ import { DialogService } from 'src/app/services/others/dialog.service';
 import { PermissionTypeEnum } from 'src/global/permissions';
 import { MatDialog } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import * as moment from 'moment';
+import 'moment/locale/es';
 
 @Component({
   selector: 'app-listar-paqueteria',
@@ -249,5 +251,9 @@ export class InfoPaqueteDialog implements OnInit {
     })
   }
 
+  formatDate(date: string) {
+    moment.locale('es');
+    return moment(date).format('llll');
+  }
 }
 
