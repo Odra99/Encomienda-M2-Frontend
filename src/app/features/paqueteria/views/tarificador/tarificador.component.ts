@@ -68,6 +68,8 @@ export class RastreoComponent {
     const divTiempoEst = this.precTiempoEstDiv.nativeElement;
     const distDiv = this.distDiv.nativeElement;
 
+    this.cotizar();
+
     this.cotizacionDistancia= this.cotizaciones[0];
     this.cotizacionCosto= this.cotizaciones[1];
   

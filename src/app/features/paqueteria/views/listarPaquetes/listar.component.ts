@@ -185,6 +185,7 @@ export class InfoPaqueteDialog implements OnInit {
   @ViewChild('paginator') paginator: MatPaginator;
   paquete: any = this.data;
   tracking: any[] = [];
+  trackings: any[] = [];
   dataSource = new MatTableDataSource<Paquete>(this.tracking);
   displayedColumns: string[] = [
     'id',
@@ -209,6 +210,8 @@ export class InfoPaqueteDialog implements OnInit {
       salida_id: ""
     };
 
+    
+
     this.trackingService.listAllHttp(param).subscribe({
       next: (value) => {
         this.tracking = value.body.result;
@@ -220,6 +223,11 @@ export class InfoPaqueteDialog implements OnInit {
         this.toasterService.showGenericErrorToast();
       },
     });
+    this.trackingService.listAllHttpTracking(param).subscribe({
+      next:(value)=>{
+        this.trackings = value.body.result;
+      }
+    })
   }
 
 }

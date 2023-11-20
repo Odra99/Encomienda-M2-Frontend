@@ -8,7 +8,6 @@
             <ul>
                 <li (click)="changeTab(0);" class="user-post active" [ngClass]="{'active':tabs==0}">Ingresar Paquete</li>
                 <li (click)="changeTab(1);" class="user-review"  [ngClass]="{'active':tabs==1}">Egreso de Paquete</li>
-                <li (click)="changeTab(2);" class="user-setting"  [ngClass]="{'active':tabs==2}">Ver Paquetes</li>
             </ul>
         </div>
         <div class="profile-body">
@@ -17,9 +16,6 @@
             </div>
             <div class="profile-reviews tab"  *ngIf="tabs==1">
                 <app-hand-package></app-hand-package>
-            </div>
-            <div class="profile-settings tab"  *ngIf="tabs==2">
-                <app-search-paqueteria></app-search-paqueteria>
             </div>
         </div>
     </mat-card-content>

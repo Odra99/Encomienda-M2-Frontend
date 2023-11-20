@@ -80,6 +80,87 @@ export class DashboardService {
   }
 
 
+  getGasto(fecha: any):Observable<HttpResponse<any>>  {
+    const params = this.getQueryParams(fecha);
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/gasto`, {
+        params: params,
+        observe: 'response',
+      });
+  }
+
+
+  getGastoPromedio(fecha: any):Observable<HttpResponse<any>>  {
+    const params = this.getQueryParams(fecha);
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/gasto_promedio`, {
+        params: params,
+        observe: 'response',
+      });
+  }
+
+  getTipoGasto(fecha: any):Observable<HttpResponse<any>>  {
+    const params = this.getQueryParams(fecha);
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/tipo_gasto`, {
+        params: params,
+        observe: 'response',
+      });
+  }
+
+  getConceptoGasto(fecha: any):Observable<HttpResponse<any>>  {
+    const params = this.getQueryParams(fecha);
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/concepto_gasto`, {
+        params: params,
+        observe: 'response',
+      });
+  }
+
+  getGastoSucursal(fecha: any):Observable<HttpResponse<any>>  {
+    const params = this.getQueryParams(fecha);
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/gasto_sucursal`, {
+        params: params,
+        observe: 'response',
+      });
+  }
+
+  getIngreso(fecha: any):Observable<HttpResponse<any>>  {
+    const params = this.getQueryParams(fecha);
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/ingreso`, {
+        params: params,
+        observe: 'response',
+      });
+  }
+
+  getIngresoPron(fecha: any):Observable<HttpResponse<any>>  {
+    const params = this.getQueryParams(fecha);
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/ingreso_pron`, {
+        params: params,
+        observe: 'response',
+      });
+  }
+
+  getIngresoRealVsPron(fecha: any):Observable<HttpResponse<any>>  {
+    const params = this.getQueryParams(fecha);
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/ingreso_real_vs_pron`, {
+        params: params,
+        observe: 'response',
+      });
+  }
+
+  getIngresoSucursal(fecha: any):Observable<HttpResponse<any>>  {
+    const params = this.getQueryParams(fecha);
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/ingreso_sucursal`, {
+        params: params,
+        observe: 'response',
+      });
+  }
 
   private getQueryParams(queryParams: any): HttpParams {
     let params = new HttpParams();

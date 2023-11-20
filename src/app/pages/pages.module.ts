@@ -10,9 +10,16 @@ import { TablerIconsModule } from 'angular-tabler-icons';
 import * as TablerIcons from 'angular-tabler-icons/icons';
 import { AppDashboardComponent } from './dashboard/dashboard.component';
 import { DashboardLogisticoComponent } from './dashboard/logistico/dashboardLogistico.component';
+import { DashboardIngresosComponent } from './dashboard/dashboard-ingresos/dashboard-ingresos.component';
+import { DashboardGastosComponent } from './dashboard/dashboard-gastos/dashboard-gastos.component';
 
 @NgModule({
-  declarations: [AppDashboardComponent,DashboardLogisticoComponent],
+  declarations: [
+    AppDashboardComponent,
+    DashboardLogisticoComponent,
+    DashboardIngresosComponent,
+    DashboardGastosComponent,
+  ],
   imports: [
     CommonModule,
     MaterialModule,

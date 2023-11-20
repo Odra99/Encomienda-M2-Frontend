@@ -73,7 +73,7 @@ export class EnterPackageComponent  implements OnInit {
   finish() {
     
     this.finishEvent.emit();
-    this.router.navigate(['dashboard']);
+    this.router.navigate(['/features/paqueteria/listado']);
   }
 
 }

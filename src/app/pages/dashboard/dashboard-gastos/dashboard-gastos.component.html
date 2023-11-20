@@ -1,0 +1,133 @@
+<div class="row  ">
+
+    <h1>Dashboard Gasto</h1>
+
+    <div class="col-lg-12">
+        <div class="d-flex flex-row justify-content-between ">
+            <div class="col-4">
+                <mat-card class="cardWithShadow">
+                    <mat-card-content class="p-24">
+                        <mat-card-title>Gastos total del mes</mat-card-title>
+                        <div class="row m-t-24 align-items-center" style="width:100%">
+                            <div class="col-3 d-flex align-items-start">
+                                <button mat-mini-fab class="bg-light-primary text-primary shadow-none icon-55"
+                                    [routerLink]="['/features/gastos']" matTooltip="gastos">
+                                    <i-tabler name="coins" class="icon-40"></i-tabler>
+                                </button>
+                            </div>
+                            <div class="col-9 align-items-center" style="width:100%">
+                                <h4 class="mat-headline-5 text-center">{{gastoPorMes}}</h4>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-4">
+                <mat-card class="cardWithShadow">
+                    <mat-card-content class="p-24">
+                        <mat-card-title>Gasto promedio por sucursal</mat-card-title>
+                        <div class="row m-t-24 align-items-center" style="width:100%">
+                            <div class="col-3 d-flex align-items-start">
+
+                                <button mat-mini-fab class="bg-light-success text-success shadow-none icon-55"
+                                    [routerLink]="['/features/sucursal']" matTooltip="Sucursales">
+                                    <i-tabler name="building-estate" class="icon-40"></i-tabler>
+                                </button>
+                            </div>
+                            <div class="col-9 align-items-center" style="width:100%">
+                                <h4 class="mat-headline-5 text-center">{{gastoPromedioPorSucursal}}</h4>
+                            </div>
+                        </div>
+                    </mat-card-content>
+
+
+                </mat-card>
+            </div>
+            <div class="col-4">
+                <mat-card class="cardWithShadow">
+                    <mat-card-content class="p-24">
+                        <mat-card-title>Gasto Totales</mat-card-title>
+                        <div class="row m-t-24 align-items-center" style="width:100%">
+                            <div class="col-3 d-flex align-items-start">
+                                <button mat-mini-fab class="bg-light-primary text-primary shadow-none icon-55"
+                                    [routerLink]="['/features/paqueteria/listado']">
+                                    <i-tabler name="cash" class="icon-40"></i-tabler>
+                                </button>
+                            </div>
+                            <div class="col-9 align-items-center" style="width:100%">
+                                <h4 class="mat-headline-5 text-center">{{gastoTotales}}</h4>
+
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex flex-row  justify-content-between">
+        <div class="col-6">
+            <mat-card class="cardWithShadow">
+                <mat-card-content>
+                    <mat-card-title>Porcentaje por tipo de gasto</mat-card-title>
+                    <div class="row m-t-24">
+                        <div class=" d-flex align-items-start" *ngIf="tipoGastoChart && tipoGastoChart.series">
+                            <apx-chart [series]="tipoGastoChart.series" [dataLabels]="tipoGastoChart.dataLabels"
+                                [chart]="tipoGastoChart.chart" [legend]="tipoGastoChart.legend"
+                                [colors]="tipoGastoChart.colors" [stroke]="tipoGastoChart.stroke"
+                                [tooltip]="tipoGastoChart.tooltip" [plotOptions]="tipoGastoChart.plotOptions"
+                                [responsive]="tipoGastoChart.responsive" [labels]="tipoGastoChart.labels"
+                                [theme]="tipoGastoChart.theme"></apx-chart>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="col-6">
+            <mat-card class="cardWithShadow">
+                <mat-card-content>
+                    <mat-card-title>Porcentaje por concepto de gasto</mat-card-title>
+                    <div class="row m-t-24">
+                        <div class=" d-flex align-items-start" *ngIf="conceptoGastoChart && conceptoGastoChart.series">
+                            <apx-chart [series]="conceptoGastoChart.series" [dataLabels]="conceptoGastoChart.dataLabels"
+                                [chart]="conceptoGastoChart.chart" [legend]="conceptoGastoChart.legend"
+                                [colors]="conceptoGastoChart.colors" [stroke]="conceptoGastoChart.stroke"
+                                [tooltip]="conceptoGastoChart.tooltip" [plotOptions]="conceptoGastoChart.plotOptions"
+                                [responsive]="conceptoGastoChart.responsive" [labels]="conceptoGastoChart.labels"
+                                [theme]="conceptoGastoChart.theme"></apx-chart>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <mat-card class="cardWithShadow">
+            <mat-card-content class="p-24">
+                <div class="d-flex w-100">
+                    <mat-card-title>Gasto por sucursal en el mes</mat-card-title>
+                </div>
+                <apx-chart *ngIf="sucursalesMes && sucursalesMes.series" [series]="sucursalesMes.series"
+                    [dataLabels]="sucursalesMes.dataLabels" [chart]="sucursalesMes.chart"
+                    [legend]="sucursalesMes.legend" [xaxis]="sucursalesMes.xaxis"
+                    [yaxis]="sucursalesMes.yaxis" [grid]="sucursalesMes.grid"
+                    [stroke]="sucursalesMes.stroke" [tooltip]="sucursalesMes.tooltip"
+                    [plotOptions]="sucursalesMes.plotOptions"></apx-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="col-lg-6">
+        <mat-card class="cardWithShadow">
+            <mat-card-content class="p-24">
+                <div class="d-flex w-100">
+                    <mat-card-title>Gasto por sucursal total</mat-card-title>
+                </div>
+                <apx-chart *ngIf="sucursalesT && sucursalesT.series" [series]="sucursalesT.series"
+                    [dataLabels]="sucursalesT.dataLabels" [chart]="sucursalesT.chart"
+                    [legend]="sucursalesT.legend" [xaxis]="sucursalesT.xaxis"
+                    [yaxis]="sucursalesT.yaxis" [grid]="sucursalesT.grid"
+                    [stroke]="sucursalesT.stroke" [tooltip]="sucursalesT.tooltip"
+                    [plotOptions]="sucursalesT.plotOptions"></apx-chart>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
