@@ -29,6 +29,12 @@ export const navItems: NavItem[] = [
     predictable:true
   },
   {
+    displayName: 'Reportes',
+    iconName: 'report-analytics',
+    route: '/features/reportes/ingresos',
+    predictable:true
+  },
+  {
     navCap: 'Menu Principal',
   },
   {

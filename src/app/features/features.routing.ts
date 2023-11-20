@@ -18,6 +18,10 @@ import { MapComponent } from "./sucursal/views/map/map.component";
 import { ListarPaquetesComponent } from "./paqueteria/views/listarPaquetes/listar.component";
 import { CrearSalidaComponent } from "./salida/crear/crear.component";
 
+//reportes
+import { ReporteIngresosComponent } from './reportes/ingresos/ingresos.component';
+
+
 export const FeaturesRouter: Routes = [
   {
     path: '',
@@ -91,6 +95,8 @@ export const FeaturesRouter: Routes = [
         path: 'salidas/carga/:salida', component: SalidaViewsComponent,
       },{
         path: 'salidas/ver/:salida', component: SalidaViewsAllComponent,
+      },{
+        path: 'reportes/ingresos', component: ReporteIngresosComponent,
       }
     ],
   },

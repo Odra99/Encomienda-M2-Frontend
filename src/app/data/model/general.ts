@@ -202,3 +202,10 @@ export class Tracking{
   comentario!:string;
   paquete!:Paquete;
 }
+
+export class Ingreso{
+  sucursal_id: number;
+  detalles: string;
+  monto: number;
+  fecha: string;
+}

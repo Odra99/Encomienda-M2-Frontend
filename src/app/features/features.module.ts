@@ -60,6 +60,9 @@ import { SalidaViewsAllComponent } from './salida/salida-views-all/salida-views-
 import { MapComponent } from './sucursal/views/map/map.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 
+//reportes
+import { ReporteIngresosComponent } from './reportes/ingresos/ingresos.component';
+
 
 export const MY_FORMATS = {
   parse: {
@@ -118,6 +121,8 @@ export const MY_FORMATS = {
     SalidaViewsComponent,
     SalidaViewsAllComponent,
     MapComponent,
+
+    ReporteIngresosComponent,
   ],
   imports: [
     RouterModule.forChild(FeaturesRouter),
