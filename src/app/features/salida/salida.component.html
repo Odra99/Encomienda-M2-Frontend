@@ -106,7 +106,7 @@
                                     </th>
                                     <td mat-cell *matCellDef="let element" class="mat-body-1">
 
-                                        {{ element.vehiculo_id }}
+                                        {{ element.vehiculo.placa }}
 
                                     </td>
                                 </ng-container>
@@ -120,6 +120,32 @@
 
                                         <span class="bg-light-accent text-accent rounded f-w-600 p-6 p-y-4 f-s-12">
                                             {{ element.fecha_programada | date:'dd/MM/yyyy'}}
+                                        </span>
+
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="capacidad">
+                                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                        Capacidad
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+
+                                        <span class="bg-light-accent text-accent rounded f-w-600 p-6 p-y-4 f-s-12">
+                                            {{ element.capacidad_lb}}
+                                        </span>
+
+                                    </td>
+                                </ng-container>
+
+                                <ng-container matColumnDef="capacidad reservada">
+                                    <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                                        Capacidad reservada
+                                    </th>
+                                    <td mat-cell *matCellDef="let element">
+
+                                        <span class="bg-light-accent text-accent rounded f-w-600 p-6 p-y-4 f-s-12">
+                                            {{ element.capacidad_reservada }}
                                         </span>
 
                                     </td>

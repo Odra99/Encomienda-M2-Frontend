@@ -58,6 +58,10 @@ export class PaqueteService {
     return this.http.get<any>(`${baseUrl}/buscar/${guia}`);
   }
 
+  descargarPaqueteByGuia(guia: String): Observable<any>  {
+    return this.http.get<any>(`${baseUrl}/pdf/${guia}`);
+  }
+
     // Cambiamos el atributo this.persona y llamamos a cambioPersona().
     setPaquete(nuevoPaquete: Paquete) {
       this.paquete = nuevoPaquete;

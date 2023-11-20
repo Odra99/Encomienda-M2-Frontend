@@ -173,7 +173,11 @@ export class DashboardIngresosComponent implements OnInit {
               show: true,
               total: {
                 showAlways: true,
-                show: true
+                show: true,
+                formatter: function (val:string) {
+                  console.log(val)
+                  Math.round(Number(val) * 100) / 100
+                }
               }
             }
           },

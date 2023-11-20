@@ -31,6 +31,8 @@ export class SalidaComponent implements OnInit, AfterViewInit {
     'tipoSalida',
     'vehiculo',
     'fecha programada',
+    'capacidad',
+    'capacidad reservada',
     'actions'
   ];
   datos: Salida[] = [];

@@ -7,8 +7,9 @@ import { VehiculoService } from 'src/app/services/backend/vehiculo.service';
 import { SegmentoService } from 'src/app/services/backend/segmento.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { ToasterService } from 'src/app/services/others/toaster.service';
+import { Router } from '@angular/router';
 @Component({
-  selector: 'app-crear-puesto',
+  selector: 'app-crear-salida',
   templateUrl: './crear.component.html',
   styleUrls: ['./crear.component.scss']
 })
@@ -19,7 +20,8 @@ export class CrearSalidaComponent {
     private toasterService: ToasterService,
     private salidaService: SalidaService,
     private segmentoService: SegmentoService,
-    private vehiculoService: VehiculoService
+    private vehiculoService: VehiculoService,
+    private router:Router
   ) {}
 
 
@@ -100,13 +102,14 @@ export class CrearSalidaComponent {
         }
         this.finish();
       },error:()=> {
-        console.log("error")
         this.toasterService.showGenericErrorToast();
       },
     });
+
   }
   finish(){
-    this.finishEvent.emit();
+    
+    this.router.navigate(['/features/salidas']);
   }
 
 }

@@ -68,8 +68,6 @@ export class RastreoComponent {
     const divTiempoEst = this.precTiempoEstDiv.nativeElement;
     const distDiv = this.distDiv.nativeElement;
 
-    this.cotizar();
-
     this.cotizacionDistancia= this.cotizaciones[0];
     this.cotizacionCosto= this.cotizaciones[1];
   
@@ -140,7 +138,6 @@ export class RastreoComponent {
             formCS2.classList.add('active');
             formCS3.classList.remove('active');
 
-            btnc1.style.display = 'flex';
             btnc1.textContent = 'Siguiente'
           }
         })
@@ -158,7 +155,6 @@ export class RastreoComponent {
           this.cotizar();
           // formCS3.add('active')
           //btnc1.textContent = 'Calcular'
-          this.renderer2.setStyle(btnc1, 'display', 'none');
           //btnc1.classList.remove('active');
         }else{
           this.toasterService.show({message:'La sucursal de origen no puede ser igual a la sucursal de destino',type:ToasterEnum.ERROR})

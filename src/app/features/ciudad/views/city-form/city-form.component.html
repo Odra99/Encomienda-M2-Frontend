@@ -15,9 +15,28 @@
                         <mat-label>Selecciona una opcion</mat-label>
                         <mat-select [formControl]="departamento" [(value)]="ciudad.departamento" required>
                             <mat-option></mat-option>
-                            <mat-option value="Quetzaltenango">Quetzaltenango</mat-option>
                             <mat-option value="Guatemala">Guatemala</mat-option>
                             <mat-option value="Totonicapan">Totonicapan</mat-option>
+                            <mat-option value="Alta Verapaz">Alta Verapaz</mat-option>
+                            <mat-option value="Baja Verapaz">Baja Verapaz</mat-option>
+                            <mat-option value="Chimaltenango">Chimaltenango</mat-option>
+                            <mat-option value="Chiquimula">Chiquimula</mat-option>
+                            <mat-option value="El Progreso">El Progreso</mat-option>
+                            <mat-option value="Huehuetenango">Huehuetenango</mat-option>
+                            <mat-option value="Izabal">Izabal</mat-option>
+                            <mat-option value="Jutiapa">Jutiapa</mat-option>
+                            <mat-option value="Jalapa">Jalapa</mat-option>
+                            <mat-option value="Peten">Peten</mat-option>
+                            <mat-option value="Quiche">Quiche</mat-option>
+                            <mat-option value="Quetzaltenango">Quetzaltenango</mat-option>
+                            <mat-option value="Retalhuleu">Retalhuleu</mat-option>
+                            <mat-option value="San Marcos">San Marcos</mat-option>
+                            <mat-option value="Santa Rosa">Santa Rosa</mat-option>
+                            <mat-option value="Suchitepequez">Suchitepequez</mat-option>
+                            <mat-option value="Zacapa">Zacapa</mat-option>
+                            <mat-option value="Solola">Solola</mat-option>
+                            <mat-option value="Sacatepequez">Sacatepequez</mat-option>
+                            <mat-option value="Escuintla">Escuintla</mat-option>
                         </mat-select>
                         <mat-error *ngIf="!ciudad.departamento && departamento.hasError('required')">Selecciona el
                             departamento</mat-error>

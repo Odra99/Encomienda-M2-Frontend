@@ -22,7 +22,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['../enter-package/enter-package.component.scss']
 })
 
-export class ListarPaquetesComponent {
+export class ListarPaquetesComponent implements OnInit{
   displayedColumns: string[] = [
     'id',
     'peso',
@@ -110,6 +110,7 @@ export class ListarPaquetesComponent {
   }
 
 
+
   @needConfirmation()
   deletePaquete(id: any) {
     console.log("hello");
@@ -163,6 +164,22 @@ export class ListarPaquetesComponent {
     });
   }
 
+
+  descargar(guia:string){
+
+    if(guia!=''){
+      this.paqueteService.descargarPaqueteByGuia(guia).subscribe({
+        next: (value) => {          
+          let pdf = value.result;
+          var a = document.createElement("a"); //Create <a>
+          a.href = "data:octet-stream;base64," + pdf; //Image Base64 Goes here
+          a.download = "Guia.pdf"; //File name Here
+          a.click();
+        }
+      });
+    }
+
+  }
 
 
 }
