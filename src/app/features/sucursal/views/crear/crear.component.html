@@ -28,10 +28,11 @@
                 <div class="formbold-input-flex align-items-center">
                     <div>
                         <label for="email" class="formbold-form-label"> Ciudad</label>
-                        <select class="formbold-form-input" name="ciudad" #ciudadInput="ngModel"
-                            [(ngModel)]="sucursal.ciudad_id" required>
+                        <select class="formbold-form-input" name="ciudad"  #ciudadInput="ngModel" 
+                        [(ngModel)]="sucursal.ciudad_id" required >
                             <option *ngFor="let element of ciudadesSelect" value="{{element.id}}">
-                                {{element.departamento}}</option>
+                                {{element.nombre}}</option>
+
                         </select>
                     </div>
                     <button mat-mini-fab (click)="map=!map" class="bg-light-primary text-primary m-1" matTooltip="Ver mapa">

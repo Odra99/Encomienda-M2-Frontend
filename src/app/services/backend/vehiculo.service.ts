@@ -46,6 +46,11 @@ export class VehiculoService {
     });
   }
 
+  listbySucursal(sucursalId: number): Observable<any> {
+    this.getUrl();
+    return this.http.get<HttpResponse<any>>(`${this.baseUrl}/sucursal/${sucursalId}`);
+  }
+
   private getQueryParams(queryParams: any): HttpParams {
     let params = new HttpParams();
     return params;

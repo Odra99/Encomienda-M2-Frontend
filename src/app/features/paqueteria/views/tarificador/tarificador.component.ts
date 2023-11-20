@@ -33,6 +33,7 @@ export class RastreoComponent {
   @ViewChild('paqueteForm', { read: NgForm }) form!: NgForm;
 
   paquete: Paquete = new Paquete();
+  bool:boolean=false;
 
   //tipo de cotizaciones: 0=distancia. 1= costo
   tipoCotizacion=1;
@@ -143,18 +144,16 @@ export class RastreoComponent {
         })
 
       } else if (formC2.className == 'formbold-step-menu2 active') {
-        if (this.paquete.sucursal_origen_id!=this.paquete.sucursal_destino_id) {
-          event?.preventDefault();
-
-          formC2.classList.remove('active')
-          formC3.classList.add('active')
-
-          formCS2.classList.remove('active')
-          formCS3.classList.add('active')
+        
           
-          this.cotizar();
+          
+      if (this.paquete.sucursal_origen_id!=this.paquete.sucursal_destino_id) {
+        this.cotizar();
+          console.log(this.bool);
+        
           // formCS3.add('active')
           //btnc1.textContent = 'Calcular'
+          
           //btnc1.classList.remove('active');
         }else{
           this.toasterService.show({message:'La sucursal de origen no puede ser igual a la sucursal de destino',type:ToasterEnum.ERROR})
@@ -172,6 +171,7 @@ export class RastreoComponent {
 
 
   ngOnChanges(changes: SimpleChanges): void {
+
     if (changes["paqueteId"]) {
       this.paqueteService.get(changes["paqueteId"].currentValue).subscribe({
         next: (value) => {
@@ -214,14 +214,20 @@ export class RastreoComponent {
   }
 
 
-  cotizar() {
+  cotizar():boolean{
+    const formC2 = this.form2.nativeElement;
+    const formC3 = this.form3.nativeElement;
+
+    const formCS2 = this.formS2.nativeElement;
+    const formCS3 = this.formS3.nativeElement;
+
+    const btnc1 = this.btn1.nativeElement;
+
     var idOrigen= Number(this.paquete.sucursal_origen_id);
     var idDestino= Number(this.paquete.sucursal_destino_id);
     this.paquete.sucursal_origen_id=idOrigen;
     this.paquete.sucursal_destino_id=idDestino;
-
     let paqueteCootizar:Paquete= new Paquete();
-
       paqueteCootizar.sucursal_origen_id =idOrigen;
       paqueteCootizar.sucursal_destino_id =idDestino;
       paqueteCootizar.peso= this.paquete.peso;
@@ -235,14 +241,41 @@ export class RastreoComponent {
         console.log(this.cotizaciones)
       }
     }*/
-    this.paqueteService.cotizar(paqueteCootizar).subscribe(
-      data => 
-      {
-        this.cotizaciones[0] = data.result[0];
-        this.cotizaciones[1] = data.result[1];
-      }
-    );
+
+    this.paqueteService.cotizar(paqueteCootizar).subscribe({
+      next: (value) => {
+        this.cotizaciones = value.result;
+        console.log(value)
+        console.log(value.result)
+        this.bool= true;
+        this.toasterService.show({
+          message: value.detail,
+          type: ToasterEnum.INFO,
+        });
+
+
+
+        if(value.detail=='Paquete cotizado con éxito') {
+          event?.preventDefault();
+          formC2.classList.remove('active')
+          formC3.classList.add('active')
+
+          formCS2.classList.remove('active')
+          formCS3.classList.add('active')
+          this.renderer2.setStyle(btnc1, 'display', 'none');
+         }        
+      },
+      error: () => {
+        this.toasterService.show({
+          message: 'No existen rutas para este destino',
+          type: ToasterEnum.ERROR,
+         
+        });
+        this.bool= false;
+      },
       
+    });
+    return false;
   }
 
 
