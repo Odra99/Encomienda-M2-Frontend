@@ -1,7 +1,10 @@
 import { Component, EventEmitter, Output,ViewChild ,SimpleChanges, Input} from '@angular/core';
-import { Puesto } from 'src/app/data/model/general';
+import { Salida, Segmento,Vehiculo } from 'src/app/data/model/general';
 import { FormControl, NgForm, Validators } from '@angular/forms';
-import { PuestoService } from 'src/app/services/backend/puesto.service';
+import { SalidaService } from 'src/app/services/backend/salida.service';
+import { VehiculoService } from 'src/app/services/backend/vehiculo.service';
+
+import { SegmentoService } from 'src/app/services/backend/segmento.service';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { ToasterService } from 'src/app/services/others/toaster.service';
 @Component({
@@ -10,26 +13,33 @@ import { ToasterService } from 'src/app/services/others/toaster.service';
   styleUrls: ['./crear.component.scss']
 })
 
-export class CrearPuestoComponent {
+export class CrearSalidaComponent {
 
   constructor(
     private toasterService: ToasterService,
-    private puestoService: PuestoService
+    private salidaService: SalidaService,
+    private segmentoService: SegmentoService,
+    private vehiculoService: VehiculoService
   ) {}
 
 
   @Output() finishEvent = new EventEmitter<any>();
   @ViewChild('puestoForm', { read: NgForm }) form!: NgForm;
-  puesto: Puesto = new Puesto();
+  salida: Salida = new Salida();
+  segmentos:Segmento[]=[];
+  vehiculos:Vehiculo[]= [];
   list = true;
-  @Input() puestoId : number;
+
+  @Input() salidaId : number;
 
   nombre = new FormControl<string | null>(null, Validators.required);
   ngOnInit(): void {
-    if(this.puestoId){
-      this.puestoService.get(this.puestoId).subscribe({
+    this.cargarSegmentos();
+    this.cargarVehiculos();
+    if(this.salidaId){
+      this.salidaService.get(this.salidaId).subscribe({
         next:(value)=> {
-          this.puesto = value.result
+          this.salida = value.result
         },error:()=> {
           this.toasterService.showGenericErrorToast();
         },
@@ -38,10 +48,10 @@ export class CrearPuestoComponent {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if(changes["puestoId"] ){
-      this.puestoService.get(changes["puestoId"].currentValue).subscribe({
+    if(changes["salidaId"] ){
+      this.salidaService.get(changes["salidaId"].currentValue).subscribe({
         next:(value)=> {
-          this.puesto = value.result
+          this.salida = value.result
         },error:()=> {
           this.toasterService.showGenericErrorToast();
         },
@@ -49,12 +59,35 @@ export class CrearPuestoComponent {
     }
   }
 
+  cargarSegmentos(){
+    this.segmentoService.listAllHttp({}).subscribe({
+      next: (value) => {
+        this.segmentos = value.body.result;
+      },
+      error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+
+  cargarVehiculos(){
+    this.vehiculoService.listAllHttp({}).subscribe({
+      next: (value) => {
+        this.vehiculos = value.body.result;
+        console.log(this.vehiculos);
+      },
+      error: () => {
+        this.toasterService.showGenericErrorToast();
+      },
+    });
+  }
+
   save() {
     this.form.form.markAllAsTouched();
    //let puestoNuevo= new Puesto();
-    this.puestoService.save(this.puesto).subscribe({
+    this.salidaService.save(this.salida).subscribe({
       next: () => {
-        if(!this.puesto){
+        if(!this.salida){
           this.toasterService.show({
             message: 'Puesto creado con exito',
             type: ToasterEnum.SUCCESS,

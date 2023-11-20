@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output,ViewChild,Input,SimpleChanges } from '@angular/core';
-import { Puesto, Sucursal, Usuario,Rol } from 'src/app/data/model/general';
+import { Puesto, Sucursal, Usuario,Rol, Vehiculo } from 'src/app/data/model/general';
 import { FormControl, NgForm, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/backend/user.service';
 import { ToasterService } from 'src/app/services/others/toaster.service';
@@ -28,6 +28,7 @@ export class CrearUsuarioComponent {
   @Input() sucursalId : number;
   usuario: Usuario = new Usuario();
   sucursalesSelect:Sucursal[]= [];
+ 
   rolSelect: Array<Rol>= new Array<Rol>;
   puestosSelect: Array<Puesto>= new Array<Puesto>;
   keyword = 'nombre';
@@ -60,6 +61,8 @@ export class CrearUsuarioComponent {
       })
     }
   }
+
+
   save() {
 
     this.form.form.markAllAsTouched();

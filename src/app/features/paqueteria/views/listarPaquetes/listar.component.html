@@ -11,7 +11,7 @@
               <div>
                 <label for="phone" class="formbold-form-label">Salidas</label>
                 <select class="formbold-form-input" name="sucursal" [(ngModel)]="idSalida">
-                  <option value="">todas
+                  <option value="" selected>todas
                   </option>
                   <option *ngFor="let element of salidas" value="{{element.id}}">{{element.segmento.descripcion}}
                   </option>
@@ -20,8 +20,7 @@
               <div>
                 <label for="phone" class="formbold-form-label">Estado Traking</label>
                 <select class="formbold-form-input" name="sucursal" [(ngModel)]="idTipoTraking" >
-                  <option value="" >todas
-                  </option>
+                  <option value="" selected>todos </option>
                   <option value="1">En Espera</option>
                   <option value="2">En Bodega</option>
                   <option value="3">Cargando</option>
@@ -33,7 +32,7 @@
               <div>
                 <label for="phone" class="formbold-form-label">Estado Paquete</label>
                 <select class="formbold-form-input" name="sucursal" [(ngModel)]="estadoPaquete" >
-                  <option value="">todas
+                  <option value="" select>todos
                   </option>
                   <option value="1">Recepcion</option>
                   <option value="2">Transito</option>

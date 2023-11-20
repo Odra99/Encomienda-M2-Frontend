@@ -32,7 +32,7 @@
                         <input type="emNombreail" name="email" id="email" class="formbold-form-input"
                             #emailInput="ngModel" [(ngModel)]="usuario.email" required />
                     </div>
-                    <div>
+                    <div  *ngIf="!sucursalId">
                         <label for="password" class="formbold-form-label"> Contraseña</label>
                         <input type="text" name="password" id="password" class="formbold-form-input"
                             #passwordInput="ngModel" [(ngModel)]="usuario.password" required />
@@ -98,7 +98,7 @@
             </div>-->
             </div>
             <hr />
-            <button mat-flat-button color="primary"  type="submit" (click)="save()">Generar Nuevo Usuario</button>
+            <button mat-flat-button color="primary"  type="submit" (click)="save()">Guardar</button>
         </form>
     </div>
 </div>

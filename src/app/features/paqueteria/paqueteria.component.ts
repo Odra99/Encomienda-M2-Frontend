@@ -5,6 +5,8 @@ import { Paquete,  } from 'src/app/data/model/general';
 import { MatPaginator } from '@angular/material/paginator';
 import { SearchComponent } from './views/search/search.component';
 import { EnterPackageComponent } from './views/enter-package/enter-package.component';
+
+import { ListarPaquetesComponent } from './views/listarPaquetes/listar.component';
 import { Subject } from 'rxjs';
 
 @Component({
