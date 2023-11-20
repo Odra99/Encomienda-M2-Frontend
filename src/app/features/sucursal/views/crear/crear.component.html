@@ -30,7 +30,7 @@
                         <label for="email" class="formbold-form-label"> Ciudad</label>
                         <select class="formbold-form-input" name="ciudad"  #ciudadInput="ngModel" 
                         [(ngModel)]="sucursal.ciudad_id" required >
-                            <option *ngFor="let element of ciudadesSelect" value="{{element.id}}">{{element.departamento}}</option>
+                            <option *ngFor="let element of ciudadesSelect" value="{{element.id}}">{{element.nombre}}</option>
                         </select>
                     </div>
                 </div>

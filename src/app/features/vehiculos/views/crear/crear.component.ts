@@ -4,7 +4,7 @@ import { FormControl, NgForm, Validators } from '@angular/forms';
 import { VehiculoService } from 'src/app/services/backend/vehiculo.service';
 import { SucursalService } from 'src/app/services/backend/sucursal.service';
 import { TipoVehiculoService } from 'src/app/services/backend/tipoVehiculo.service';
-
+import {Router} from '@angular/router';
 import { ToasterEnum } from 'src/global/toaster-enum';
 import { ToasterService } from 'src/app/services/others/toaster.service';
 
@@ -20,6 +20,7 @@ export class CrearVehiculoComponent {
     private vehiculoService: VehiculoService,
     private sucursalService:SucursalService,
     private tipoVehiculoService:TipoVehiculoService,
+    private router:Router
   ) {}
 
   @Input() vehiculoId : number;
@@ -87,6 +88,7 @@ export class CrearVehiculoComponent {
         this.toasterService.showGenericErrorToast();
       },
     });
+    this.router.navigate(['/features/vehiculos']);
   }
   finish(){
     this.finishEvent.emit();

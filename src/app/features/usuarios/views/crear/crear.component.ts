@@ -7,7 +7,7 @@ import { ToasterEnum } from 'src/global/toaster-enum';
 import { RolService }  from 'src/app/services/backend/rol.service';
 import { PuestoService } from 'src/app/services/backend/puesto.service';
 import { SucursalService } from 'src/app/services/backend/sucursal.service';
-
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-crear-usuario',
@@ -21,7 +21,8 @@ export class CrearUsuarioComponent {
     private userService: UserService,
     private sucursalService: SucursalService,
     private rolService: RolService,
-    private puestoService:PuestoService
+    private puestoService:PuestoService,
+    private router:Router
   ) {}
   @Output() finishEvent = new EventEmitter<any>();
   @ViewChild('usuarioForm', { read: NgForm }) form!: NgForm;
@@ -87,6 +88,7 @@ export class CrearUsuarioComponent {
         this.toasterService.showGenericErrorToast();
       },
     });
+    this.router.navigate(['/features/salidas']);
   }
   finish(){
     this.finishEvent.emit();
