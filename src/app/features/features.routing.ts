@@ -16,6 +16,7 @@ import { SalidaViewsComponent } from "./salida/salida-views/salida-views.compone
 import { SalidaViewsAllComponent } from "./salida/salida-views-all/salida-views-all.component";
 import { MapComponent } from "./sucursal/views/map/map.component";
 import { ListarPaquetesComponent } from "./paqueteria/views/listarPaquetes/listar.component";
+import { CrearSalidaComponent } from "./salida/crear/crear.component";
 
 export const FeaturesRouter: Routes = [
   {
@@ -80,6 +81,10 @@ export const FeaturesRouter: Routes = [
         canActivate: [AllowNavigationGuard]
       },{
         path: 'salidas', component: SalidaComponent,
+        
+        canActivate: [AllowNavigationGuard],
+      },{
+        path: 'salidas/crear', component: CrearSalidaComponent,
         
         canActivate: [AllowNavigationGuard],
       },{

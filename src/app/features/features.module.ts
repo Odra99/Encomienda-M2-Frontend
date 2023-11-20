@@ -37,8 +37,9 @@ import { SucursalesComponent } from './sucursal/sucursal.component';
 import {CrearSucursalComponent} from './sucursal/views/crear/crear.component';
 import {ListarSucursalComponent} from './sucursal/views/listar/listar.component';
 import {EditarSucursalComponent} from './sucursal/views/editar/editar.component';
-import { SalidaComponent } from './salida/salida.component';
 
+import { SalidaComponent } from './salida/salida.component';
+import { CrearSalidaComponent } from './salida/crear/crear.component';
 //usuarios
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import {CrearUsuarioComponent} from './usuarios/views/crear/crear.component';
@@ -100,6 +101,8 @@ export const MY_FORMATS = {
     ListarUsuariosComponent,
     EditarUsuarioComponent,
 
+    CrearSalidaComponent,
+    
     ListarPuestoComponent,
     PuestosComponent,
     CrearPuestoComponent,

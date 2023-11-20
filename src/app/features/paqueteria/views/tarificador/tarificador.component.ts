@@ -221,6 +221,13 @@ export class RastreoComponent {
     var idDestino= Number(this.paquete.sucursal_destino_id);
     this.paquete.sucursal_origen_id=idOrigen;
     this.paquete.sucursal_destino_id=idDestino;
+
+    let paqueteCootizar:Paquete= new Paquete();
+
+      paqueteCootizar.sucursal_origen_id =idOrigen;
+      paqueteCootizar.sucursal_destino_id =idDestino;
+      paqueteCootizar.peso= this.paquete.peso;
+    
     /*
     if (!this.form.form.valid) {
       return;
@@ -230,13 +237,11 @@ export class RastreoComponent {
         console.log(this.cotizaciones)
       }
     }*/
-    this.paqueteService.cotizar(this.paquete).subscribe(
+    this.paqueteService.cotizar(paqueteCootizar).subscribe(
       data => 
       {
-          this.cotizaciones[0] = data.result[0];
-          //console.log(data.result[0]);
-          //console.log(data.result[1]);
-          this.cotizaciones[1] = data.result[1];
+        this.cotizaciones[0] = data.result[0];
+        this.cotizaciones[1] = data.result[1];
       }
     );
       

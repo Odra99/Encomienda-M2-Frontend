@@ -1,0 +1,36 @@
+<div class="formbold-main-wrapper"  [hidden]="!list">
+    <div class="formbold-form-wrapper">
+        <form #puestoForm>
+            <div class="formbold-form-title">
+                <h2 class="">Crear Nueva Salida</h2>
+            </div>
+            <div>
+                <h4>Datos de la Salida</h4>
+                <div class="formbold-input-flex">
+
+                    <div>
+                        <label for="firstname" class="formbold-form-label">
+                            Vehiculo:
+                        </label>
+                        
+                        <select class="formbold-form-input" name="ciudadInicio" #vehiulo="ngModel"
+                        [(ngModel)]="salida.vehiculo_id" required>
+                            <option *ngFor="let element of vehiculos" [value]="element.id">
+                                {{element.placa}}</option>
+                        </select>
+                    </div>
+                     <div>
+                        <label for="lastname" class="formbold-form-label"> Segmento </label>
+                        <select class="formbold-form-input" name="ciudadInicio" #ciudadInicio="ngModel"
+                        [(ngModel)]="salida.segmento_id" required>
+                            <option *ngFor="let element of segmentos" [value]="element.id">
+                                {{element.descripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <button mat-flat-button color="primary"  type="submit" (click)="save()">Guardar Salida</button>
+        </form>
+    </div>
+</div>

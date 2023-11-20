@@ -17,7 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-search-paqueteria',
+  selector: 'app-listar-paqueteria',
   templateUrl: './listar.component.html',
   styleUrls: ['../enter-package/enter-package.component.scss']
 })
@@ -139,17 +139,19 @@ export class ListarPaquetesComponent {
   }
 
   getPaqueteGuia() {
-    this.paqueteService.buscarPaqueteByGuia(this.numeroGuia).subscribe({
-      next: (value) => {
-        this.datos = [];
-        this.datos.push(value.result)
-        this.dataSource = new MatTableDataSource<Paquete>(this.datos);
-        this.dataSource.paginator = this.paginator;
-      },
-      error: () => {
-        this.toasterService.showGenericErrorToast();
-      },
-    });
+    if(this.numeroGuia!=''){
+      this.paqueteService.buscarPaqueteByGuia(this.numeroGuia).subscribe({
+        next: (value) => {
+          this.datos = [];
+          this.datos.push(value.result)
+          this.dataSource = new MatTableDataSource<Paquete>(this.datos);
+          this.dataSource.paginator = this.paginator;
+        },
+        error: () => {
+          this.toasterService.showGenericErrorToast();
+        },
+      });
+    }
   }
 
   openDialog(paquete: Paquete) {
