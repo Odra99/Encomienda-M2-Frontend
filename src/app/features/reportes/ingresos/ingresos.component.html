@@ -1,0 +1,107 @@
+<div class="tableContainer" style="padding-top: 0%; color:black">
+  <div class="">
+    <div class="col-lg-12" [hidden]="!list" [appCheckPermission]="permissionTypes.READ">
+      <mat-card class="cardWithShadow">
+        <mat-card-content class="p-24">
+          <mat-card-title>Paquetes</mat-card-title>
+          <div class="table-responsive m-t-16">
+
+
+            <div class="formbold-input-flex">
+              <div>
+                <label for="phone" class="formbold-form-label">Sucursales</label>
+                <select class="formbold-form-input" name="sucursal" [(ngModel)]="idSucursal">
+                  <option value="" selected>todas
+                  </option>
+                  <option *ngFor="let element of sucursales" value="{{element.id}}">{{element.nombre}}
+                  </option>
+                </select>
+              </div>
+              <div style="width: 30%;">
+                <label for="phone" class="formbold-form-label">mes</label>
+                <div class="formbold-form-input3">
+                    <input type="date"  [(ngModel)]="fecha"  class="formbold-form-input2" style="display: inline-flex;">
+                    </div>
+            </div>
+              <button mat-flat-button color="accent" (click)="getAll()">Filtrar</button>
+            </div>
+
+
+
+            <table mat-table [dataSource]="dataSource" class="w-100">
+
+              <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                  Id
+                </th>
+                <td mat-cell *matCellDef="let element; let i = index">
+                  <div class="d-flex align-items-center">
+
+                    <div class="m-l-16">
+                      <h6 class="mat-subtitle-1 f-s-14 f-w-600">
+                        {{ element.id }}
+                      </h6>
+
+                    </div>
+                  </div>
+                </td>
+              </ng-container>
+
+              <!-- Name Column -->
+              <ng-container matColumnDef="sucursal">
+                <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                  Sucursal
+                </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1">
+                  {{ element.sucursal.nombre }} 
+                </td>
+              </ng-container>
+
+              <!-- Weight Column -->
+              <ng-container matColumnDef="fecha">
+                <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                  fecha
+                </th>
+                <td mat-cell *matCellDef="let element">
+
+                  <span class="bg-light-accent text-accent rounded f-w-600 p-6 p-y-4 f-s-12">
+                    {{ element.fecha | date:'dd/MM/yyyy'}}
+                  </span>
+
+                </td>
+              </ng-container>
+
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="monto">
+                <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                  monto
+                </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1">
+
+                  <span class="bg-light-accent text-accent rounded f-w-600 p-6 p-y-4 f-s-12">
+                    {{ element.monto }}
+                  </span>
+                </td>
+              </ng-container>
+              <!-- Symbol Column -->
+              <ng-container matColumnDef="detalles">
+                <th mat-header-cell *matHeaderCellDef class="f-w-600 mat-subtitle-1 f-s-14">
+                  Detalles
+                </th>
+                <td mat-cell *matCellDef="let element" class="mat-body-1">
+                  {{ element.detalles }}
+                </td>
+              </ng-container>
+              <!-- Symbol Column -->
+            
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+            </table>
+            <mat-paginator #paginator [pageSizeOptions]="[5,10,15,20]" showFirstLastButtons></mat-paginator>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>
